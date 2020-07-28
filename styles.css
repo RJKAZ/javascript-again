@@ -1,0 +1,16 @@
+body {
+  padding-top: 100px;
+}
+
+.starter {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  border: 10px dotted black;
+  border-spacing: 15px 50px;
+}
+
+.text {
+  width: 75%;
+  margin: auto;
+}
