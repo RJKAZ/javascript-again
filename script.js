@@ -104,3 +104,30 @@ var num2 = 73;
 console.log(num1 + num2);
 
 // So to sum things up, variables can be stored with either Strings or Numbers. But we can also store them as True or False (called Booleans) these values do no have quotes and they are not numeric values. 
+
+// Now onto Boleans, aka True and False, they are special values that don't require quotes but are not numbers. They can be stored to variables just like a string or number. They are useful values for questions like if a light switch is turned on or not.
+
+var correct = true;
+console.log(correct);
+
+//false works the same way
+
+var gassy = false;
+console.log(gassy);
+
+//If you add quotes to a True/False value, the comptuer will read it as a string. Now there is also a way to negate the True/False value by adding a " ! " before the true/false value. Its called the negation operator 
+
+console.log(!true);
+console.log(!false);
+
+// The exclamation point negates/inverts the value of true/false. So !true will equal false and !false will equal True. It works with variables as well
+
+var angry = true;
+console.log(!angry);
+
+// Now going back to numbers, lets say we want to compare 2 number values. For this we use the Equality operator " === " which is basicly 3 equal signs
+
+console.log(5 === 5);
+console.log(5 === 10);
+
+// console loging 5 === 5 results in true. When comparing there are only two results, true or false. 
