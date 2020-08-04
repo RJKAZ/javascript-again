@@ -241,3 +241,71 @@ var word2 = " War";
 console.log (word1 + word2);
 var word3 = "Avengers ";
 console.log (word3 + word1 + word2);
+
+// got a little off track there, but now getting back to comparisons, instead of just less then or greater then, we can also add equal to. " <= " and " >= "
+
+console.log(1 <= 10);
+console.log(1 >= 10);
+console.log(1 >= 1);
+console.log(100 <= 100);
+
+// as with most things this also applies to variables
+
+var nu1 = 9;
+var nu2 = 200;
+var nuResult = nu1 <= nu2;
+console.log(nuResult);
+
+//Now lets move on to logic starting with the if statement. The If statement allows us to write code that adapts to situations. It runs code only if the boolean its relying on is true. 
+
+//since this condition is true, the console log statement runs 
+if (true) {
+  console.log("Hi man!");
+}
+
+//since this condition is false, the console log statement doesn't run 
+if (false) {
+  console.log("Hi man!");
+}
+
+// Values like true are conditionals, and statements that rely on conditions are conditionals. The condition is what decides if the code runs or not. And the condition is place within the parantheses
+//Here are a few other slightly more complex examples setting the condtion itself beyond true or false 
+
+// for this one, I set up two variables, and the condition is if the first variable is equal to the number 9. It is, so the code runs.
+var ifTest1 = 9
+var ifTest2 = 20
+if (ifTest1 = 9){
+  console.log("it works");
+}
+//using those same two variables, I set the condtion using the inequality operator. If the two variables are not equal the code runs true and thus the console.log statement still runs. 
+if (ifTest1 !== ifTest2) {
+  console.log("These numbers are not equal");
+}
+
+// everything between the curly braces is whats called a Code Block. There is no limit to much code we can put into it. 
+
+if (true) {
+  console.log("Fuzzy Wuzzy");
+  console.log("was a bear");
+  console.log("Fuzzy Wuzzy");
+  console.log("had no hair");
+  console.log("So Fuzzy Wuzzy");
+  console.log("wasn't very fuzzy, was he?");
+}
+
+var greet = true;
+if (greet) {
+  console.log("even variables can be conditionals");
+}
+
+// just some more examples
+
+var favArtist = "sejic";
+if (favArtist === "sejic") {
+  console.log( favArtist + " is my favorite artist!");
+}
+
+var favArtist = "sejic";
+if (favArtist !== "Romita Jr") {
+  console.log( "yuck, I hate Romita's art");
+}
