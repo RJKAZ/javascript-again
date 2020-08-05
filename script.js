@@ -309,3 +309,78 @@ var favArtist = "sejic";
 if (favArtist !== "Romita Jr") {
   console.log( "yuck, I hate Romita's art");
 }
+
+//the next logical step up from an if statment is now to incorporate a Else statment. if the " if " dicates what a function does when true, a " else " statment dicates what happens when false is selected. 
+
+// Else always goes after if
+
+var isDay = true;
+if (isDay) {
+  console.log("Turn the lights off!");
+} else {
+  console.log("Turn the lights on!");
+}
+
+var isDay = false;
+if (isDay) {
+  console.log("Turn the lights off!");
+} else {
+  console.log("Turn the lights on!");
+}
+
+// The else statment doesn't need it own condition, thats becasue it handles the cases where the if's condition is false. 
+
+var hero = "Batman";
+if (hero === "Batman") {
+  console.log("Batman is the coolest hero!");
+} else {
+  console.log("Wonder Woman can kick Batmans ass!");
+}
+
+var hero = "Batman";
+if (hero === "Wonder Woman") {
+  console.log("Batman is the coolest hero!");
+} else {
+  console.log("Wonder Woman can kick Batmans ass!");
+}
+
+// increasing the complexity of an if/else statment 
+
+var money = 800;
+var macbookPrice = 1300;
+
+if (money >= macbookPrice) {
+  console.log("enjoy you're brand new Macbook!");
+} else {
+  var left = macbookPrice - money;
+  console.log("You need " + left + " more to get a Macbook, might I suggest an HP instead?");
+}
+
+var hour = 9;
+if (hour < 12) {
+  console.log("Good Morning");
+} else {
+  console.log("Good Night");
+}
+
+// and where as the else doesn't require a condition, you can add one by making the else into an else if.
+
+var hour = 14;
+if (hour < 12) {
+  console.log("Good Morning");
+} else if (hour < 17) {
+  console.log("Good Afternoon")
+} else {
+  console.log("Good Evening");
+}
+
+var hour2 = 20;
+if (hour2 < 12) {
+  console.log("Good Morning");
+} else if (hour2 < 17) {
+  console.log("Good Afternoon")
+} else {
+  console.log("Good Evening");
+}
+
+// As long as they go after the "If" and before the "Else", you put in as many "else if" as you like
