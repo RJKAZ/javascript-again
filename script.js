@@ -384,3 +384,62 @@ if (hour2 < 12) {
 }
 
 // As long as they go after the "If" and before the "Else", you put in as many "else if" as you like
+
+//when we create a variable we assign it a value
+var wallet = 3;
+console.log(wallet);
+//but there is also Self-Assingment when we set a variable to its own value. 
+var wallet2 = 5
+wallet2 = wallet2;
+console.log(wallet2);
+
+// in this same sense, you can also increase or decrease variables set to numbers
+
+var wallet3 = 8;
+wallet3 = wallet3 + 9;
+console.log(wallet3);
+
+// Self assing variables let us track data that changes over time. 
+
+var wallet4 = 9;
+wallet4 = wallet4 + 9;
+wallet4 = wallet4 - 2;
+console.log(wallet4);
+
+// it works in a simmialr way with variables set to strings.
+
+var friend = "Friend Name: ";
+friend = friend + "John";
+friend = friend + " Barreto";
+console.log(friend);
+
+// Self Assinging is a powerful programing concept becasue it lets us track data changes over time.
+
+// now there is a shortcut 
+var wallet5 = 20;
+wallet5 += 1;
+console.log(wallet5);
+
+// instead of doing wallet5 = wallet5 + 1, instead you can just use wallet5 += 1; It also has its subtraction conterpart
+
+var wallet6 = 3;
+wallet6 -= 1;
+console.log(wallet6);
+
+// for increaseing or decreasing by a single number you can also use a " ++ " or " -- "
+
+var wallet7 = 9;
+wallet7 ++;
+console.log(wallet7);
+
+var wallet8 = 10;
+wallet8 --;
+console.log(wallet8);
+
+// just curious what happens when you try this with a string
+
+var wallet9 = "My Wallet";
+wallet9 ++;
+console.log(wallet9);
+
+// this brings up NaN "Not a number"
