@@ -10,7 +10,7 @@ while (true) {
 
 // had this JS file been attached to html, that little bit of code would have bricked my browser
 
-// he while look will repreat its code block while the condition is true. If a while loops condition stays true forever, its called an infite loop since it will loop infinitely. Setting it to false is a way to stop a while loop.
+// the while loop will repreat its code block while the condition is true. If a while loops condition stays true forever, its called an infite loop since it will loop infinitely. Setting it to false is a way to stop a while loop.
 
 while (false) {
   console.log("and again");
@@ -39,3 +39,39 @@ while(myRight === true){
   myRight = false;
   console.log(" only when I'm right!")
 }
+
+// that code only displays the first console.log statement 
+
+// We can also control the number of times a while loop repeats. You would start with a variable set to a number. We call this variable a "Counter Variable"
+//then we use a comparison in the condition to compare the counter variable to a number. In this case, Counter < 4
+// then we have to make the condition return false and stop the loop by incremeting the counter variable using counter++
+
+// counter++ increases the counter by one, each time the loop runs its code block
+
+var counter = 1; 
+while(counter < 4){
+  console.log(counter);
+  counter++;
+}
+// that code returns 1 2 3, since the set the condtion of the loop to stop before hitting 4
+
+while(counter < 10){
+  console.log(counter);
+  counter++;
+}
+// that code runs to 9 since we changed the condition of the loop to stop before hitting 10. 
+// also changing the counter variables value also changes when the loop starts
+
+counter = 5;
+while(counter < 10) {
+  console.log(counter);
+  counter++;
+}
+// Since the variable is set to 5, and the condition stops before 10, that code now runs 5 to 9
+
+// And since the whole codebock runs, the order you write the code affects what the console displays.
+while(counter < 10) {
+  counter++;
+  console.log(counter); 
+}
+// reversing the order of the ++ and the console.log statement makes the code now run from 6 to 10

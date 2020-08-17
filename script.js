@@ -443,3 +443,75 @@ wallet9 ++;
 console.log(wallet9);
 
 // this brings up NaN "Not a number"
+
+// At this point jump over to the script2.js file for while loops
+ 
+// after the evil part of while loops, resume from here.
+
+// using a While loop, create an american flag!
+
+var counter1 = 0;
+
+while (counter1 < 5) {
+  console.log("********----------");
+  counter1++;
+}
+
+var counter2 = 0;
+while (counter2 < 4) {
+  console.log("------------------");
+  counter2++;
+}
+
+// the console statements in my chrome are wieild bunching the code togther. like instead of ******_______ on 5 lines, it only displays it once with a cirlced 5 next to it.
+
+// Now we get into for loops. This is the base template for a for loop. A for loop allows us to create a counter variable inside the parentheses
+
+// in for loops, the counter variable is commonly the letter " i " which stands for index. 
+
+//after the semicolan following the counter variables value, we can place the condition followed by another semicolan 
+
+// so in the for loop, var i = 1 is declaring the counter variable as i (index) with a numeric value of 1. its followed by a condition that i is less then the number 5
+
+// and then lastly we increment the counter variable with i++
+
+for (var i = 1; i < 5; i++) {
+  console.log(i);
+}
+
+// so to write this out, after setting up the for(), when then in the paranthesse declare the counter variable as i (index) set the condition of it being less then five, and the increment it by one everytime the code block runs
+
+// so the code block runs 4 times, stopping before hitting 5, and displays 4 console.log statements of 1 to 4
+
+// for loops are considered easy to read becasue all the information on the loop and how often it repeats is all inside the parantheses
+
+// in For Loops the counter variable always goes inside the parantheses 
+
+// just as an example of what can be achieved
+
+for (var i = 0; i < 2; i++) {
+  console.log("We Will");
+}
+console.log("Rock You!");
+
+// We have so far gone over how the for loop counts upwards, but it can also loop downwards. We can do this be making i greater then ( > ) instead of less then ( < )
+// and instead of incrementing the counter variable ( i++ ), we can decrement it ( i-- )
+
+for (var i = 5; i > 0; i--) {
+  console.log(i); 
+}
+
+// that code will count down from 5 to 1
+// and this code below does the reverse and counts up from 5
+
+for (var i = 1; i < 6; i++) {
+  console.log(i); 
+}
+
+// in cases where 0 (zero) wants to be included in the countdown, use >= instead of just >
+
+for(var i = 5; i >= 0; i--) {
+  console.log(i);
+}
+
+// Now lets start with Arrays, and Grouping Values with them!
