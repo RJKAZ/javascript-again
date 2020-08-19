@@ -110,3 +110,95 @@ for (var i = 0; i < 3; i++){
 for (var i = 0; i < friends.length; i++){
     console.log(i);
 }
+
+// Now onto Functions, we start by calling function follwed by the functions name, and for now an empty parantheses. followed by curly brakcets where we put the code block
+// All Code we want to group toghether goes between the curly braces.
+
+function greetUser() {
+    console.log("The Weather today sucks!");
+    console.log("Its all rainy and humid!");
+}
+
+// Now to run the function (or rather run its code) we have to call the function. we do that by calling its name with the empty parentheses
+
+greetUser();
+
+// that runs the function and in the console it displays both statements within its code block. 
+
+// Functions are a way to group related code. They the function name has more then one word, do not include any space, but camel case it instead. 
+
+// sometimes functions need specific information to help them perform their task. In regards to this you can create variables inside functions
+
+function globalConquest() {
+    var plot = " stealing every left shoe in the world!";
+    console.log("I shall begin my conquest of the planet by" + plot);
+}
+globalConquest();
+
+// in that above example, I created a variable with a string value and I combine the console log statement with that variable.
+
+// For functions that do simmilar things, you can pass specific information to just one function instead of repeat the code.
+
+function yuck(food) {
+    console.log("I hate " + food);
+}
+yuck("mushrooms");
+yuck("Durian Fruit");
+
+// to pass a value to a fucntion, we add a variable called a parameter inside the parenthese of the function. You can name it whatever you want, and the parameter acts like a variable and stores value.
+// in that above example, I named the parameter food. To pass the value to the parameter (food), we place it between the paranthese when we call the function. 
+// So in that above example, I called the function Yuck and passed different food values to its food parameter each time I called it. 
+
+// A function can also return a value to the code that called it. To return something from a function, we add the return keyword followed by the value to return, like here with return age;
+
+function userAge(number) {
+    var age = "User age: " + number;
+    return age; 
+}
+console.log(userAge(22));
+
+// a function can return any kind of value, like string, number, or boolean. this function returns the number value inside result
+
+function timesTen(number) {
+    var result = number * 10;
+    return result;
+}
+console.log(timesTen(10));
+
+// We can only return a single value. here we return the boolean value insdie the bariable with return isGreater
+
+function greaterThanTen(number) {
+    var isGreater = number > 10;
+    return isGreater;
+}
+console.log(greaterThanTen(30))
+
+// we can store the return value in a variable too. Here we store the return value in result and display it in the console.
+
+function myAge(number) {
+    var me = "RJ's age is " + number;
+    return me;
+}
+var result = myAge(36);
+console.log(result);
+
+// if you don't include a return statement, the function returns the value undefined.
+
+function myLove(food) {
+    var tasty = "I love to eat " + food;
+}
+var result = myLove("Sushi");
+console.log(result);
+
+// since I didn't include the return statement, that code console logs undefined instead of "I love to eat Sushi"
+
+// So to reiterate, we return a value from a function by adding the return keyword followed by the value to return. 
+// a function can return any value, string, boolean, or number
+// But a function can only return a single value
+
+function giveMeTen() {
+    return 10;
+}
+console.log(giveMeTen());
+
+// left off on Using Multiple Parameters 
