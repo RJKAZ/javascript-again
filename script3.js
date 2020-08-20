@@ -202,3 +202,137 @@ function giveMeTen() {
 console.log(giveMeTen());
 
 // left off on Using Multiple Parameters 
+
+// Lets dive into functions with multiple parameters 
+
+// we can add more then one parameter to a function when we need a result from more then one input
+
+function sayName(first, last){
+    console.log("My name is:");
+    console.log(first + " " + last);
+}
+sayName("Alex", "Morgan");
+
+// first is given the string value of Alex and last is given the string value ot Morgan 
+// And then they are combined in the console.log statement. 
+// When using multiple parameters in a function, you seperate them with a comma.
+
+// just to test out a longer example
+
+function insult(first, second, third, forth, fifth, sixth){
+    console.log(first + second + third + forth + fifth + sixth);
+}
+insult("You", " are ", "so ", "stupid ", "it ", "hurts!");
+
+// in the above example, the values get passed to the function in the same order the parameters do
+// You can add as many parameters as you like
+// passing multiple parameters means you can use them to return a new value
+
+function addNumbers(num1, num2){
+    return num1 + num2;
+}
+var result = addNumbers(1, 2);
+console.log(result);
+
+// functions can also incorporate if statements
+
+var pokemonLevel = 75;
+if (pokemonLevel > 70){
+    console.log("You are powerful enough for the Elite Four!");
+}
+
+// to turn that into a function
+
+function areYouReady(){
+    var charizardLevel = 30;
+    if (charizardLevel > 70) {
+        console.log("You're Charizard is ready to fight the Elite Four!");
+    } else {
+        console.log("You need to level your Charizard up more!");
+    }
+}
+areYouReady();
+
+// another example
+
+function charizardPower (power) {
+    if (power > 65) {
+        console.log("Fire Blast Learned");
+    } else {
+        console.log("Flamethrower Learned")
+    }
+}
+charizardPower(45);
+
+// we can also use loops in functions 
+
+function countToFive() {
+    var count = 3;
+    while (count <= 5) {
+        console.log(count);
+        count++;
+    }
+}
+countToFive();
+
+// if we want to avoid resuing loops that always do the same thing, we can add parameters
+
+function countToTen(count){
+    while(count <= 10) {
+        console.log(count);
+        count++;
+    }
+}
+countToTen(8);
+
+// there are also anonymous functions. They are functions without a specified name and start with the keyword followed by the parameters
+
+var greet = function(user){
+    return "Hello " + user 
+};
+console.log(greet("Tina"));
+
+// you can save a return value to a variable
+
+var greeting = function(user1) {
+    return "Hi " + user1
+};
+var greetTim = greeting("tim");
+console.log(greeting);
+console.log(greetTim);
+
+// however when you save a return value to a variable, to initial varible prints to the consple the process of getting to the return value, the functions code
+
+
+// now lets step back and look more at interacting with a webpage
+
+// when adding Javascript to a webpage/HTML you use a script tag <script> and its closing tag </script>
+// it always goes at the bottom before the closing body tag
+
+// Now within the HTML we can add ID's to elements. Ids identify HTML elements and help us interact with them using Javascript 
+
+// to set an ID in an HTML element, you add into the opening tag id with an equals and the name of the id in quotes. such as
+//  <p id="test">Hello</p>
+
+// within the Javascript , you can access an HTML element by using
+//as demonstrated here. I added an id of "title" to the H1 tag in the HTML page
+document.getElementById("title").innerHTML;
+
+console.log(document.getElementById("title").innerHTML);
+
+// that code basily reprints the content of the h1 tag to the console
+// now to add code into the HTML
+
+document.getElementById("finePrint").innerHTML = "code at your own risk!";
+
+// in the HTML, I left an empty H3 tag set to the id of "finePrint"
+// the above Javascript basicly adds the string value to the HTML by targeting the id. so It prints it to the h3 element.
+// the " .innerHTML " instruction is for accessing the text of an element
+// " document.getElementById() " on its own retrieves the whole element with its tag and text.
+
+// this will also overwrite any existing code, or rather the exisiting string value
+
+document.getElementById("serious").innerHTML = " just kidding!";
+
+// In the HTML page, the h4 tag has the text of "No Joke this can get dangerous"
+// the above code updates/replaces that text with "just kidding!"
