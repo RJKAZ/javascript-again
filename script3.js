@@ -336,3 +336,52 @@ document.getElementById("serious").innerHTML = " just kidding!";
 
 // In the HTML page, the h4 tag has the text of "No Joke this can get dangerous"
 // the above code updates/replaces that text with "just kidding!"
+
+// we can also create variables and sue them to store the HTML elements we access
+
+var element = document.getElementById("messages")
+
+// in that above example, the variable of element stands for whats in document.getElementById("messages")
+// we can access the text of the paragraph through the variable element
+
+console.log(element.innerHTML)
+// so in laymens terms, the variable of Element is basicly equal to the entire value of the p tag.
+// so when I console log that variable, it will basicly write the the console everything in the p tag.
+
+// we can also use that variable to update the paragraphs content by adding = and the new value 
+
+element.innerHTML = "haha";
+
+console.log(fruit.innerHTML);
+fruit.innerHTML = "cherries";
+console.log(fruit.innerHTML);
+
+// so to sum up, we store the elements we're accessing through document.getElementById() by using a variable 
+
+// you can also create HTML elements via Javascript by using document.createElement();
+
+var testParagraph = document.createElement("h5");
+
+// so this code bascily creates another p tag on the html, but it has no text, to add text
+
+testParagraph.innerHTML = "Instead of focusing on code, lets travel the world instead!";
+// but to get it to show up on the HTML, we need to append it
+
+console.log(testParagraph);
+document.body.appendChild(testParagraph); 
+
+var button = document.createElement("P");
+button.innerHTML = "This is further testing";
+document.getElementById("example").appendChild(button);
+
+// for a bit more exparimenting with creating elments, I decided to make a 4th JS script page and a new HTML page of createElement
+
+// now lets diverge in Nesting Elements for example when you have a p element inside a boyd elment, the body element is the parent element and the p is the child element. P is the child of Body, and Body is the Parent of P
+
+// we can use appendChild() to nest an element inside another
+
+var newText = document.getElementById("parent");
+var paragraph = document.createElement("p");
+paragraph.innerHTML = "Hello World is such a tired statement";
+newText.appendChild(paragraph);
+
