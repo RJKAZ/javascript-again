@@ -17,3 +17,5 @@ addToDiv();
 var test2 = document.createElement("h2");
 test2.innerHTML = "Cause lord knows I know how to have a good time!";
 document.getElementById("myDIV2").appendChild(test2);
+
+

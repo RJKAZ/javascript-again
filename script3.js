@@ -370,9 +370,6 @@ testParagraph.innerHTML = "Instead of focusing on code, lets travel the world in
 console.log(testParagraph);
 document.body.appendChild(testParagraph); 
 
-var button = document.createElement("P");
-button.innerHTML = "This is further testing";
-document.getElementById("example").appendChild(button);
 
 // for a bit more exparimenting with creating elments, I decided to make a 4th JS script page and a new HTML page of createElement
 
@@ -384,4 +381,88 @@ var newText = document.getElementById("parent");
 var paragraph = document.createElement("p");
 paragraph.innerHTML = "Hello World is such a tired statement";
 newText.appendChild(paragraph);
+
+// you can also remove an element by using the bodyElement.removeChild();
+
+// for this both the parent and the child element must have ID's 
+// We create variables for the element we want to remove and its parent to make the core more readable.
+
+//now to see it in action, hope back over to the removeElement HTML page and its similarlly named script file
+
+// Back to attributes, button clicks are useless without the onclick attribute 
+
+function magic(){
+    document.getElementById("prompt").innerHTML = "Hocus Pocus!";
+}
+
+// Now onto using Object Properties 
+
+// To access an objects property, we use the object name, a period, and the property name.
+
+var tabletPC = {
+    model: "Wacom",
+    processor: "15w Core i5",
+    price: 1999.99
+};
+console.log(tabletPC.price);
+console.log(tabletPC.model);
+console.log(tabletPC.processor);
+
+// just like variables we can update object properties. I will update the processor to a more powerful option
+
+tabletPC.processor = "28w Core i7";
+console.log(tabletPC.processor);
+
+// and just like variables you can use self-assignments. Lets assume Wacom has a half off sale
+
+tabletPC.price = tabletPC.price / 2;
+// basicly the price is divided by 2
+
+console.log(tabletPC.price);
+
+// we can also add properties to an object. To add a property, we use the object name, a period, and the property. And then we give it a value
+
+var phone = {
+    model: "Surface Duo"
+};
+
+phone.price = 1399;
+phone.color = "Silver";
+console.log(phone.price);
+
+// when we add a property after we first create the object, the object gets updated. 
+
+console.log(phone);
+
+//the new property always appears at the end in the list of objects.
+
+// Now for Object Methods 
+
+// We can use a method to display the type property of a object in a game (lets do super powers). A method is a property that contains a function
+// object methods are like functions inside an object. It behaves the exact same way as a function
+// to access properties while inside the object, you need to use "this" keyword followed by a period and the property name
+
+var power = {
+    type: "flight",
+    speed: 100,
+
+    showType: function() {
+        console.log("Type: " + this.type);
+
+    },
+    // Methods often represent behaviors. To make the character flight faster, they need to accelerate 
+    // methods allow us to change properties from within the object. to make the hero accelerate, we need to increase speed
+
+    accelerate: function(){
+        this.speed = this.speed + 50;
+        console.log(this.speed + "km/h");
+    }
+};
+
+// We access a method the same way we access a property. The only difference is that we add parantheses at the end
+
+power.showType();
+power.accelerate();
+
+
 
