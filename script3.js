@@ -11,7 +11,7 @@ console.log(friends);
 // this works with numbers as well, even booleans. an array can store any value in any combination 
 
 // This is an Array with three number values 
-var myFavNum = [ 5, 8, 11];
+var myFavNum = [5, 8, 11];
 console.log(myFavNum);
 
 // this is an Array with both boolean value 
@@ -19,7 +19,7 @@ var myLuck = [true, false];
 console.log(myLuck);
 
 // and this is an Array with a Number, String, and Boolean value.
-var myStuff = [ 10000, "I love money", true];
+var myStuff = [10000, "I love money", true];
 console.log(myStuff);
 
 // now every element in an array has a numbered position called an index (indices)
@@ -27,13 +27,13 @@ console.log(myStuff);
 // If you want to access a specific element in an array you do so by its index
 
 // This code returns 990 since its at the 2nd index (don't forget the first index is always zero)
-var testIndex = [ 3, 400, 990];
+var testIndex = [3, 400, 990];
 console.log(testIndex[2]);
 
 // you can also assign the element a new variable 
 
 // this bit of code has the first index's ( zero) value at 70. but I changed it to 65 so when console.loging that index, it shows the new value. 
-var temp = [ 70, 60, 80, 100];
+var temp = [70, 60, 80, 100];
 temp[0] = 65;
 console.log(temp[0]);
 
@@ -77,7 +77,7 @@ console.log(computerBrands.length);
 // that console logs 4 since there are 4 elements in the array (this is more useful the larger the array)
 // you can also store the length of the array in a variable.
 
-var length = computerBrands.length; 
+var length = computerBrands.length;
 console.log(length);
 
 // the variable lenght is equal to the lenght of the array in the computerBrands variable 
@@ -99,7 +99,7 @@ if (tasks.length > 0) {
 
 var ememies = ["Joker", "Azula", "Wicked Witch"];
 
-for (var i = 0; i < 3; i++){
+for (var i = 0; i < 3; i++) {
     console.log(i);
 }
 
@@ -107,7 +107,7 @@ for (var i = 0; i < 3; i++){
 
 // you can also use the lenght of the array
 
-for (var i = 0; i < friends.length; i++){
+for (var i = 0; i < friends.length; i++) {
     console.log(i);
 }
 
@@ -153,7 +153,7 @@ yuck("Durian Fruit");
 
 function userAge(number) {
     var age = "User age: " + number;
-    return age; 
+    return age;
 }
 console.log(userAge(22));
 
@@ -207,7 +207,7 @@ console.log(giveMeTen());
 
 // we can add more then one parameter to a function when we need a result from more then one input
 
-function sayName(first, last){
+function sayName(first, last) {
     console.log("My name is:");
     console.log(first + " " + last);
 }
@@ -219,7 +219,7 @@ sayName("Alex", "Morgan");
 
 // just to test out a longer example
 
-function insult(first, second, third, forth, fifth, sixth){
+function insult(first, second, third, forth, fifth, sixth) {
     console.log(first + second + third + forth + fifth + sixth);
 }
 insult("You", " are ", "so ", "stupid ", "it ", "hurts!");
@@ -228,7 +228,7 @@ insult("You", " are ", "so ", "stupid ", "it ", "hurts!");
 // You can add as many parameters as you like
 // passing multiple parameters means you can use them to return a new value
 
-function addNumbers(num1, num2){
+function addNumbers(num1, num2) {
     return num1 + num2;
 }
 var result = addNumbers(1, 2);
@@ -237,13 +237,13 @@ console.log(result);
 // functions can also incorporate if statements
 
 var pokemonLevel = 75;
-if (pokemonLevel > 70){
+if (pokemonLevel > 70) {
     console.log("You are powerful enough for the Elite Four!");
 }
 
 // to turn that into a function
 
-function areYouReady(){
+function areYouReady() {
     var charizardLevel = 30;
     if (charizardLevel > 70) {
         console.log("You're Charizard is ready to fight the Elite Four!");
@@ -255,7 +255,7 @@ areYouReady();
 
 // another example
 
-function charizardPower (power) {
+function charizardPower(power) {
     if (power > 65) {
         console.log("Fire Blast Learned");
     } else {
@@ -277,8 +277,8 @@ countToFive();
 
 // if we want to avoid resuing loops that always do the same thing, we can add parameters
 
-function countToTen(count){
-    while(count <= 10) {
+function countToTen(count) {
+    while (count <= 10) {
         console.log(count);
         count++;
     }
@@ -287,14 +287,14 @@ countToTen(8);
 
 // there are also anonymous functions. They are functions without a specified name and start with the keyword followed by the parameters
 
-var greet = function(user){
-    return "Hello " + user 
+var greet = function (user) {
+    return "Hello " + user
 };
 console.log(greet("Tina"));
 
 // you can save a return value to a variable
 
-var greeting = function(user1) {
+var greeting = function (user1) {
     return "Hi " + user1
 };
 var greetTim = greeting("tim");
@@ -368,7 +368,7 @@ testParagraph.innerHTML = "Instead of focusing on code, lets travel the world in
 // but to get it to show up on the HTML, we need to append it
 
 console.log(testParagraph);
-document.body.appendChild(testParagraph); 
+document.body.appendChild(testParagraph);
 
 
 // for a bit more exparimenting with creating elments, I decided to make a 4th JS script page and a new HTML page of createElement
@@ -391,7 +391,7 @@ newText.appendChild(paragraph);
 
 // Back to attributes, button clicks are useless without the onclick attribute 
 
-function magic(){
+function magic() {
     document.getElementById("prompt").innerHTML = "Hocus Pocus!";
 }
 
@@ -446,14 +446,14 @@ var power = {
     type: "flight",
     speed: 100,
 
-    showType: function() {
+    showType: function () {
         console.log("Type: " + this.type);
 
     },
     // Methods often represent behaviors. To make the character flight faster, they need to accelerate 
     // methods allow us to change properties from within the object. to make the hero accelerate, we need to increase speed
 
-    accelerate: function(){
+    accelerate: function () {
         this.speed = this.speed + 50;
         console.log(this.speed + "km/h");
     }
@@ -464,5 +464,94 @@ var power = {
 power.showType();
 power.accelerate();
 
+// to aid in making things overall less error prone and more efficent we can use data structures called classes as templates 
+
+// to create a new class, we start with the class Keyboard, a name, and braces 
+// unlike virtually everything else in Javascript, when you create a new class, the name must start with an uppercase letter
+// to create new objects, classes need a special method called the constructor(). this method sets the property values for a new object. 
+// to specify the unique values a new object will have, we have to send parameters to the contructor method, in this case we pass author and title as parameters to the constructor method.
+// before creating a new object property, we need a special keyboard. this. We add this. to refer to the object being created.
+// we follow up this. with the property name 
+// To finish creating the new object property, we'll assign the author parameter as a value to this.author 
+
+class Book {
+    constructor(author, title) {
+        this.author = author;
+        this.title = title;
+    }
+}
+
+// to use our class, we start the saem way we'd create a variable, but then add the ' new ' keyword followed by Book()
+
+var book1 = new Book("RL Stine", "Goosebumps");
+console.log(book1);
+var book2 = new Book("The Illuminati", "The Bible");
+console.log(book2);
+
+// we can also ass methods to classes to create interactive objects using the classes as a template
+
+// Adding a method in a class is alot like creating a function except there is no need to use the function keyword
+// so in this case, eat will be the method/function 
+
+class VirtualPet {
+    constructor(name) {
+        this.name = name;
+    }
+    eat(food) {
+        if (food === "treats") {
+            console.log("nom nom");
+        } else {
+            console.log("discard");
+        }
+    }
+};
+
+// now before we can use the eat() method, we need to create a new object from the class
+// and then to use the eat() method, we need the name of the object, a period, the name of the method, and parantheses 
+
+var pet = new VirtualPet("Tom");
+pet.eat();
+
+// you can also add conditional statements.
+
+pet.eat("treats");
+pet.eat("garbage");
+
+// now everytime we create an object from a class, we're creating whats called an instance of that class 
+// we will create an instance of the User class and store it in the variable user1
+// each instance is independent, that means when we create a new instacne it doesn't affect any other instance
+// changing a class affects all instances of that class
+
+class User {
+    constructor(name) {
+        this.name = name;
+        this.isOnline = true;
+        this.status = "Hey, I'm flying a dragon";
+    }
+}
+var user1 = new User("Arya");
+user1.isOnline = false;
+console.log(user1);
+
+var user2 = new User("Bran");
+console.log(user2);
+
+var user3 = new User("Jon");
+var user4 = new User("Sansa");
+
+// the constructor is what creates an instance. But it doesn't always need to have properties inside of it. it works even when empty
+// set the constructor() method as empty for this User class. this means there's nothing in between the braces
+
+class UserX {
+    constructor(){
+
+    }
+    sayHi(){
+        console.log("Hello!");
+    }
+}
+var user1 = new UserX();
+user1.sayHi();
 
 
+// left off on extending classes
