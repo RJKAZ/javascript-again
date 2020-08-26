@@ -555,3 +555,108 @@ user1.sayHi();
 
 
 // left off on extending classes
+
+// so if we create an Animal Class to bundle to main features of the animals, using inheritence we can extend it with additional functionality for different kinds of animals
+
+// to inheret features from a class, we need to use the extends keyword in the class definition 
+
+//by coding extends, we'll make the Chinchilla class inherit from the Animal class
+// inheretence gives a class all the properties of the class its extending or inhereting from.
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+}
+class Chinchilla extends Animal {
+}
+var chinchilla = new Chinchilla("Chiney");
+console.log(chinchilla);
+
+// since Chinchilla inherets from Animal, its a subclass of Animal, and Animal is the Superclass
+
+//if a subclass doesn't have a constructor() method, the superclass's constructor becomes the default constructor 
+
+console.log(chinchilla.name);
+
+// the subclass also inherets its superclass's methods
+
+class MyPet {
+    constructor(name) {
+        this.name = name;
+    }
+    eat(){
+        console.log(this.name + " is eating");
+    }
+}
+
+class Cat extends MyPet {
+}
+
+var cat = new Cat ("Wet Pussy");
+cat.eat();
+// we can make as many subclasses as we want.
+
+class Skunk extends MyPet {    
+}
+
+var skunk = new Skunk("Stinky");
+skunk.eat();
+
+// inheritance becomes useful when subclasses have additional functionality, like their own methods. 
+
+class Hedgehog extends MyPet{
+   spinBash() {
+       console.log("My Hedgehog just prefromed a spin dash attack. Go SONIC!!!!");
+   } 
+}
+
+var hedgehog = new Hedgehog("Sonic");
+hedgehog.spinBash();
+
+// inheritence only works one way. Not all instances of Animals are a Hedgehog so they can't access specific hedgehog functionality
+
+// Now methods can be overriden. 
+
+class Human {
+    constructor(weapon){    
+    }
+    recieveDamage() {
+        this.health = this.health - 10;
+    }
+}
+
+class Wizard extends Human {
+    recieveDamage() {
+        this.health = this.health - 5;
+    }
+}
+
+var wizard = new Wizard("staff");
+wizard.recieveDamage();
+console.log(wizard.health);
+
+var human = new Human("ax");
+human.recieveDamage();
+console.log(human.health);
+
+// for some reason that code it not working. it should return 90 for the human health and 95 for the wizard health, but the console shows it as NaN (not a number)
+// I think its missing a variable to establish the health starting point as 100. 
+
+//  well....moving on...since subclasses can have their own properties, we can easily add these extra features to a character. 
+
+class ToughHuman {
+    constructor(weapon) {
+        this.weapon = weapon;
+        this.health = 100;
+    }
+}
+class Warrior extends ToughHuman {
+    constructor(weapon, warCry) {
+        super(weapon);
+        this.warCry = warCry;
+    }
+}
+var warrior = new Warrior("sword", "Barritus!");
+console.log(warrior.weapon);
+console.log(warrior.warCry);
