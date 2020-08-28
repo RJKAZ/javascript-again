@@ -547,3 +547,165 @@ console.log(random);
 // 3. An instance of the Date object represents a particular date and time
 
 // A false thing about the Date Object, is that Data contains mathematical constants and methods. This is false.  
+
+// Now lets get into Arrays 
+
+// An array is a special kind of variable that contains several values of either the same type, or even different types
+
+var things = ["raindrops", "roses", "whiskers", "cats"];
+console.log(things);
+
+// we create an array when we assign values in brackets to a variable. You can also use an empty bracket to create an empty array
+
+var things2 = [];
+console.log(things2);
+
+// the empty bracket [] is also known as the " Array Literal" and we can use multiple values, a single value, or no values at all. 
+
+// to access the values in an array, you have to target the values position in the array. They are called index positions. To access the value, you put its index in brackets after the array name. 
+
+var things3 = ["blue", "red", "orange", "purple"];
+console.log(things3[0]);
+
+// indexs start at zero/0 ...so the 1st value is always at the 0/zero index. The 2nd value is at the 1st index, the 3rd value at the 2nd index, and so on. 
+
+// Since Arrays are objects as well, they have a bunch of methods at their disposal as well. 
+
+var powers = ["flight", "invisability", "super speed", "super strength"];
+console.log(powers.toString());
+
+// the method .toString() will convert the array into a comma seperated array
+// the same applies to join() if we don't give it a string as an operator.
+
+console.log(powers.join());
+
+// join() from what I can tell is the same as toString()
+
+// there is also a property that tells us how long an array is. it is the .length property (this is not a method, does not have a () )
+
+console.log(powers.length);
+
+// .length here returns 4 since there are 4 values in the array. 
+
+// we can not only access a value, but change of update exisitng values by its index. 
+
+powers[0] = "telekenisis";
+console.log(powers);
+
+// by accessing the 0 zero index, I changed the first value of flight to telekenisis. 
+powers[4] = "razor sharp claws";
+console.log(powers);
+
+// and by accessing the 4th index (which didn't exisit) it adds the new value to that empty index. 
+
+// we can also add values to the end of the array by using the push() method
+
+powers.push("Weather Manipulation");
+console.log(powers);
+
+// we can also remove values from the array using the pop() method
+
+powers.pop();
+console.log(powers);
+
+// the pop() method always removes the last value of the array
+
+// and after we pop that value away, we can store it in a variable if we want to use it for something else
+
+var stolenPower = powers.pop();
+console.log(powers);
+console.log(stolenPower);
+
+// We've already created strings from arrays. But we can also create arrays from strings
+
+// now if we want to remove a value from the beggining of the array. the shift() method 
+
+powers.shift();
+console.log(powers);
+
+// shift() removes a value from the begining and moves (or shifts) all the other values to a lower index. 
+
+// it has an opposite method as well, the unshift() method
+
+powers.unshift("Phasing");
+console.log(powers);
+
+// the unshift() method adds a value at the beginning of an array, and all other values in turn get pushed up to a higher index. 
+
+// there is also a method that can add, insert, replace and remove values, it is the splice() method
+
+powers.splice(1, 1);
+console.log(powers);
+
+// to explain how the slice method works, it takes two numbers, and after that, a variable number of values
+
+// the numbers needed for splice() are for the index, and how many values we want to remove at that index. The optional values we provide will be added at the index. 
+
+// and we can also use the sort() method to sort an array in apphabetical order. if we want to reverse that order we can use reverse() on the array
+
+powers.sort();
+console.log(powers);
+
+powers.reverse();
+console.log(powers);
+
+// when we use a method after another on an object in the same statement, we're said to chain these methods. 
+
+var sentence = "I need almond flour and eggs for this recipe";
+var stringSplit = sentence.split(" and ");
+console.log(stringSplit);
+
+// We can use a strings split() method with a seperator to split the string into an array of so-called substrings. 
+
+// here are some true statements about arrays 
+// 1. As objects, they have methods to work with them
+// 2. they can store several values
+// 3. they can store values of different types. 
+
+// and we have 4 methods in which we can add value to the array 
+
+var pets = []
+
+pets[pets.length] = "Kittens";
+console.log(pets);
+
+pets.splice(0,0, "Dogs");
+console.log(pets);
+
+pets.unshift("Hamster");
+console.log(pets);
+
+pets.push("Chinchilla");
+console.log(pets);
+
+// no an example of removing a value from an array
+
+var pokemon = ["Pikachu", "Jigglypuff", "Charizard", "Squirtle", "Pikablu", "Sparrow" ];
+
+pokemon.shift();
+console.log(pokemon);
+
+pokemon.splice(0, 1);
+console.log(pokemon);
+
+pokemon.pop();
+console.log(pokemon);
+
+// and this is a big no no
+
+var sentence = "I have several leather-bound books in my apartment.";
+var words = sentence.split();
+words.reverse();
+sentence = words.join(" ");
+console.log(sentence);
+
+// that code does not acctually split the string into an array
+
+// the split() method needs ( " " ) as a seperator to split the contents of the sentecne into individual words. 
+
+var names = ["Heuy", "Dewy", "Louie", "Donald"];
+names.push("Scrouge");
+names.sort();
+names.reverse();
+var s = names.join(", ");
+console.log(s);
