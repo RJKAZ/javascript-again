@@ -921,3 +921,76 @@ var p = calculatePeriphery(5.5);
 // 3. parameters have a name
 
 // Now onto Objects 
+
+// in addition to variables and arrays, we also have another type of container. Objects
+
+// Objects are variables that contain several values or properties. We create an object using a pair of braces, which we also call an object literal. 
+
+var person = {};
+console.log(typeof person);
+
+// Unlike an Array which also stores multiple values, the proporties of objects have an important advantage. a name. 
+
+var person1 = {name: "joe", age: 42, height: 1.72};
+console.log(person1);
+
+// we create these properties with a name and a vlue that seperate with a colan. the properties then are seperate by a comma in the console. 
+
+// And we can use these names to access the values if we want
+
+var person3 = {
+    name: "Tim Drake",
+    age: 23,
+    height: 5.6
+};
+console.log(person3.name);
+console.log(person3.age);
+
+// we can access the property using a bracket or a dot notation 
+// and we can change the values of these properties by assigning them different values
+
+person3.age = 30;
+console.log(person3.age);
+
+// we can also create properties by assigning values to the names
+
+person3.fightingStyle = "Jeet Kune Do";
+console.log(person3);
+
+// and we can remove a property by deleteing it
+
+delete person3.age;
+console.log(person3);
+
+// deleting deletes the whole name-value pair that make up the property. 
+
+// methods are nothing but functions that belong to a objects and perform actions on them
+
+var person4 = {
+    name: "Batgirl",
+    age: 24,
+    speak: function() {
+        console.log("Hi, I'm " + this.name + " and I'm gonna kick your ass!");
+    }
+}
+
+person4.speak();
+
+// now if we want to create multiple objects with the same properties and methods, but different values, we can create a constructor function. 
+// and then we can use the new keyword to create as many instances of an object as we want.
+
+function Hero(name, age, power) {
+    this.name = name;
+    this.age = age;
+    this.power = power;
+    this.speak = function() {
+        console.log("Hi, I'm " + this.name + " and I'm gonna kick your ass!");
+    }
+}
+var hero1 = new Hero("Nightwing", 37, "Acrobatics");
+console.log(hero1);
+hero1.speak();
+
+// by creating a constructor function, we can use the new keyword as many times as we want. 
+
+// so to sum up, Objects can have methods, and they are variables that contain properties. We create them with an object literal, a pari of braces, and we can change the, anytime.
