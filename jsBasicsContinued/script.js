@@ -709,3 +709,215 @@ names.sort();
 names.reverse();
 var s = names.join(", ");
 console.log(s);
+
+// New lets move on to Loops
+
+// sometimes for readability and simplicitiy we want to avoid pieces of code that perform very similar actions
+
+var numbers = [3, 7, 14, 15, 22, 41];
+numbers[0]++;
+numbers[1]++;
+numbers[2]++;
+numbers[3]++;
+numbers[4]++;
+numbers[5]++;
+console.log(numbers);
+
+// what that code does is access each value in the index, 0-5 since there 6 numbers, and it uses the increment operator to increase each number by 1. 
+
+//however, in that code, you had to apply it 6 times, creating alot of reduant code. This is where loops come in handy. 
+
+// lets begin with a for loop.
+
+var s = "";
+for(var i = 0; i < 5; i++) {
+    s += i;
+}
+console.log(s);
+
+// in the parentheses after the word for, we put a control variable and a way to make the condition false at some point. 
+
+// to apply this to the earlier example
+
+var numbers2 = [3, 7, 14, 15, 22, 41];
+for(var i = 0; i < numbers2.length; i++) {
+    numbers2[i]++;
+}
+console.log(numbers2);
+
+// so the loop starts wih 0, var i = 0, is decarling the index (i) at 0, and loops untill I meets whatever condition you specifiy. In this case, untill i isn't < less then the numbers length.
+
+// there is also the " in " keyword, which represents another way to loop through an array
+
+var cuteThings = ["raindrops", "roses", "whiskers", "kittens"];
+for (var cuteThing in cuteThings) {
+    console.log(cuteThings[cuteThing]);
+}
+
+// everytime the loop runs, cuteThing hold a different index number from the cuteThings array
+
+// Another loop, the While loop, loops throuhg a piece of code as long as a condition is met to be true
+
+var numberLoop = [3, 7, 14, 15, 22, 41];
+var i = 0;
+while (i < numberLoop.length) {
+    numberLoop[i]++;
+    i++;
+}
+console.log(numberLoop);
+
+// We use the while keyword to create the while loop. as these loops don't have control variables, we need to make sure that the condition becomes false.
+
+// a slight variation is the do-while loop, which uses the keyword do and while
+
+var numberLoop1 = [3, 7, 14, 15, 22, 41];
+var i = 0;
+do {
+    numberLoop1[i]++;
+    i++;
+}
+while(i < numberLoop1.length); 
+console.log(numberLoop1);
+
+// A do while loop runs at least once, even if the condition is false. That's because the loop runs the piece of code before it checks the condition
+
+// at times you may want to stop looping early, for which we can use the break keyword
+
+for (var i = 0; i < 5; i++) {
+    if (i == 1) {
+        break;
+    }
+    console.log("Counting to " + i);
+}
+
+// The loop checks the condition in the if statement every time is comes around. When the condition is met, it'll break out of the loop.
+
+// alternativly, if we want to skip a specific iteration but continue with the loop, we can use continue.
+
+for(var i = 0; i < 5; i++) {
+    if(i == 1) {
+        continue;
+    }
+    console.log("Counting to " + i);
+}
+
+// the continue keyword is useful if we need to skip a specific iteration of a loop
+
+// Two true things about Loops
+// 1. They can run pieces of code with different values
+// 2. they can repeat pieces of code for as often as we want. 
+
+// lets do another while loop example
+
+var digits = [2, 4, 7.5, 8, 11.5, 21];
+var i = 0;
+while (i < digits.length) {
+    digits[i] = numbers[i] * 2;
+    i++;
+}
+console.log(digits);
+
+// that while loops simply doubles every number in the digits array. 
+
+// and to reiterate, the break keyword will interupt a loop, and the continue keyword will only skip an iteration. 
+
+// Now lets move on to Functions
+
+// In a nutshell, functions are blocks of code that perfrom a specific task.
+
+var r1 = 12;
+var area1 = r1 * r1 * Math.PI;
+console.log(area1);
+
+// that code calculates the area of a circle. If you want to reuse that code, or that calcuation, you can store it in a function. 
+
+// in order to create a function, we use the fucntion keyword, a unique name, and a pair of parentheses. Once created, we can reuse it whenever we want.
+
+function sayHello() {
+    console.log("Hello");
+}
+// and to run the function, just call the function
+sayHello();
+
+// Much like how we passed values to methods (like console.log()), we can do the same with functions if we include a parameter
+
+function calculateArea(radius) {
+    var result = radius * radius * Math.PI;
+    console.log(result);
+}
+calculateArea(10);
+
+// Parameters are temporary variables that we define in the parentheses after the function name and use to access values that we pass to the function.
+
+// we can also create functions with multiple parameters. in the function definition, we simply separate them with commas
+
+function insert(array, value, index) {
+    array.splice(index, 0, value);
+}
+var thongs = ["raindrops", "roses", "kittens"];
+insert(thongs, "whiskers", 2);
+console.log(thongs);
+
+// just like many method return values, we can have a function give back a value by putting a return keyword befroe the value we want to return
+
+function calculateA(radius) {
+    var result = radius * radius * Math.PI;
+    return result;
+}
+var area = calculateA(10);
+console.log(area);
+
+// the return keyword allows us to get result from the function 
+
+// we can also store functions in variables. After we assigned a function to a variable, we can use the variable just like function 
+
+var add = function(n1, n2) { return n1 + n2};
+var numberx = add(1, 1);
+console.log(numberx); 
+
+// great. if we assign a function to a variable without parantheses, the variable would store the function itself, as opposed to the value it returns
+// this is also known as a function expression 
+
+// what is true of functions?
+// 1. they're reuseable blocks of code that perform specific tasks
+// 2. We invoke them with their name and parentheses
+// 3. we create them with the function keyword
+
+function convert(a) {
+    
+    for (i = 0; i < a.length; i++) {
+        var c = [];
+        c.push(parseInt(a[i]));
+         
+
+    }
+    return c;
+}
+
+// remember we can use function declatations or function expressions to define functions. Assigning a function in parentheses or using it with arguments invokes it
+
+function add(a, b) {
+    return a + b;
+}
+
+var add = function() {return a + b};
+
+// so both of those are correct 
+
+// Now what is wrong with this code?
+
+function calculatePeriphery(r) {
+    var result = 2 * r * Math.PI;
+    return result;
+    console.log(result);
+}
+var p = calculatePeriphery(5.5);
+
+// the problem with that function is the return keyword stops the execution of the function. The console.log becomes unreachable. 
+
+// What is true about Parameters and Arguments?
+// 1. Parameters are temporary variables that we can use within a function
+// 2. arguments are actual values that we pass to a function when we invoke it.
+// 3. parameters have a name
+
+// Now onto Objects 
