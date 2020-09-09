@@ -107,5 +107,82 @@ they are useful when you need a data type with one of two values, yes/no, on/off
 the boolean value of 0 (zero), null, undefined, or an empty string is false. everything with a real value is true.  
 
 
+THE IF STATEMENT, THE ELSE STATEMENT, AND THE ELSE IF STATEMENT 
+
+If you want to perfrom different actions based on different conditions you would use an if statement
+
+var myNum1 = 7;
+var myNum2 = 10;
+if(myNum1 < myNum2) {
+  alert("Javascript Rocks");
+}
+
+the statement will only be executed if the specific condition is true. 
+
+Also for that code we used the Javascript Alert() method. It is used to generate a popup alert box that contains the information within the parentheses.
+
+var myNum1 = 7;
+var myNum2 = 10;
+if(myNum1 > myNum2) {
+  alert("Javascript Rocks");
+}
+
+now by changing the less then sign to a greater then sign with the same code, the condition now equates to false and the alert won't run. 
+
+Also the If must always be lowercase. if you write and if statement with uppercase, it will generate an error. 
+
+To the specific quesiton of what happenes if the tested condition is false, the correct technical answer is 
+"The Code does nothing and moves to the next section"
+
+Next we have the else statement. The else statement is used to specify a block of code that will execute if the condition is false. 
+
+if (expression) {
+  //exexcuted condition if true
+} else {
+  //executed condition if false
+}
+
+you can skip curly braces if you code under the condition contains only one command. 
+
+var myNum1 = 7;
+var myNum2 = 10;
+if (myNum1 > myNum2) {
+  alert("This is my first condition");
+} else {
+  alert("This is my second condition");
+}
+
+with that code, since 7 is not greater then 10, it will return the second condition.
+
+there is also another way to do this check by using the ? operator.
+
+a > b ? alert(a) : alert(b)
+
+Now for the else if startmenet. it specifies a new condition if the first condition is false.
+
+an example 
+
+var course = 1;
+if (course == 1) {
+  document.write("<h1>HTML Tutorial</h1>");
+} else if (course == 2) {
+  document.write("<h1>CSS Tutotials</h1>");
+} else {
+  document.write("<h1>JavaScript Tutotials</h1>")
+}
+
+that above code says
+- if course is equal to 1, output HTML tutorial
+- if course is equal to 2, output to CSS tutorial
+- if none of the above conditions are true, then output Javascript Tutorial
+
+the final else statment ends the else if statement and should always be written after the if and else if statements. 
+
+you can write as many else if statements as you need with as many conditions as you want to set. But if the if and else statements themselves must be at the top and bottom and can only be used once. 
+
+// left off on the Switch Statment module
+
+
+
 
 */
