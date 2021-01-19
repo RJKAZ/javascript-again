@@ -1,0 +1,1 @@
+adding notes from a Udemy JavaScript Course I took. 
