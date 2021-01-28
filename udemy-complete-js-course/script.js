@@ -67,6 +67,26 @@ const isFullAge = ageChris >= 18;
 console.log(isFullAge);
 
 console.log(now - 1991 > now - 2019);
+//In javascript some operators work either right to left, or left to right
+
+//this is an example of a left to right
+console.log(25 - 10 - 5);
+
+let z, y;
+z = y = 25 - 10 - 5  // z = y = 10
+console.log(z, y);
+
+const averageAge = ageChris + ageRj / 2;
+console.log(ageRj, ageChris, averageAge);
+// doing it like this shows the averageAge at 38.5 which higher then both ages and thus it is impossiable for an average. This is because of the order Javascript is reading this.
+// this is where parrenthaese come in handy 
+const averageAge2 = (ageChris + ageRj) /2;
+console.log(averageAge2);
+// adding the parantheses will allow the actual average to be determined. 
+
+// in the above example, Javqascript will subtraction operator first before equal operator  
+// So the subtraction is done first left to right, and then the equal operators are done right to left. 
+
 
 /* LECTURE 04: Basic Operators
 1. If your country split in half, and each half would contain half the population,
