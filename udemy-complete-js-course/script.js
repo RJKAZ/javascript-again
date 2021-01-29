@@ -118,6 +118,47 @@ console.log(population <= averageCountry);
 const description = "Portgual is in Europe, and its 11 million people speak portuguese";
 console.log(description);
 
+// Template Literals 
+
+const myName = 'jonas';
+const job = "teacher";
+const birthYear = 1991;
+const year = 2037;
+
+const jonas = "I'm " + myName + ', a ' + (year - birthYear) + ' year old ' + job + '!'
+console.log(jonas);
+
+// when adding/concatinating numbers and strings together, Javascript will turn the numbers to strings. 
+
+// As complicated as that sentance was to put together, since ES6, and easier way to do it is with Template Literals 
+// FYI - Template Literals use Backticks
+
+const jonasNew = `I'm ${myName}, a ${year-birthYear} year old ${job}!`;
+console.log(jonasNew);
+
+// backticks can also be used for any regular string
+
+console.log(`Just a regular String`);
+
+// another great use of template literals is to create multi-line strings 
+
+// this old method of adding new lines is done by \n\
+
+console.log('String with \n\ multiple \n\ lines');
+
+// with template literals, you don't need the \n\, you just create a new line
+
+console.log(`String
+multiple
+lines`);
+
+
+
+
+
+
+
+
 
 
 
