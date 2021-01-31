@@ -153,6 +153,24 @@ multiple
 lines`);
 
 
+// Small Templete Literal Challenge - From the above parts, recreate the description variable but this time using a templete literal
+
+// const description = "Portgual is in Europe, and its 11 million people speak portuguese";
+// console.log(description);
+
+// To make things a bit easier, I will make new varibles and new data
+
+const president ="Joe Biden"
+const wonCountry = "United States"
+const votes = 81000000;
+
+const outcome = "Joe Biden is the president of the United States, and won with 81,000,000 votes!" 
+
+const newOutcome = `${president} is the president of the ${wonCountry}, and won with ${votes} votes!`
+
+console.log(outcome);
+console.log(newOutcome);
+
 
 
 
