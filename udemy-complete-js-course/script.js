@@ -172,6 +172,38 @@ console.log(outcome);
 console.log(newOutcome);
 
 
+// Notes on taking decisions if/else statements
+
+const age = 15;
+// const isOldEnough = age >= 18;
+
+if (age >= 18) {
+    console.log('Sarah can start driving 😎');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sara is too young. Wait another ${yearsLeft} years 😥`);
+}
+
+// This is all known as the if/else control structure. Javascript has many others
+
+let bornYear = 2012;
+
+let century; 
+
+if (bornYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+
+console.log(century);
+
+
+
+
+
+
+
 
 
 
