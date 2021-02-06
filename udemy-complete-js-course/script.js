@@ -236,8 +236,32 @@ console.log(String(23), 23);
 // In both cases, you have to use a capital 'S'tring or 'N'umber
 
 // Notes on Type Coercion 
+// Which is bascily Javascript doing this shit on its own.
+// in the below example, the + + triggers the coercion
 
+console.log('I am ' + 23 + ' years old')
 
+// When adding Strings and Numbers the + operator will always turn the number to a string
+// Other coding languages don't have Type Coercion 
+
+// however the - operator does the reverse and when subtracting strings with numbers, will turn the string to a number
+
+console.log('23' - '10' - 3);  // returns the number 10
+console.log('23' + '10' + 3);  // returns the string 23103
+
+// in terms of multipilication & Division, it has no choice but to turn the strings to numbers, there is no other way it could work
+console.log('23' * '2');
+console.log('23' / '2');
+
+// this is also true with logical operaters 
+console.log('23' > '18');
+console.log('19' < '100');
+
+// + plus is the only opertor where it doens't turn the string to numbers
+
+let n = '1' + 1; // this equals the string of '11'
+n = n - 1; // so n = the string of '11', but now subtracting 1, turns the 11 string to a number and then subtracts 1
+console.log(n); // leaving 10
 
 
 
