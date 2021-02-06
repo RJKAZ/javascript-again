@@ -198,6 +198,44 @@ if (bornYear <= 2000) {
 
 console.log(century);
 
+// Notes Type Conversion 
+
+
+// you have to be careful with types
+
+const inputYear = '1991';
+console.log(inputYear + 18)
+
+// since inputYears value is a string, adding a number value to a string value will result in a string result. 
+
+//there is a way to convert a string to a number
+
+console.log(Number(inputYear));
+
+// using the Number() in the console log, it will turn the string value to a number value
+
+console.log(Number(inputYear), inputYear);
+
+//this would return both the number value and the string value 
+
+console.log(Number(inputYear) + 18)
+
+// and this allows us to add to the number value 
+
+// this only works with strings that contains numbers, if you use this method on a string of letters, it returns a NaN (not a number)
+console.log(Number('Jonas'));
+
+//however NaN is still techncially a number value despite not being a number 
+console.log(typeof NaN);
+
+// you can even do the reverse
+
+console.log(String(23));
+console.log(String(23), 23);
+
+// In both cases, you have to use a capital 'S'tring or 'N'umber
+
+// Notes on Type Coercion 
 
 
 
