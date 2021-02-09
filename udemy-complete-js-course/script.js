@@ -263,8 +263,91 @@ let n = '1' + 1; // this equals the string of '11'
 n = n - 1; // so n = the string of '11', but now subtracting 1, turns the 11 string to a number and then subtracts 1
 console.log(n); // leaving 10
 
+// Notes for Truthy and Falsey Values 
+
+// Falsey Values that aren't currently false, but will be when you convert them into a Boolean
+
+// There are 5 falsy values: 0 , '' (empty string), undefined, null, NaN
+
+// False itself being the epitome of false is not included with false since it is always false
+
+console.log(Boolean(0));     //turning 0 to boolean returns false, hence it is falsey
+console.log(Boolean(undefined)); // //turning undefined to boolean returns false, hence it is falsey
+console.log(Boolean('Jonas')); // This turns true, any string that is not an empty string is a truthy
+console.log(Boolean({}));  // this is an empty object, and it is also a truthy value
+console.log(Boolean(''));  // this is an empty string, and it is a falsey value
+
+// this has very little value in regular usage of Javascript. It really comes into play in conditional operators. 
+
+const money = 0;
+if(money) {
+    console.log("Don't spend it all");
+} else {
+    console.log('You should get a job!');
+}
+
+//This comes back as you should get a job since the value is 0 and all 0 is falsey
+
+let height;
+if (height) {
+    console.log('Yay! Height is defined');
+} else {
+    console.log('Height is Undefined');
+}
+
+// This one comes back as Height is undefined, becasue litterally the height is undeffined. 
+
+// However, if you give height the value of 0, it will still return falsey, even if the 0 height is intended. Any other number will work. But 0 no matter what is falsy. 
+// this is kind of considered a bug in javascript. 
+
+// Notes on Equlality Operators 
+
+const newage = 18;
+if(newage === 18) console.log('Your just became an Adult');
+
+// little note, if your if statement just has a single if and no other elses, you don't need curly braces { }
+
+// the operator === means equal to and it returns a true or false (Boolean) value
+
+// === is the strict equality operator, it does not perform type coercion and only returns true when the values are exact 
+
+// == double equals in the loose eqaulity operator and it does perform type coercion
+
+// like if you write in the console comparing the string of 18 to the number 18
+// '18' === 18  will return false
+// '18' == 18   will return true since it turns the string to a number with type coercion 
+
+// best practice is to always use strict equality... if you really need type coercion its better to convert the value manually before the comparrison 
+// pretend == doens't even exist 
+
+// prompt("Whats your favorite number")
+
+const favorite = prompt("Whats your favorite numbers?");
+console.log(favorite);
+console.log(typeof favorite);
 
 
+if (favorite === 23) { // 23 the string == 23 the number
+    console.log('Cool, 23 is an amazing numbers');
+} else if (favorite === 7) {
+    console.log('7 is also a cool number')
+} else if (favorite === 9) {
+    console.log('9 sucks')    
+} else {
+    console.log("All numbers matter");
+}
+
+// there is also a different operator !==
+
+if(favorite !== 23) console.log('why not 23?')
+
+
+
+
+
+
+
+ 
 
 
 
