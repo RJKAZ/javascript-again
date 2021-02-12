@@ -322,7 +322,7 @@ if(newage === 18) console.log('Your just became an Adult');
 
 // prompt("Whats your favorite number")
 
-const favorite = prompt("Whats your favorite numbers?");
+const favorite = "Whats your favorite numbers?";
 console.log(favorite);
 console.log(typeof favorite);
 
@@ -341,12 +341,68 @@ if (favorite === 23) { // 23 the string == 23 the number
 
 if(favorite !== 23) console.log('why not 23?')
 
+// Boolean Logic: The AND , OR , & NOT Operators
 
 
+const hasDriversLicense = true; // variable A
+const hasGoodVision = true; // variable B
 
+console.log(hasDriversLicense && hasGoodVision) 
+//since both are true using the && (and) operator returns true
 
+const hasDriversLicense1 = true;
+const hasGoodVision1 = false;
+console.log(hasDriversLicense1 && hasGoodVision1);
+// In this one I changed one of the values to false, so using the && (and) operator with a true and a false will return false. 
 
+// Now using the || (or) operator 
+console.log(hasDriversLicense1 || hasGoodVision1); 
+// since one of the variables is true, with the || (or) operator it returns true
 
+// And lastly we have the ! (not) operator
+console.log(!hasDriversLicense1);
+// The ! (not) operator will change the true to what it is not, which is false, and vice versa
+console.log(!hasGoodVision1); 
+
+const shouldDrive =  hasDriversLicense1 && hasGoodVision1;
+
+if(shouldDrive) {
+    console.log('Sarah is able to drive');
+} else {
+    console.log('someone else should drive...')
+}
+
+// alternatively you could write it like this without creating an additional variable
+
+if(hasDriversLicense1 && hasGoodVision1) {
+    console.log('Sarah is able to drive');
+} else {
+    console.log('someone else should drive...')
+}
+
+if(hasDriversLicense && hasGoodVision) {
+    console.log('Sarah is able to drive');
+} else {
+    console.log('someone else should drive...')
+}
+
+// You can also use the operators more then once
+
+const isTired = true; // variable c
+console.log(hasDriversLicense || hasGoodVision || isTired);
+// since all three are true, with the || (or) operator,  it all comes out as true
+console.log(hasDriversLicense && hasGoodVision && isTired);
+// since all three are ture, with the && (and) operator, it all comes out as true
+console.log(hasDriversLicense && hasGoodVision1 && isTired);
+// since one of them is now false, the whole thing is false
+
+// So if she has a drivers licesne, and if she has good vision, and if she isn't tired, then Sarah is able to drive. 
+// true and true and false = false
+if(hasDriversLicense && hasGoodVision && !isTired) {
+    console.log('Sarah is able to drive');
+} else {
+    console.log('someone else should drive...')
+}
  
 
 
