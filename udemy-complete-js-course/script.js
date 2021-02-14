@@ -404,6 +404,60 @@ if(hasDriversLicense && hasGoodVision && !isTired) {
     console.log('someone else should drive...')
 }
  
+// The Switch Statement Notes
+
+const day = 'monday';
+
+switch(day) {
+    case 'monday': // day === 'monday
+        console.log('Plan course structure');
+        console.log('Go to coding meetup');
+        break;
+    case 'tuesday':
+        console.log('prepare theory videos');
+        break;
+    case 'wednesday':
+    case 'thursday':
+        console.log('Write code examples');
+        break;
+    case 'friday':
+        console.log('Record videos');
+        break;
+    case 'saturday':
+    case 'sunday':
+        console.log('Enjoy the weekend :D');
+        break;
+    default: 
+        console.log('not a valid day!');
+
+}
+
+/// and the switch statement converted to if/else if
+
+if (day === 'monday'){
+    console.log('Plan course structure');
+    console.log('Go to coding meetup');
+} else if (day === 'tuesday') {
+    console.log('prepare theory videos');
+} else if (day === 'wednesday') {
+    console.log('Day off, try to have to some fun');
+} else if (day === 'thursday') {
+    console.log('Write Code Examples');
+} else if (day === 'friday') {
+    console.log('Record Videos');
+} else if (day === 'saturday') {
+    console.log('get plastered');
+} else if (day === 'sunday') {
+    console.log('sober up!');
+} else {
+    console.log('not a valid day')
+}
+
+
+
+
+
+
 
 
 
