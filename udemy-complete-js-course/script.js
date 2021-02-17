@@ -454,7 +454,50 @@ if (day === 'monday'){
 }
 
 
+// the difference between Statements and Expressions
 
+// an Xxpression is a piece of code that equals/produces a value   3 + 4, or even just a single number. Whatever code produces a value you can const
+
+// A Statement is a larger piece of code that does not equal a value on itself
+
+
+// in the below example, even though this creates a variable, it doesn't create a value
+
+if (23>10) {
+    const str = "23 is bigger";
+}
+
+// In a template Literal, you can only insert expressions, not statements
+
+console.log(`I'm ${2037 - 1991} years old.`)
+
+// The Conditional (Ternary) Operator 
+
+// Simmilar to an if/else statement, but all in one line
+
+const newAge = 23;
+newAge >= 18 ? console.log('I like to drink wine!') : console.log('I like to drink water!')
+
+// an operator is an expression that always returns a value
+
+const drink = newAge >= 18 ? 'wine' : 'water';
+console.log(drink);
+
+// The main benefit to this method is that you can create and use varibales within it. With if/else you have to create the variables outside it.
+
+let drink2;
+if(newAge >= 18) {
+    drink2 = 'Beer';
+} else {
+    drink2 = "juice";
+}
+console.log(drink2)
+
+// the Ternerary Operator is also a way to use a conditional inside of a template literal 
+
+console.log(`I like to drink ${newAge >= 18 ? 'wine' : 'water'}`)
+
+// The ternerary Operator isn't meant to replace If/else. If/else still has its uses, usually for much longer pieces of code. The ternerary Operator is best suited for quick and short code where a decision is needed. 
 
 
 
