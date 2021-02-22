@@ -132,3 +132,54 @@ console.log(yearsUntilRetirement2(1980, 'Bob'));
     
 // Arrow functions do not get a "this" keyword. We will learn the 'this' keyword later. 
 
+// Now we move to Functions calling other Functions
+
+function cutFruitPieces(fruit) {
+    return fruit * 4;
+}
+
+function fruitBlender(apples, oranges) {
+    const applePieces = cutFruitPieces(apples);
+    const orangePieces = cutFruitPieces(oranges);
+
+    const newJuice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange.`;
+    return newJuice
+}
+
+console.log(fruitBlender(2, 3));
+
+
+// another function within a function exampel 
+
+const ageCalc = function (bornYear) {
+    return 2037 - bornYear;
+} 
+
+const yearsUntilFreedom = function (birthYear, firstName) {
+    const currentAge = ageCalc(birthYear);
+    const freedom = 65 - currentAge;
+    
+    if(freedom > 0) {
+        console.log(`${firstName} retires in ${freedom} years`);
+        return freedom;
+        
+    } else {
+        console.log(`${firstName} has already retired`);
+        return -1; 
+    }
+
+
+   
+}
+
+console.log(yearsUntilFreedom(1991, 'Jones'));
+console.log(yearsUntilFreedom(1950, 'Mike'));
+
+
+// so to reitereate about functions
+
+// Function Declaration = Function that can be used before it is declared
+// Function Expression = Essentially a function value stored in a variable
+// Arrow Function = A special kind of Expression Function, best for quick and short code
+
+// three different way of writing functions, but they all work in a similar way, they recieve input data, transform data, and then output data
