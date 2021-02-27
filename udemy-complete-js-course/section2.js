@@ -183,3 +183,48 @@ console.log(yearsUntilFreedom(1950, 'Mike'));
 // Arrow Function = A special kind of Expression Function, best for quick and short code
 
 // three different way of writing functions, but they all work in a similar way, they recieve input data, transform data, and then output data
+
+// Now onto Data Strutures with Arrays 
+
+// an array is like a big container you can throw multiple variables into to be used later.
+
+// the two most important data structures in Javascript are Arrays and Objects
+
+const friend1 = "Michael";
+const friend2 = "Steven";
+const friend3 = "Peter";
+
+// instead of declared each friend as a seperate variable, we can use an array instead. 
+
+const friends = ['Michael' , 'Steven' , 'Peter']
+console.log(friends);
+
+// an array can hold as many values as you'd like as can hold any combination of strings and numbers
+
+// this is a different way of creating an array using the Array function 
+
+const years = new Array(1991, 1984, 2008, 2020)
+
+// this method requires the "new"
+
+// the normal way of just using the brackets is called the literal synthax. 
+
+// now to access the data in the array. you use the array's name with square brackets indicating its location in the array. The first place is always 0, or rather the 0 index, and the the 2nd item is at the first index.
+// So to Console log the first friend of micheal, you console log the friends array with the zero index.
+
+console.log(friends[0])
+console.log(friends[2])
+
+// you can also pull up information like the number of elements in an array like the .length function
+
+console.log(friends.length);
+
+// by calling the array's name and adding a .length to it, it will return the number of values in the array, in this case 3. Unlike the Array itself, the .lenght starts at 1.
+
+// there all sorts of little "." addons that can be used with arrays. 
+
+// Like if you have a really long array and just want to return the last value in the array
+console.log(friends[friends.length -1])
+// you can use any expression (and expresson returns a value, unlike statements)
+// for this use of arrays, you can only use expressions, not statements. 
+
