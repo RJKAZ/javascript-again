@@ -228,3 +228,47 @@ console.log(friends[friends.length -1])
 // you can use any expression (and expresson returns a value, unlike statements)
 // for this use of arrays, you can only use expressions, not statements. 
 
+// you can also remove and add data to an array
+//this below code acceses the second index (3rd name) in the array and rewrites it.
+
+friends[2] = 'Jay'
+
+// the somewhat tricky part of this is that the friends variable was declared as a const, but I was still able to change this. The unchangeable nature of Const's only applies to primative values, of which an Array is not. 
+
+const enemies = ['tim'];
+console.log(enemies);
+
+enemies[0] = "nick";
+console.log(enemies);
+
+// however you cannot replace the entire array, back to the friends example,
+// friends = ['bob', 'Alice'];
+// console.log(friends)
+
+//arrays can also hold different types of data at the same time
+
+const firstName = 'Jonas';
+const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+console.log(jonas);
+console.log(jonas.length);
+
+//exercise
+
+// You can not do operations with Arrays...although possible, they won't give you the answer you'd expect
+
+const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const newYears = [1990, 1967, 2002, 2010, 2018];
+// console.log(calcAge(years));
+
+// you can however take a single value from an Array to use
+
+const ages1 = calcAge(newYears[0]);
+const ages2 = calcAge(newYears[1]);
+const ages3 = calcAge(newYears[newYears.length -1 ]);
+console.log(ages1, ages2, ages3);
+
+const ages = [calcAge(newYears[0]), calcAge(newYears[1]), calcAge(newYears[newYears.length -1])];
+console.log(ages);
