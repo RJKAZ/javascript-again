@@ -184,6 +184,7 @@ console.log(yearsUntilFreedom(1950, 'Mike'));
 
 // three different way of writing functions, but they all work in a similar way, they recieve input data, transform data, and then output data
 
+<<<<<<< HEAD
 // Now Javascript has some built in functions that can be used directly on Arrays, these are called Methods 
 
 // Think of methods as Array Operations. There are countless different Methods, but here are the most common/used ones. 
@@ -244,3 +245,93 @@ if (buddies.includes('Peter')) {
 
 
 
+=======
+// Now onto Data Strutures with Arrays 
+
+// an array is like a big container you can throw multiple variables into to be used later.
+
+// the two most important data structures in Javascript are Arrays and Objects
+
+const friend1 = "Michael";
+const friend2 = "Steven";
+const friend3 = "Peter";
+
+// instead of declared each friend as a seperate variable, we can use an array instead. 
+
+const friends = ['Michael' , 'Steven' , 'Peter']
+console.log(friends);
+
+// an array can hold as many values as you'd like as can hold any combination of strings and numbers
+
+// this is a different way of creating an array using the Array function 
+
+const years = new Array(1991, 1984, 2008, 2020)
+
+// this method requires the "new"
+
+// the normal way of just using the brackets is called the literal synthax. 
+
+// now to access the data in the array. you use the array's name with square brackets indicating its location in the array. The first place is always 0, or rather the 0 index, and the the 2nd item is at the first index.
+// So to Console log the first friend of micheal, you console log the friends array with the zero index.
+
+console.log(friends[0])
+console.log(friends[2])
+
+// you can also pull up information like the number of elements in an array like the .length function
+
+console.log(friends.length);
+
+// by calling the array's name and adding a .length to it, it will return the number of values in the array, in this case 3. Unlike the Array itself, the .lenght starts at 1.
+
+// there all sorts of little "." addons that can be used with arrays. 
+
+// Like if you have a really long array and just want to return the last value in the array
+console.log(friends[friends.length -1])
+// you can use any expression (and expresson returns a value, unlike statements)
+// for this use of arrays, you can only use expressions, not statements. 
+
+// you can also remove and add data to an array
+//this below code acceses the second index (3rd name) in the array and rewrites it.
+
+friends[2] = 'Jay'
+
+// the somewhat tricky part of this is that the friends variable was declared as a const, but I was still able to change this. The unchangeable nature of Const's only applies to primative values, of which an Array is not. 
+
+const enemies = ['tim'];
+console.log(enemies);
+
+enemies[0] = "nick";
+console.log(enemies);
+
+// however you cannot replace the entire array, back to the friends example,
+// friends = ['bob', 'Alice'];
+// console.log(friends)
+
+//arrays can also hold different types of data at the same time
+
+const firstName = 'Jonas';
+const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+console.log(jonas);
+console.log(jonas.length);
+
+//exercise
+
+// You can not do operations with Arrays...although possible, they won't give you the answer you'd expect
+
+const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const newYears = [1990, 1967, 2002, 2010, 2018];
+// console.log(calcAge(years));
+
+// you can however take a single value from an Array to use
+
+const ages1 = calcAge(newYears[0]);
+const ages2 = calcAge(newYears[1]);
+const ages3 = calcAge(newYears[newYears.length -1 ]);
+console.log(ages1, ages2, ages3);
+
+const ages = [calcAge(newYears[0]), calcAge(newYears[1]), calcAge(newYears[newYears.length -1])];
+console.log(ages);
+>>>>>>> 63f2878093d87fccc1c00ffec076cf72e77a1e02
