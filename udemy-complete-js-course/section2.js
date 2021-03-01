@@ -183,3 +183,64 @@ console.log(yearsUntilFreedom(1950, 'Mike'));
 // Arrow Function = A special kind of Expression Function, best for quick and short code
 
 // three different way of writing functions, but they all work in a similar way, they recieve input data, transform data, and then output data
+
+// Now Javascript has some built in functions that can be used directly on Arrays, these are called Methods 
+
+// Think of methods as Array Operations. There are countless different Methods, but here are the most common/used ones. 
+
+const buddies = ['Micheal', 'Steven', 'Peter']
+// to add an element to the end of an array, you use the push method
+buddies.push('Nick');
+console.log(buddies);
+//you can also store methods into variables
+const newBuddies = buddies.push('tim');
+console.log(newBuddies);
+
+// Now if you want to an an element to the beggining of the array, there is the unshift method
+
+buddies.unshift('Micky');
+console.log(buddies);
+
+// Now to remove an element
+// The Pop method is the reverse of the push method, and will remove the last item in the array. Since it will always take the last of the array, you don't need to pass an argument into it. 
+buddies.pop();
+console.log(buddies);
+
+const popped = buddies.pop();
+console.log(popped);
+console.log(buddies);
+
+// Now to remove the first element from the array, you use the shift method without any argument
+
+buddies.shift();
+console.log(buddies);
+
+// there is also a method to tell us the postion of an element in an array, the indexOf method
+
+console.log(buddies.indexOf('Peter'));
+// steven is the 3rd name, but the 2nd index, so 2 returns. 
+
+//Now if you use the indexOf method for a name that isn't in the array, it will return -1
+console.log(buddies.indexOf('Max'));
+
+// Similar to the indexOf method, the includes method will verify true or false if a name is in the array.
+console.log(buddies.includes('Peter'));
+console.log(buddies.includes('Bob')); 
+
+// Now methods do not do type conversion 
+buddies.push(23);
+console.log(buddies);
+console.log(buddies.includes('23'));
+
+// So adding in the number 23 won't equal the string of 23. 
+
+if (buddies.includes('Peter')) {
+    console.log("You have a buddy called Peter");
+}
+
+
+
+
+
+
+
