@@ -26,3 +26,7 @@ Hints:
 § To check if number A is at least double number B, check for A >= 2 * B.
 Apply this to the team's average scores �
 */
+
+
+
+
