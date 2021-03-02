@@ -332,8 +332,64 @@ if (buddies.includes('Peter')) {
 }
 
 
+// Introduction to Objects 
 
+// they are javascript other Data Structure (along with Arrays)
 
+//Objects define key value pairs. Like consider this Array
 
+const reeseArray = [ 'Reese', 'Kaz', 2021 - 1984, 'web developer', ['Gene', 'Arthur', 'Steve']];
 
+// that array has information like a first name, a last name, age, occupation, friends, etc....but those distincations aren't made clear in the code. 
+// You can do work arounds like targeting its location in the array like "the 3rd index is the occupation", but those values are defined in Arrays.
 
+//Thats where Object come in. Objects use curley braces like functions, instead of brackets like arrays, so to write that array as an object...
+
+const reese = {
+    firstName: 'Reese',
+    lastName: 'Kaz',
+    age: 2021-1984,
+    job: 'web developer',
+    friends: ['Gene', 'Arthur', 'Steve']
+};
+
+// the keys (or values) are called properties, so it would be correct to say the object Reese has 5 properties. 
+
+// Like Arrays, Objects are used to group related data. One key difference from Arrays is that in objects, the order of the values is not important
+
+// Where as Arrays can only be accessed by their order number, the order in an Array is very important. And object because it can be pulled up by the names of its properties, isn't as important. 
+
+// So Arrays are for ordered data, and Objects are for unstructured data. 
+
+// Now we get into how to retrive data held in an object
+
+console.log(reese);
+
+// objects console.log just fine. 
+
+// Now to get data out, we use the dot notation 
+
+console.log(reese.lastName)
+
+// another way is the bracket notation
+
+console.log(reese['lastName']);
+
+const nameKey = 'Name';
+console.log(reese['first' + nameKey]);
+console.log(reese['last' + nameKey]);
+
+// brackets will not work with the dot notion. 
+// dot notation you have to use the actual name, but bracket notation, you can use a computed name. Like combinng a first and last name
+
+const interestedIn = prompt('What do you want to know about Reese? Choose between firstName, lastName, age, job, and friends');
+console.log(interestedIn);
+
+// now when you try to access a property in an object that doens't exist, you get a undefined. 
+console.log(reese.interestedIn);
+
+// so for this we use the bracket notation
+console.log(reese[interestedIn]);
+// which pulls up the correct property.
+
+// left off at 9:46 mark
