@@ -382,7 +382,7 @@ console.log(reese['last' + nameKey]);
 // brackets will not work with the dot notion. 
 // dot notation you have to use the actual name, but bracket notation, you can use a computed name. Like combinng a first and last name
 
-const interestedIn = prompt('What do you want to know about Reese? Choose between firstName, lastName, age, job, and friends');
+const interestedIn = /*prompt*/('What do you want to know about Reese? Choose between firstName, lastName, age, job, and friends');
 console.log(interestedIn);
 
 // now when you try to access a property in an object that doens't exist, you get a undefined. 
@@ -393,3 +393,44 @@ console.log(reese[interestedIn]);
 // which pulls up the correct property.
 
 // left off at 9:46 mark
+
+if(reese[interestedIn]) {
+    console.log(reese[interestedIn]);
+} else {
+    console.log('Wrong Request! Choose Between firstName, lastName, age, job, and friends')
+}
+
+// Now to use these Notion methods of add new properties 
+// adding with dot notation
+reese.location = 'Brisbane';
+// and adding with bracket notation 
+reese['twitter'] = 'reesespieces';
+console.log(reese);
+
+//Challenge 
+// "Reese has 3 friends, and his best friend is called Gene"
+
+console.log(`${reese.firstName} has ${reese.friends.length} friends, and his best friend is called ${reese.friends[0]}`);
+
+// You can also do function expressions (not declarations) in Objects, the main difference in the syntax
+
+const andrew = {
+    firstName: 'Andrew',   // string value
+    lastName: 'Kahill', //string value
+    birthYear: 1978,  // number value
+    job: 'teacher',  // string value
+    friends: ['John', 'Stacey', 'Anthony'], // array value
+    hasDriversLicense: true,  // boolean value
+
+    calcAge: function(birthYear){  //function value 
+        return 2037 - birthYear;
+    }
+};
+
+// calcAge is not a regular variable, but a property of the Andrew Object
+// using the dot notation
+console.log(andrew.calcAge(1991));
+// and using the bracket notation 
+console.log(andrew['calcAge'](1991));
+
+// left off at 7:11 on #44
