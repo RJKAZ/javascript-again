@@ -434,3 +434,55 @@ console.log(andrew.calcAge(1991));
 console.log(andrew['calcAge'](1991));
 
 // left off at 7:11 on #44
+
+
+// Now we get into the ' this ' keyword
+
+const nick = {
+    firstName: 'Nick',   // string value
+    lastName: 'Kirks', //string value
+    birthYear: 1987,  // number value
+    job: 'tech support',  // string value
+    friends: ['Ralph', 'Mack', 'Casper'], // array value
+    hasDriversLicense: true,  // boolean value
+
+    calcAge5: function () {
+        console.log(this);
+        return 2021 - this.birthYear
+    }
+};
+
+console.log(nick.calcAge5());
+
+// the ' this ' keyword can be used in liue of the property name. There are pros and cons to this. Like if you need to change the variables name
+// from const nick to const sarah, but using the 'this' keyword instead of the name, you wouldn't have to change as much code.
+
+// ' this ' has other uses as well/ such as being able to store data
+
+const sarah = {
+    firstName: 'Sarah',   // string value
+    lastName: 'Pezzini', //string value
+    birthYear: 1973,  // number value
+    job: 'detective',  // string value
+    friends: ['Jake', 'Gleason', 'Gabriel'], // array value
+    hasDriversLicense: true,  // boolean value
+
+    calcAge6: function () {
+        this.age = 2021 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function() {
+        return `${this.firstName} is a ${this.calcAge6()}-year old ${sarah.job}, and she has ${this.hasDriversLicense ? 'a' : 'no'} drivers license.`
+
+    }
+};
+
+console.log(sarah.calcAge6());
+console.log(sarah.age);
+
+// challenge 
+
+// "Sara is a 48-year old cop, and she has a drivers license."
+
+console.log(sarah.getSummary());
