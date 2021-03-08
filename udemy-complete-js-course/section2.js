@@ -486,3 +486,28 @@ console.log(sarah.age);
 // "Sara is a 48-year old cop, and she has a drivers license."
 
 console.log(sarah.getSummary());
+
+// another Javascript control structure is the loop 
+
+// Loops are a part of every programing language since they allow you to automate repeated code
+
+console.log('lifting weights repitition 1');
+console.log('lifting weights repitition 2');
+console.log('lifting weights repitition 3');
+console.log('lifting weights repitition 4');
+// and on...coding like this...is unnessary repeated code. Like if I wante to write 30 of those console logs. 
+
+// Most used it the For Loop which has a counter
+
+// for loops will keep running while the condition is true
+// three parts of the for loop
+// declare the variable ; set the condition ; and update the counter after each iteration 
+for(let rep = 1; rep <= 10; rep++) {
+    console.log('lifting weights repitition 1');
+}
+
+// now that repeats that same code block 10 times...to get it so it updates each iteration, we use that variable and console log a template string instead to incorporate it.
+
+for(let rep = 1; rep <= 10; rep++) {
+    console.log(`lifting weights repitition ${rep}`);
+}
