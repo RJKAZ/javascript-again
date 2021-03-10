@@ -511,3 +511,65 @@ for(let rep = 1; rep <= 10; rep++) {
 for(let rep = 1; rep <= 10; rep++) {
     console.log(`lifting weights repitition ${rep}`);
 }
+
+// Now for more on loops, we can use a for loop to loop thru an array
+
+const tim = [
+    'Tim',
+    'Taylor',
+    2021-1968,
+    'toolman',
+    ['Randy', 'Brad', 'Mark'],
+    true
+];
+const types = [];
+
+for(let i = 0; i < tim.length; i++) {
+    //reading from tim array
+    console.log(tim[i], typeof tim[i]);
+
+    // filling types array
+    // types[i] = typeof tim[i];
+    types.push(typeof tim[i]);
+}
+
+console.log(types);
+
+// another example, lets calculate the ages for all 4 of these birth years and then store them in another array (its simmilar to the tip calculator)
+
+const birthYears = [1991, 2007, 1969, 2020];
+const calculatedAges = [];
+
+for (let i = 0; i < birthYears.length; i++) {
+    calculatedAges.push(2021 - birthYears[i]);
+}
+
+console.log(calculatedAges);
+
+// continue and break 
+
+// continue is to exit the current iteration of the loop and continue to the next one
+// break is used to cancel (break) the whole loop
+
+//heres an example of a continue
+
+console.log('---ONLY STRINGS----')
+for (let i = 0; i < tim.length; i++) {
+    if(typeof tim[i] !== 'string') continue;
+
+    console.log(tim[i], typeof tim[i]);
+}
+
+// heres an example of a break
+
+console.log('---BREAK WITH NUMBER----')
+for (let i = 0; i < tim.length; i++) {
+    if(typeof tim[i] === 'number') break;
+
+    console.log(tim[i], typeof tim[i]);
+}
+
+
+
+
+
