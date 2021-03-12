@@ -570,6 +570,32 @@ for (let i = 0; i < tim.length; i++) {
 }
 
 
+// Now lets get to Looping Backwards and Looping within a Loop
 
 
+const tony = [
+    'Tony',
+    'Stark',
+    '2021 - 1973',
+    'superhero',
+    ['Steve', 'Bruce', 'Thor'],
+];
+
+//Looping in reverse is really reversing the index
+
+for(let i = tony.length -1; i >= 0; i--){
+    console.log(i, tony[i]);
+}
+
+// now for an example of a loop within a loop
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-------Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`)
+    }
+
+
+}
 
