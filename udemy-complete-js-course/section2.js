@@ -595,7 +595,40 @@ for (let exercise = 1; exercise < 4; exercise++) {
     for (let rep = 1; rep < 6; rep++) {
         console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`)
     }
-
-
 }
 
+// now for the while loop
+/// rewriting this loop as a while loop
+
+
+for (let rep = 1; rep <= 10; rep ++) {
+    console.log(`Lifting weights repetition ${rep}`);
+}
+
+// loops do need the same compoents, so you need the counter, the condition (to know when to stop), and the increment (to increase the counter)
+
+// while loops only need the condition 
+// its why its called the while loop, because it will run while that condition is true
+
+let rep = 1;
+while (rep <= 10) {
+    console.log(`WHILE: lifting weights repetition ${rep}`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1; 
+
+// this is greened out, because this loop will run forever and will crash the browser eventually
+/*
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+
+}
+*/
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1; 
+    if (dice === 6) console.log('Loop is about to end...');
+}
+
+// A while loop is best used in code where you don't know how many iterations you'll need to make at first. 
