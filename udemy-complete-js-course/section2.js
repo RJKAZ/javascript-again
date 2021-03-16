@@ -434,3 +434,201 @@ console.log(andrew.calcAge(1991));
 console.log(andrew['calcAge'](1991));
 
 // left off at 7:11 on #44
+
+
+// Now we get into the ' this ' keyword
+
+const nick = {
+    firstName: 'Nick',   // string value
+    lastName: 'Kirks', //string value
+    birthYear: 1987,  // number value
+    job: 'tech support',  // string value
+    friends: ['Ralph', 'Mack', 'Casper'], // array value
+    hasDriversLicense: true,  // boolean value
+
+    calcAge5: function () {
+        console.log(this);
+        return 2021 - this.birthYear
+    }
+};
+
+console.log(nick.calcAge5());
+
+// the ' this ' keyword can be used in liue of the property name. There are pros and cons to this. Like if you need to change the variables name
+// from const nick to const sarah, but using the 'this' keyword instead of the name, you wouldn't have to change as much code.
+
+// ' this ' has other uses as well/ such as being able to store data
+
+const sarah = {
+    firstName: 'Sarah',   // string value
+    lastName: 'Pezzini', //string value
+    birthYear: 1973,  // number value
+    job: 'detective',  // string value
+    friends: ['Jake', 'Gleason', 'Gabriel'], // array value
+    hasDriversLicense: true,  // boolean value
+
+    calcAge6: function () {
+        this.age = 2021 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function() {
+        return `${this.firstName} is a ${this.calcAge6()}-year old ${sarah.job}, and she has ${this.hasDriversLicense ? 'a' : 'no'} drivers license.`
+
+    }
+};
+
+console.log(sarah.calcAge6());
+console.log(sarah.age);
+
+// challenge 
+
+// "Sara is a 48-year old cop, and she has a drivers license."
+
+console.log(sarah.getSummary());
+
+// another Javascript control structure is the loop 
+
+// Loops are a part of every programing language since they allow you to automate repeated code
+
+console.log('lifting weights repitition 1');
+console.log('lifting weights repitition 2');
+console.log('lifting weights repitition 3');
+console.log('lifting weights repitition 4');
+// and on...coding like this...is unnessary repeated code. Like if I wante to write 30 of those console logs. 
+
+// Most used it the For Loop which has a counter
+
+// for loops will keep running while the condition is true
+// three parts of the for loop
+// declare the variable ; set the condition ; and update the counter after each iteration 
+for(let rep = 1; rep <= 10; rep++) {
+    console.log('lifting weights repitition 1');
+}
+
+// now that repeats that same code block 10 times...to get it so it updates each iteration, we use that variable and console log a template string instead to incorporate it.
+
+for(let rep = 1; rep <= 10; rep++) {
+    console.log(`lifting weights repitition ${rep}`);
+}
+
+// Now for more on loops, we can use a for loop to loop thru an array
+
+const tim = [
+    'Tim',
+    'Taylor',
+    2021-1968,
+    'toolman',
+    ['Randy', 'Brad', 'Mark'],
+    true
+];
+const types = [];
+
+for(let i = 0; i < tim.length; i++) {
+    //reading from tim array
+    console.log(tim[i], typeof tim[i]);
+
+    // filling types array
+    // types[i] = typeof tim[i];
+    types.push(typeof tim[i]);
+}
+
+console.log(types);
+
+// another example, lets calculate the ages for all 4 of these birth years and then store them in another array (its simmilar to the tip calculator)
+
+const birthYears = [1991, 2007, 1969, 2020];
+const calculatedAges = [];
+
+for (let i = 0; i < birthYears.length; i++) {
+    calculatedAges.push(2021 - birthYears[i]);
+}
+
+console.log(calculatedAges);
+
+// continue and break 
+
+// continue is to exit the current iteration of the loop and continue to the next one
+// break is used to cancel (break) the whole loop
+
+//heres an example of a continue
+
+console.log('---ONLY STRINGS----')
+for (let i = 0; i < tim.length; i++) {
+    if(typeof tim[i] !== 'string') continue;
+
+    console.log(tim[i], typeof tim[i]);
+}
+
+// heres an example of a break
+
+console.log('---BREAK WITH NUMBER----')
+for (let i = 0; i < tim.length; i++) {
+    if(typeof tim[i] === 'number') break;
+
+    console.log(tim[i], typeof tim[i]);
+}
+
+
+// Now lets get to Looping Backwards and Looping within a Loop
+
+
+const tony = [
+    'Tony',
+    'Stark',
+    '2021 - 1973',
+    'superhero',
+    ['Steve', 'Bruce', 'Thor'],
+];
+
+//Looping in reverse is really reversing the index
+
+for(let i = tony.length -1; i >= 0; i--){
+    console.log(i, tony[i]);
+}
+
+// now for an example of a loop within a loop
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-------Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`)
+    }
+}
+
+// now for the while loop
+/// rewriting this loop as a while loop
+
+
+for (let rep = 1; rep <= 10; rep ++) {
+    console.log(`Lifting weights repetition ${rep}`);
+}
+
+// loops do need the same compoents, so you need the counter, the condition (to know when to stop), and the increment (to increase the counter)
+
+// while loops only need the condition 
+// its why its called the while loop, because it will run while that condition is true
+
+let rep = 1;
+while (rep <= 10) {
+    console.log(`WHILE: lifting weights repetition ${rep}`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1; 
+
+// this is greened out, because this loop will run forever and will crash the browser eventually
+/*
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+
+}
+*/
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1; 
+    if (dice === 6) console.log('Loop is about to end...');
+}
+
+// A while loop is best used in code where you don't know how many iterations you'll need to make at first. 
