@@ -163,16 +163,16 @@ function addClickFunctionality(button, num){
 
 function createButtons() {
     for (let i = 1; i <= 5; i++) {
-      var body = document.getElementsByTagName("BODY")[0];
-      var button = document.createElement("BUTTON");
-      button.innerHTML = 'Button ' + i;
-      button.onclick = function() {
-           alert('This is button ' + i);
-      }
-      body.appendChild(button);
+        var body = document.getElementsByTagName("BODY")[0];
+        var button = document.createElement("BUTTON");
+        button.innerHTML = 'Button ' + i;
+        button.onclick = function () {
+            alert('This is button ' + i);
+        }
+        body.appendChild(button);
     }
- }
- 
+}
+
 
 createButtons();
 
@@ -252,9 +252,9 @@ var house = {
     price: 100000,
     squareFeet: 2000,
     owner: 'Taylor',
-    getPricePerSquareFoot: function() {
+    getPricePerSquareFoot: function () {
         // return house.price / house.squareFeet;
-           return this.price / this.squareFeet;
+        return this.price / this.squareFeet;
     }
 
 };
@@ -264,3 +264,118 @@ var house = {
 console.log(house.price);
 //console.log(this.owner);
 console.log(house.getPricePerSquareFoot());
+//_______________________________________________________________________________________
+
+// 6th Javascript Question 
+/*
+Describe what variable and function hoisting is and how it works.
+
+again....I have no clue what hoisting is
+
+In Javascript variables and functions are hoisted to the top of the scope of which they are declared
+
+Even if you declare a variable down on line 8 or 9, behind the scenes Javascript is hoisting that variable to the top of the file
+and sets it there, but does not set it equal to anything. So var color = blue declared by the user on Line 5, is declared by Javascript on line, but given value at line 5
+
+when you declare a function with the var, let, or const keywords, it is called a function expression and its hoisted in the same manner.
+
+functions without those keywords are Function declarations
+
+Its important to note that function expressions and function declarations are hoisted differently.
+
+for Function declarations, the whole function, including its definition are hoisted to the top.
+Because of this, if you log, use, or console log a function expression above where it is defined, it should still work fine.
+
+Now if you are declaring variables and functions inside of a parent function (closure), they only hoist to the top of that parent function
+
+Hoisting is essentilly taking the variable and function and putting them to the top of the scope in which they are declared
+
+There are 2 scopes in which a Var variable can be hosited to the top of.
+Global Scope or a Functon Scope - this is becasue the Var keyword is function scoped
+
+Let and Const keywords however, are block scoped. Let and Const are still aware of the Global and Function Scope
+but the Let and Const keywords are aware of another scope, the Block Scope.
+
+A block scope is present whenever there is a block of code. including but not limited to
+for loops, if else statements, while loop, etc
+
+When we use the Let or Const keywords to declare a variable in this block scope, that variable declaraton is only hoisted to the top of the block and is not hoisted to the top of the parent function, or to the top of the global scope.
+
+Lets run thru an example
+*/
+
+function getTotal(){
+    // console.log(multiplier); accessing var before it is defined will bring up undefined
+    // console.log(total); but accessing let or const before they are defined will bring up a reference error since it cannot be accessed at all until it is declared
+    let total = 0; // since let is used, total is hoisted to the top of the function 
+
+    for(var i = 0; i < 10; i++) {
+        let valueToAdd = i; // since this let is used inside of the for loop, its only hoisted to the top of the loop
+        var multiplier = 2; // since var is function scoped and not blocked scope, it is hoisted to the top of the function 
+        total += valueToAdd * multiplier;
+    }
+    return total;
+}
+
+getTotal();
+
+// _________________________________________________________________________________
+
+// 7th JavaScript Questions 
+
+// this.color = "red";
+
+var myCar = {
+    color: "Blue",
+    logColor: function(){
+        var self = this;
+        console.log("In logColor - this.color: " + this.color);
+        console.log("In logColor - self.color: " + self.color);
+        (function(){
+            console.log("In IIFE - this.color: " + this.color);
+            console.log("In IIFE - self.color: " + self.color);
+        })();
+    }
+};
+myCar.logColor();
+
+// in this exercise, the this keywords is referencing the object it is inside of. Which is myCar
+// so this.color = blue
+// and that is then stored in the variable self, so self.color is the same things at this.color, so it is also blue
+// However for the IIFE, the this keyword does not work since we are now in the scope of the new and unnamed IFFE function
+// So the this keyword looses its reference to the myCar object, and only references the global object or the global scope
+// and there is no color defined on the global scope, hence why it comes back undefined. 
+// but if I add the color to the global scope (above the function) it will then work. 
+// Now for the last one, despite being in an IIFE, since it was stored in a variable, it will still reference the myCar object
+
+// this is a big reason why in programming, a variable is made to store the ' this ' keyword
+
+// _______________________________________________________________________________________
+
+// 8th Javascript question 
+
+// What is the difference between the comparison operators == and ===?
+
+//LOL....finally....a question I know.
+
+// my answer - the tripple equal === is a strict equal and does not have type coresion. So the string of '11' is onlt equal to the string of '11', not the number of 11
+// the double equal == is also equal but with type conversion, meaning in comparing the String of '11' to the number of 11 could turn equal.
+
+// the offical videos explanation
+
+/*
+== (equals) - tests for abstract equality
+=== (strict equals) - tests for strict equality
+
+== tests for data type, but === does not test for data type
+*/
+
+console.log( 7 == '7');  //true
+console.log( 7 === '7'); //false
+
+// so whats happening under javascripts hood?
+// comparing a number and a string - the string is converted to a number and the comparsion is made
+// comparing a boolean & a non-boolean - the nonboolean is converted to a boolean and the comparsion is made
+// comparing an object & a primiitve data-type - the object is converted to a primitive data-type and the comparison is made
+
+// __________________________________________________________
