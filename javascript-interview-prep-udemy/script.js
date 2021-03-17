@@ -549,3 +549,44 @@ console.log('y: ', y);
 //1. how do they function?
 //2. What arguments do they take?
 //3. How are they different? 
+
+// the call method is an alternative way of calling your functions
+
+const car1 = {
+    brand: 'Porsche',
+    getCarDescription: function(cost, year, color) {
+        console.log(`This car is a ${this.brand}. The price is $${cost}. The year is ${year}. The Color is ${color}.\n`);
+    }
+};
+
+const car2 = {
+    brand: 'Lamborghini'
+};
+
+// the typical way of calling
+
+car1.getCarDescription(80000, 2010, 'blue');
+
+// now that first const has that getCarDescription function within it. The 2nd const does not....so how do we use that function for the second const? 
+// That is where the call method comes into play
+// The call method gives you a differnt way of passing arguments into your functions
+// It also allows us to change the context of the ' this ' keyword
+
+car1.getCarDescription.call(car2, 200000, 2013, 'yellow');
+
+// so we are calling the getCarDescription method, but now the ' this ' is refering to car2. 
+
+// This is the call method, now lets try to Apply Method 
+
+// for this, lets create a new car, car 3
+
+const car3 = {
+    brand: 'Ford'
+};
+
+car1.getCarDescription.apply(car3, [35000, 2012, "black"]);
+
+// so the big difference is that with the apply method, the arguments are passed in with an Array. The call method, the arguments are passed in individially. 
+
+//_____________________________________________________________________________________________________________________________________________________
+
