@@ -379,3 +379,173 @@ console.log( 7 === '7'); //false
 // comparing an object & a primiitve data-type - the object is converted to a primitive data-type and the comparison is made
 
 // __________________________________________________________
+
+// 9th Javascript Question 
+
+// What will be logged to the console with this code? 
+
+var num = 50;
+
+function logNumber() {
+   console.log(num);
+   var num = 100;
+    
+}
+
+logNumber();
+
+// my answer - first it will give an error because the var of num is already declared. Vars can't be revalued, but not by using the var keyword itself. like I would just write num = 100; But that would still need to be after the console.log, not before it. ....and never mind, apparatnly you can redeclare a value while still using the var keyword.
+
+// My answer is wrong- ish, but the real reason for this is scoping. that second var num = 100, is function scoped and the "var num" is put at the top of the function before the console log where as the value is still below it. So console loging it turns up undefined becasue techncially it doesn't have a value yet. 
+
+// ___________________________________________________________________________________
+
+// Question 10 - 'use strict'; What does using 'strict mode' do to your code, and what are the benefits of using it? 
+
+// my answer - it applies stricter rules over your code, in practice this means it will log more errors and data to the console making it easier to troubleshoot. 
+
+// the offical explanation - the main purpose of 'use strict' is to enforce stricter parsing and error handling in your code. 
+
+// benefit 1 - it prevents the use of global variables 
+// if you don't use the var, let, or const variables, the variable by default will become a global variable .
+city = 'london';
+console.log(city);
+// this runs fine, but if I place 'use strict' at the top of the page, it will give an error, more or less forcing you to use a var/let/const keyword
+
+// benefit 2 - enforces that all parameter names for a function must be unique 
+//this code works now, but with 'use strict' it will give and error becasue the parameter of A is used twice. 
+function myFunc(a, a, b){
+    console.log(a, a, b)
+}
+myFunc(1, 2, 3);
+
+// benefit 3 - strict mode throws an error if you try to delete any properties on objects that are no deleteable 
+//delete Object.prototype;
+
+// Strict Mode helps us fail fast and fail loudly. 
+
+//______________________________________________________________________________________
+
+// 11th Javascript Question 
+// curry this function 
+
+/*
+function getProduct(num1, num2) {
+    console.log(num1 * num2);
+};
+getProduct(10, 20);
+*/
+
+function getProduct(num1) {
+    return function (num2){
+        console.log( num1 * num2);
+    } ;  
+};
+getProduct(10)(20);
+
+// heres another example to show how currying can be used in a more practical way 
+// assume that distance is always in the unit of kilometers and speed is kilometers per hour
+function getTravelTime(distance, speed) {
+    console.log(distance / speed);
+}
+getTravelTime(600, 50);
+// so the 50 is the speed, now if you want to calcaulte the mutliple different speeds, you would have to do them seperately 
+getTravelTime(400, 50);
+getTravelTime(400, 60);
+getTravelTime(400, 80);
+
+// you have to constantly reiterate the distance varibale, which can be annoying if its a fixed variable. Like 400 miles between NYC and Boston is never going to change. this is where currying comes in handy.
+
+function getTravelTime2(distance) {
+    return function (speed){
+        return distance / speed;
+    };
+}
+const travelTimeBostonToNyc = getTravelTime2(400);
+console.log(travelTimeBostonToNyc(50));
+console.log(travelTimeBostonToNyc(80));
+const travelTimeNycToBrisbane = getTravelTime2(20,000)
+console.log(travelTimeNycToBrisbane(500));
+
+// since the distance is set to 400, we no longer need to keep re-writing the distance.
+
+// _______________________________________________________________________________________
+
+// 12th Javascript question 
+
+// Write a function that keeps track of how many times it was called and returns that number.
+// All functionality should be inside of the function, none outside
+
+// the best way to do this is by building a closure
+
+function myFunc() {
+    let count = 0; // first thing is to define a counter
+
+    // this is the closure
+    return function(){
+        count++;
+        return count;
+    }
+    
+}
+console.log(myFunc()); // returns 1
+console.log(myFunc()); // returns 2
+console.log(myFunc()); // returns 3
+
+const instanceOne = myFunc();
+const instanceTwo = myFunc();
+
+console.log('instanceOne: ', instanceOne());
+console.log('instanceOne: ', instanceOne());
+console.log('instanceOne: ', instanceOne());
+console.log('instanceTwo: ', instanceTwo());
+console.log('instanceTwo: ', instanceTwo());
+console.log('instanceOne: ', instanceOne());
+
+//______________________________________________________________________________
+
+// 13th Javascript Question 
+
+// what is the value of y when it is logged out?
+// what is the value of x when it is logged out?
+
+(function(){
+    var x = y = 200;
+})();
+
+console.log('y: ', y);
+//console.log('x: ', x);
+
+// my guess is 200? 
+// y logs at 200, but X is undefined. 
+
+// but why? first this function is an IIFE, and inside is declaring two variables. 
+
+// x gives and error becasue it is function scoped and exists only withing the IIFE and cannot be accessed outside of it. 
+
+// so why is Y defined? it shouldn't for the same reasons X isn't. 
+
+// another way to write this
+// var x = y = 200;
+
+// is 
+
+// var y = 200;
+// var x = y;
+
+//under the hood, Javascript is declaring y = 200 as a global variabe
+// then it is saying x = y with the var keyword
+
+// so y will equal 200 because it is now a global variable. 
+
+// running this in strict mode, (which null and voids the global variables, this will give an error from the start and say Y is not defined. )
+
+// __________________________________________________________________________________
+
+// 14th Javascript question 
+
+// Describe the javascript call() and apply() methods
+//address the following
+//1. how do they function?
+//2. What arguments do they take?
+//3. How are they different? 
