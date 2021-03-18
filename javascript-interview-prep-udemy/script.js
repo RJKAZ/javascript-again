@@ -590,3 +590,185 @@ car1.getCarDescription.apply(car3, [35000, 2012, "black"]);
 
 //_____________________________________________________________________________________________________________________________________________________
 
+// 15th question - Determine 'list2'
+
+// take a look at this code and what will list2 log out to the console?
+
+const list1 = [1,2,3,4,5];
+const list2 = list1;
+list1.push(6, 7, 8);
+console.log(list2);
+
+// my answer before checking, is list 2 will pull up an array now including 1 to 8
+
+// correct 
+
+// In javascript, when we assigning a variable a piece of data, we are always passing the data by value or reference
+// examples of passing by value 
+const myNum = 10;
+const myString = 'hello world';
+const myString2 = myString;
+
+// Now...if the value we are passing includes Objects...which includes Arrays....that data is being passed by reference
+
+// so in context of that above example, list1 and list2 are referencing the same Array
+
+// so the next question is to do the same problem but copy the data value to list 2
+// updating list 1 & 2 to list 3 & 4 to retain the old code.
+
+// the first way is to use the slice method which takes the selected elements in an array as a new array object
+
+const list3 = [1,2,3,4,5];
+const list4 = list3.slice();
+list3.push(6, 7, 8);
+console.log(list4);
+
+// another method is to concat the first list item and then put it in an empty array.
+
+const list5 = [1,2,3,4,5];
+const list6 = list5.concat([]);
+list5.push(6, 7, 8);
+console.log(list6);
+
+// so those are two ways to set one array equal to the value of another array without referencing the same data
+
+// ____________________________________________________________________________
+
+// Question 16 - Singly or Double Invoked Function
+
+// build a function called getTotal that can be invoked in 2 different ways, 
+// it can be singly invoked with 2 numbers passed in, or doublely invoked (as in currying)
+// the function should return to us the total of the two numbers passed into it. 
+
+// so this is the single invoked function 
+
+function getTotal1(num1, num2) {
+    console.log(num1 + num2);
+}
+getTotal1(10, 20);
+
+// here is a double invoked function
+
+function getTotal2(num1) {
+    return function (num2){
+        console.log (num1 + num2);
+    }
+}
+getTotal2(10)(20); 
+
+// so to create a single function that can do both.....um.....drawing a blank 
+
+// this is the offical explanation 
+
+function getTotal3() {
+    var args = Array.prototype.slice.call(arguments);
+
+    if (args.length === 2) {
+        return args[0] + args[1];
+    }
+    else if (args.length === 1) {
+        return function(num2) {
+            return args[0] + num2;
+        };
+    }
+}
+
+console.log(getTotal3(10, 20));
+console.log(getTotal3(5, 40));
+console.log(getTotal3(3, 30));
+console.log(getTotal3(8, 12));
+
+//____________________________________________________________
+
+// Question 17 - JSON DATA
+
+// 1. describe waht JSON format is
+// 2. Delete the data types not premitted in JSON
+// 3. Replace placeholder-text with the corresponding data type, properly formatted as JSON.
+
+const myJsonObj = {
+    "myString": "some string here",
+    "myNumber": 123456, // you can pass in any number, even decimals
+    "myNull": null,
+    "myBoolean": false,
+    // myUndefined: [undefined], this is not allowed in JSON
+    "myArray": [20, 30, 40, "orange"],
+    // myFuncton: [some function], this is not allowed in JSON
+    "myOBject": {
+        "name": "same",
+        "age": 30
+    } 
+};
+
+// JSON stands for JavaScript Object Notation
+// it is a light-weight format for transfering data 
+// it is used because it is easy for humans to understand
+// it is also easy for computers to parse and generate.
+// it is a very common way to send data from an API 
+
+// JSON accepts all data types except for "undefined" or "functions"
+// fyi, functions aren't meant to hold data (even though they techcnially can) functions are meant to parse or use data
+
+// one last thing, in JSON data, every property on an object is a string, so all property names must be wrapped in double quotes
+// even property names on nested objects (like objects) have to be double quoted. 
+
+//________________________________________________________________________________________
+
+// question 18 - Order Logged Out 
+
+// take a look at the code shown, when the logNumbers function is ran, what order are the numbers logged out in?
+
+function logNumbers() {
+    console.log(1);
+    setTimeout(function(){console.log(2)}, 1000);
+    setTimeout(function(){console.log(3)}, 0);
+    console.log(4);
+}
+
+logNumbers(); 
+
+// my guess....3, 2, 1, 4......but I feel it might also be 3, 1, 4, 2
+
+// all wrong  lol
+
+// the order is 1, 4, 3 ,2
+// 1 is logged first because its a regualar console.log 
+// 4 is logged second because its a regualr console.log
+
+// 3 is third, but this one is tricky, even though wrapped in a 0 second time out, (which is pointless) it still effects the time in which it takes to console.log it
+// that is because of the event loop in the browser, its a que for all events(click events, ajax, callback functions, etc)
+// all those events are pushed into the event que so even though the 0 second timeout has no actual effect on 3, it being pushed into the event que will affect the time the browser reads it
+// So while console log 3 is still waiting to be read, console log 4 goes right ahead. 
+
+// 2 is the last number logged out becasue its wrapped in a 1 second wrapped time out, so this would be a second later then everything else, making it last
+
+// so to sum up, the order is as so because of the event loop 
+
+// ___________________________________________________________________________________________
+
+// Question 19 - making an object
+
+// list and describe 3 different ways of making an Object in Javascript
+
+// the first way is to use Object Literal Syntax (the typical and common way of making an object)
+
+const myBoat = {
+    length: 24, 
+    maxSpeed: 45, 
+    passengers: 14,
+    getLength: function() {
+        return this.length;
+    }
+}
+
+// the 2nd way is use the new Keyword and Object Constructor 
+
+const student = new Object();
+
+student.grade = 12;
+student.gradePointAverage = 3.7;
+student.classes = ["English", "Algebra", "Chemistry"];
+
+student.getClasses = function() {
+    return this.classes;
+};
