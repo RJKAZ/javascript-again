@@ -820,3 +820,342 @@ var user200 = new User('Jill', 'Robinson', 26, 'They');
 console.log(user200);
 
 // somewhat a rule bend, in constructor functions, the 'this' keyword does not refer to the functon its in, but rather 'this' will refer to the object that will be created by the constructor function 
+
+//___________________________________________________________________________________
+
+// Question 20 - Types of Data types
+
+// In the below code, what is logged out for all 4 console log statements
+
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(typeof {});
+console.log(typeof []); 
+
+// so null is part of the object type
+// undefined is undefined 
+// Objects and Arrays are part of the Object type.
+// Rememeber Arrays are Objects!
+
+// this is just how Javascript was written.
+
+// now how can you tell if a piece of data is an object or array if they type returns object?
+
+// for this you can use the 'isArray' method which will return true for Arrays and false for objects
+
+console.log(Array.isArray([]));
+console.log(Array.isArray({}));
+
+// another way is by using instanceof, which will also return true or false if its an Array
+
+console.log([] instanceof Array);
+console.log({} instanceof Array);
+
+// so to recap....Arrays are Objects and the typeof method cannot distinguish them. 
+
+//___________________________________________________________________________________
+
+// Question 21 - Bind Method 
+
+// Describe the bind() function method
+// describe how it works, explains the parameters it takes, and code out an example of how it is used
+
+// The Bind Method allows you to bind the 'this' context of a function to a specific object, somewhat simmilar to the call and apply methods work
+
+this.distance = 10000;
+
+ const roadTrip1 = {
+     distance: 3000,
+     getDistance: function(unit, caption){
+         return this.distance + unit + caption;
+     }
+ };
+
+ const roadTrip2 = {
+     distance: 5000
+ };
+
+
+ const getTripDistance = roadTrip1.getDistance.bind(roadTrip1, 'km');
+
+console.log(getTripDistance(' left to go'));
+
+// in this code, the use of the 'this' in the function sadly refers to the global scope and not the functon scope, so it returns the 10000
+
+// to fix this you have to add .bind() which allows you to set 'this' to any any function 
+// you can also pass parameteres into the bind method as well
+
+//_____________________________________________________________________
+
+// Question 22 - Two Objects... in the below code, what is logged in the console, true or false?
+
+
+const user1 = {
+    name: 'Jordan',
+    age: 28,
+}
+
+const user2 = {
+    name: 'Jordan',
+    age: 28
+}
+
+console.log(user1 == user2);
+console.log(user1 === user2);
+
+// both of these expressions return false, but in Javascript, two objects can never be equal to one another, even if they have the same data
+
+// becasue these two objects are totally seperate, they can never be equal. there is one exception.
+
+const user3 = user1;
+console.log(user1 == user3);
+console.log(user1 === user3);
+
+// this works because user 1 and user 3 are now techncially refrencing the same object
+
+// another way you could make this work is to use JSON strignify. To recap, JSON stringify turns and object into a JSON and then into a string
+
+console.log(JSON.stringify(user1) == JSON.stringify(user2));
+console.log(JSON.stringify(user1) === JSON.stringify(user2));
+
+// now that they are turned into strings (which are primative data types, and passed by value not refernece)
+//these will now turn equal.
+
+// you could also turn it into an array...but since and array is an object, comparing an Array to an Array is the same as an object
+// but if your do a JSON stringify, then it would work.
+
+console.log([] == []);
+console.log(JSON.stringify([]) === JSON.stringify([]));
+
+//___________________________________________________________
+
+// question 23 - Array Constructor - What is logged out for each of these console.log statements
+
+var arr1 = [];
+var arr2 = new Array(50);
+var arr3 = new Array(1, 2, "three", 4, "five");
+var arr4 = new Array([1, 2, 3, 4, 5]);
+
+console.log('arr1: ', arr1); // empty array
+console.log('arr2: ', arr2); // with the Array constructor function, if you pass in a single number, it will become the arrays lenght, not the value
+console.log('arr3: ', arr3); // a normal array 
+console.log('arr4: ', arr4); // an array with one element in it (the array)
+
+// so for the Array Constructor Function - the rules
+// - If you pass a Single Argument that is a number, it will return an empty array of that length
+// - If you pass a Single Argument that is not a number, it will return an array with just that argument passed as an element
+// - if you pass multiple arguments, it will return a new array with all arguments passed in as elements in it
+
+//_______________________________________________________________________________________________
+
+// question 24 - Array Index of
+
+// What will be logged out with each console log?
+
+console.log([10, 20, 30, 40, 50].indexOf(30));  
+console.log([{ name: 'Pam'}, { name: 'kent'}].indexOf({name: 'kent'}));
+console.log('hello world'.indexOf('o'));
+console.log([[1], [2], [3], [4]].indexOf([2]));
+
+// 2
+// 1 - wrong, but this was a tricky one
+// 4
+// 1 - wrong, but this was a tricky one
+
+// the 2nd one returns -1, because its viewing that indexOf as a 3rd object, and no objects are equal in javascript
+
+// to not, both strings and arrays have different indexOf methods
+
+// the last one also returns a -1 because an Array is an Object, and like Objects there can't be two of the same Array
+
+// one little loop hole is referencing reference of an Array and not its value
+
+const myArray = [5];
+const anotherArray = myArray;
+console.log([[1], [2], [3], [4], myArray].indexOf(myArray));
+console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); // this also returns 4 since its making the same reference
+
+//____________________________________________________________________________
+
+// Question 25 - Equivalent Numbers
+
+// what will be logged to the console, true or false?
+
+console.log(900.9 === 300.3 * 3);
+
+// my gut says false...aha...and I was right 
+
+console.log(900.9 == 300.3 * 3);
+console.log(900.9 === 300.3 * 3);
+
+// even these return false 
+
+// these all return false because javascript is somewhat fauly with doing decimals
+
+console.log(300.3 * 3); // this returns 900.9000000000001
+
+// because of that complicate floating point decimal crap....these number just don't come out eqaul, even if they are
+
+console.log(100 === 50 + 50);
+// without a decimal, a similar problem returns true
+
+// now there are a few ways to fix this problem, one of which is the toFixed method that returns a number to a set number of decimal places
+
+// the problem with the toFixed method is that is returns as a string (that is stupid)
+
+// so then you need to wrap your expression in the built in number function 
+
+Number((300.3 * 3). toFixed(2));
+
+// another way is to use the toPrecision method that will return a number where the total number of digits won't exceed the number argument passed in 
+// sadly this also returns a string, so again you have to wrap it in the number function 
+
+Number((300.3 * 3).toPrecision(12));
+
+// there is another way
+
+((300.3 * 10) * 3) / 10;
+
+// I think I'll just avoid decimals 
+
+//___________________________________________________________________________________
+
+// Question 26 - Objects and Strings
+
+// look at the code and determine what is logged to the console
+
+var string1 = 'Tampa';
+var string2 = string1;
+
+string1 = 'Venice';
+
+console.log(string2);
+
+// this returns false, because the changing of venice doesn't effect string 1 
+
+////////
+
+var person1 = {
+    name: 'Alex',
+    age: 30
+};
+
+var person2 = person1;
+person2.name = 'Kyle';
+
+console.log(person1);
+
+// this returns with kyle's becasue the person 1 & 2 varibles are both referncing the same value
+
+
+//_________________________________________________________
+
+// Question 27 - Strings and Arrays - What is logged to the console?
+
+const data1 = 'Jordan Smith';
+
+const data2 = [].filter.call(data1, function(elem, index) {
+    return index > 6;
+});
+
+console.log(data2);
+
+// my guess, the string of "Smith"
+
+// half right, but also half wrong, it did return "Smith" but broken down as an Array
+
+// [].filter is "array.filter" which is an Array method we are using for a string
+
+// only use 'read-only' methods on strings. Don't use methods that actually manipulate the string 
+// use - filter, forEach, map, some, every, etc
+// Do Not Use - push, pop, splice, shift, reverse, etc
+
+//__________________________________________________________
+
+// Question 28 - Object Properties - what will be logged to the console?
+
+const a = {};
+const b = { name: 'b'};
+const c = { name: 'c'};
+
+a[b] = 200;
+a[c] = 400;
+
+console.log(a[b]);
+
+// this comes to 400 and I have no idea why
+
+// so this is Object on Object and that is why it is so confusing 
+
+console.log(a);
+
+// sicne its an object on objects...Javascript is essentially trying to turn the b into a string...specifically the string '[object object]'
+
+// so I kind of get the solution, bascilly the a[b] & a[c] are both read as '[object object]'
+// which starts at 200, but then gets revalued to 400....thats why it pulls up 400 for both. 
+// its basiclly treating it like a revalued variable....if you omit the a[c], it will value to 200
+
+// only strings can be properties on objects
+//__________________________________________________________
+
+// Question 29 - X & Y - what is logged to the console for variable x
+
+var x = 10;
+
+function y() {
+    x = 100;
+    return;
+    function x() {}
+}
+
+//y();
+
+console.log(x);
+
+// and this gives a type error - no clue
+
+// for some reason it should log 10....the reason for doing so is hoisting. X in the function is only hoisted to its core function, not the top
+
+//__________________________________________________________
+
+// Question 30 - Withdraw from Account - determine what is logged out from this code
+
+const account1 = {
+    name: 'Jen',
+    totalAmount: 5000,
+    deductAmount: function(amount) {
+        this.totalAmount -= amount;
+        return 'Amount in Account: ' + this.totalAmount;
+    },
+};
+
+const account2 = {
+    name: 'James',
+    totalAmount: 8000,
+};
+
+const withdrawFromAccount = function(amount) {
+    return account1.deductAmount.bind(account2, amount);
+};
+
+console.log(withdrawFromAccount(500)()); // 7500
+console.log(withdrawFromAccount(200)()); // 7300
+
+// in the widthdrawFromAccount function, its taking that deduct amount method from account 1 and using it on account 2
+// basciy both console.logs are targeting the 2nd account. 
+
+// but the 2nd console log, is now basing Account2's value at 7500 and not 8000 anymore, so when the 2nd console log runs, 
+// it returns 7300. 
+
+// And that is it
+
+// All done with this Udemy Course
+
+
+
+
+
+
+
+
+
