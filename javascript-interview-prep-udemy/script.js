@@ -772,3 +772,51 @@ student.classes = ["English", "Algebra", "Chemistry"];
 student.getClasses = function() {
     return this.classes;
 };
+
+// the 3rd way is to use a constructor function 
+
+function Car(color, brand, year){
+    this.color = color;
+    this.brand = brand;
+    this.year = year;
+}
+
+Car.prototype.getColor = function() {
+    return this.color;
+};
+
+const carlysCar = new Car('blue', 'ferarri', 2015);
+const rjsCar = new Car('black', 'Honda Accord', 2007);
+
+console.log(carlysCar);
+console.log(rjsCar);
+
+// you can also use the getColor method
+
+console.log(carlysCar.getColor());
+console.log(rjsCar.getColor());
+
+// so what is a constructor function and what does it do?
+
+// It is a function that creates an object class and then allows you to create multiple instances of that class
+// it means you can create alot of objects very easily
+
+// a best practice with constructor functons is use a capital letter in naming the function
+// this is to signify that this is a constructor function 
+
+
+
+function User(firstName, lastName, age, gender) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.gender = gender;
+};
+
+var stephen = new User('stephen', 'frank', 37, 'male');
+console.log(stephen);
+
+var user200 = new User('Jill', 'Robinson', 26, 'They');
+console.log(user200);
+
+// somewhat a rule bend, in constructor functions, the 'this' keyword does not refer to the functon its in, but rather 'this' will refer to the object that will be created by the constructor function 
