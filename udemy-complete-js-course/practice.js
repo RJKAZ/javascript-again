@@ -1,32 +1,36 @@
-// Javascript Fundamentals Part 2
+// Redoing the coding challenges thus far for practice. 
 
-// Coding Challenge #1
-/*
-Back to the two gymnastics teams, the Dolphins and the Koalas! There is a new
-gymnastics discipline, which works differently.
-Each team competes 5 times, and then the average of the 5 scores is calculated (so
-one average score per team).
-A team only wins if it has at least double the average score of the other team.
-Otherwise, no team wins!
-Your tasks:
-1. Create an arrow function 'calcAverage' to calculate the average of 3 scores
-2. Use the function to calculate the average for both teams
-3. Create a function 'checkWinner' that takes the average score of each team
-as parameters ('avgDolhins' and 'avgKoalas'), and then logs the winner
-to the console, together with the victory points, according to the rule above.
-Example: "Koalas win (30 vs. 13)"
-4. Use the 'checkWinner' function to determine the winner for both Data 1 and
-Data 2
-5. Ignore draws this time
-Test data:
-§ Data 1: Dolphins score 43, 29, 54, 98 and 71. Koalas score 62, 91, 43, 54 and 49
-§ Data 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
-Hints:
-§ To calculate average of 5 values, add them all together and divide by 5
-§ To check if number A is at least double number B, check for A >= 2 * B.
-Apply this to the team's average scores �
-*/
+// Coding Challange 1 - Mark and John are comparing their BMI's, 
+// 1. store Mark and Johns Mass and height in variables
+// 2. calculate both BMI's using the formular
+// 3. Create a Boolean variable 'markHigherBMI' containing information about whether Mark has a higher BMI than John
 
+let marksHeight = 1.69;
+let marksMass = 78;
 
+let johnsHeight = 1.95;
+let johnsMass = 92
 
+let marksBmi = marksMass / marksHeight ** 2;
+console.log(marksBmi);
+
+let johnsBmi = johnsMass / johnsHeight ** 2;
+console.log(johnsBmi)
+
+let markHigherBMI = marksBmi > johnsBmi;
+console.log(markHigherBMI);
+
+// now for coding challenge #2, we are going to improve this. 
+//1. print a console log output saying who has the higher BMI
+//2. Use a template literal to included the BMI values in the outputs
+
+if (marksBmi > johnsBmi) {
+  console.log(`Marks BMI of ${marksBmi} is greater then Johns BMI of ${johnsBmi}`);
+} else {
+  console.log(`Johns BMI of ${johnsBmi} is greater than Marks BMI of ${marksBmi}`);
+}
+
+// now I'm gonna jump to part 2's coding challange #3 since that continues the whole mark/john BMI thing.
+
+// lets use objects to implement the calculations 
 
