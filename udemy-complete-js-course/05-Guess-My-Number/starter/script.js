@@ -29,27 +29,56 @@
 // Now lets get back to actual work. 
 
 
-console.log(document.querySelector('.message').textContent);
+// console.log(document.querySelector('.message').textContent);
 
 //  so the above was to get content, but we can also change content 
 
-document.querySelector('.message').textContent = 'Correct Number!';
+// document.querySelector('.message').textContent = 'Correct Number!';
 
 // so now when we console.log it again, its differnet.
 
-console.log(document.querySelector('.message').textContent);
+// console.log(document.querySelector('.message').textContent);
 
 // THIS is all DOM Manipulation
 
 // so now lets select the elements with the class number and the class score 
 
-document.querySelector('.number').textContent = 13;
-document.querySelector('.score').textContent = 10;
+// document.querySelector('.number').textContent = 13;
+// document.querySelector('.score').textContent = 10;
 
-console.log(document.querySelector('.guess').value);
-// guess has no value currently so it might trigger and error, or console.log nothing
+// console.log(document.querySelector('.guess').value);
+// guess has no value currently so it might trigger and error,
+// or console.log nothing
 // but we can create content
 
-document.querySelector('.guess').value = 23;
+// document.querySelector('.guess').value = 23;
 
-console.log(document.querySelector('.guess').value);
+// console.log(document.querySelector('.guess').value);
+
+// now to get the code to react to something in the DOM, we use an Event Listener
+// An event is something that happens on the page, like a mouse click or hover 
+
+// An event listener allows us to wait until something happens.
+
+// with the event listener, the target we want to listne to is the check button 
+
+// so we select the element using query selector, and we set the addEventListener to trigger at a click, and then we set a function expression telling it what to do on the click
+
+document.querySelector('.check').addEventListener('click', function () {
+  //console.log(document.querySelector('.guess').value);
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess, typeof guess);
+  // for the game logic, the first scenario is always to assume there is no input
+  //if there is no guess
+  if (!guess) {
+    document.querySelector('.message').textContent = 'No number!';
+
+  }
+})
+
+// one thing to note, the function expression in this instance does not need to be called, since the addEventListener will by default call it when its triggers
+
+// Another thing to note, typically when you get any data from the user interface, it will almost always return a string. So for number inputs...those too get stored as strings. Since for this app we need the number to read and function as a number, we need to convert the string to a number.
+// So in this case we add the Number operator  
+
+
