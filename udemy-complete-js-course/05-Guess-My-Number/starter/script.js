@@ -64,41 +64,65 @@
 
 // so we select the element using query selector, and we set the addEventListener to trigger at a click, and then we set a function expression telling it what to do on the click
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.number').textContent = secretNumber;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+// document.querySelector('.number').textContent = secretNumber;
 
 let score = 20;
+
+let highscore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   //console.log(document.querySelector('.guess').value);
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
   // for the game logic, the first scenario is always to assume there is no input
-  //if there is no guess
+
+
+  // When there is no guess/input
   if (!guess) {
     document.querySelector('.message').textContent = 'No number!';
 
+
+  // When player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct Number!';
-    score++
-    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = secretNumber;
+
+
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
+    
+  
+  // When guess is too high 
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too High';
       score--
       document.querySelector('.score').textContent = score;
+      document.querySelector('body').style.backgroundColor = '#666600';
     } else {
       document.querySelector('.message').textContent = 'You Lost the game';
       document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = '#8B0000';
+
     }
+
+  // When guess is too low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too Low';
       score--
       document.querySelector('.score').textContent = score;
+      document.querySelector('body').style.backgroundColor = '#666600';
     } else {
       document.querySelector('.message').textContent = 'You Lost the game';
       document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = '#8B0000';
     }
    
   }
@@ -112,3 +136,30 @@ document.querySelector('.check').addEventListener('click', function () {
 // now the secret number (that is being guessed on) would only get called once at the load of the page, and should exist outside of the main function. If you define the secret number on the event listner, you would get a new secret number every click 
 
 // now for the score, the best thing is to create it as a variable and decrease or increase it as needed. 
+
+// Now - coding challenge to implement the 'Again' feature
+
+
+// 1. select the element with the 'again' class and attach a click handler event
+// 2. in the handler function, restore the initial values of the score and number variables
+// 3. restore the initial conditions of the message, number, score, and guess input fields.
+// 4. also restore the original background color and number width
+
+document.querySelector('.again').addEventListener('click', function() {
+
+ score = 20;
+
+ secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+ document.querySelector('.message').textContent = 'Start Guessing...';
+
+ document.querySelector('.score').textContent = score;
+
+ document.querySelector('.number').textContent = '?';
+
+ document.querySelector('.guess').value = '';
+
+ document.querySelector('body').style.backgroundColor = '#222';
+
+ document.querySelector('.number').style.width = '15rem';
+});
