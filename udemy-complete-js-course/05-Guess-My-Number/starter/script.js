@@ -64,6 +64,11 @@
 
 // so we select the element using query selector, and we set the addEventListener to trigger at a click, and then we set a function expression telling it what to do on the click
 
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+document.querySelector('.number').textContent = secretNumber;
+
+let score = 20;
+
 document.querySelector('.check').addEventListener('click', function () {
   //console.log(document.querySelector('.guess').value);
   const guess = Number(document.querySelector('.guess').value);
@@ -73,6 +78,29 @@ document.querySelector('.check').addEventListener('click', function () {
   if (!guess) {
     document.querySelector('.message').textContent = 'No number!';
 
+  } else if (guess === secretNumber) {
+    document.querySelector('.message').textContent = 'Correct Number!';
+    score++
+    document.querySelector('.score').textContent = score;
+  } else if (guess > secretNumber) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = 'Too High';
+      score--
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = 'You Lost the game';
+      document.querySelector('.score').textContent = 0;
+    }
+  } else if (guess < secretNumber) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = 'Too Low';
+      score--
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = 'You Lost the game';
+      document.querySelector('.score').textContent = 0;
+    }
+   
   }
 })
 
@@ -81,4 +109,6 @@ document.querySelector('.check').addEventListener('click', function () {
 // Another thing to note, typically when you get any data from the user interface, it will almost always return a string. So for number inputs...those too get stored as strings. Since for this app we need the number to read and function as a number, we need to convert the string to a number.
 // So in this case we add the Number operator  
 
+// now the secret number (that is being guessed on) would only get called once at the load of the page, and should exist outside of the main function. If you define the secret number on the event listner, you would get a new secret number every click 
 
+// now for the score, the best thing is to create it as a variable and decrease or increase it as needed. 
