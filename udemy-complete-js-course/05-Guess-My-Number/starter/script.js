@@ -163,3 +163,8 @@ document.querySelector('.again').addEventListener('click', function() {
 
  document.querySelector('.number').style.width = '15rem';
 });
+
+// now all this code has alot of duplicated code, that is not DRY (Don't repeat Yourself)
+
+// now we shall restructure the code to improve the code and eliminate duplicate code. 
+// will make a new Javascript file for that without my notes.
