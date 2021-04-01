@@ -51,5 +51,151 @@ Many Programing languages are only Procedural or only Object orietned, but Javas
 
 Prototype-Based Object-Oriented
 
+Firstly, almost everything in JavaScript is an object, excpet for primative values such as numbers and strings, etc
+
+But Arrays are objects, and tpyicall the push method wouldn't work on it. It does so because of Prototype inheritence
+
+We create Arrays from an array blueprint (template) and that is the prototype which contains the array methods
+Our Arrays inherits methods from the prototype so we can use them on our arrays.
+
+This is elaborated on later in Object Orietned Programing
+
+
+
+-------------------------------------------------------------------------
+
+First Class Functions 
+
+Functions are treated as regular variables so we can pass them into other functions and return functions from functions
+
+This allows for funtional programming in JavaScript.
+
+--------------------------------------------------------------------------
+
+Dynamic
+
+As in Dynamicly typed, in Javascript we don't assign data types to variables, instead that only becomes known when the javascript engine executs the code
+Also the type of variables can be changed as we change their values
+
+This is not true of other languages, like Java, C, and Ruby where you have to manually assign variables to types, which has the benefit of cutting down on bugs
+
+----------------------------------------------------------------------------
+
+Single Threaded & Non Blocking Event loop (these are best explained together)
+
+The Concurrency Model: is how the JavaScript Engine Handles multiple Tasks happening at the same time
+
+This is needed becasue JavaScript runs in one Single Thread, so it can only do one thing at a time. 
+
+So what about a long running task? Sounds like it it would block the single thread, however we want non-blocking behavior
+
+We achieve that by using an event loop. It takes long running tasks, executes them in the background, and puts them back in the main thread once they are finished. 
+
+To Note this is a massive over simplifcation of these concepts. 
+
+----------------------------------------------------------------------------
+
+Notes on the JavaScript Engine and Runtime 
+
+The JavaScript engine is a program that executes JavaScript code.
+
+Every Browser has its own JavaScript engine, but the most well known is googles V8 engine
+
+The V8 engine powers Google Chrome but also NodeJS
+
+All JavaScript Engines have a Call Stack and a Heap
+
+The Call Stack is where our code is acctually executed using something called an Execution Context
+
+Then the Heap, is an unstructured memory pool which stores all the objects our applications needs
+
+So How is our code compiled to Machine Code? 
+
+Computer Science Side Note: Compilation VS. Interpretation 
+
+Compilation: The Entire code is converted into Machine code at once, and written to a binary file that can be executed by a computer
+
+Source Code (Step 1 => Compilation) Portable File: Machine Code (Step 2 => Execution) Program Running 
+
+The Execution can take place well after the Compilation 
+
+Interpretation: Interpreter runs through the source code and executes it line by line
+
+Source Code (Step 1 => Execution line by line) Program Running 
+
+With Interpretation, the source code still needs to be converted to machine code, but it does so right before its executed and not ahead of time
+
+The Problem with Interpreative Languages is that they are much much slower then compiled.
+
+JavaScript used to be interpretered, but modern JavaScript switched to Compilation: 
+
+although many people still view it as interpretered
+
+Most JavaScript engins use a mix of Interpretation and Compilation which is called
+
+Just-in-Time (JIT) Compilation - Entire Code is converted into Machine code at once, then executed immediately.
+
+Source Code (Step 1 => Compilation) Machine Code (Step 2 => Execution) Program Running
+What JIT leaves out is the portable file. So there no portable file to execute, but rather the execution happens immediantly after compilaton. 
+
+This is also an oversimplification 
+
+So once JavaScript code enters a JavaScript engine, the engine Parses the code in the Abstract Syntax Tree(AST)
+
+The AST breaks down the JavaScript code into a tree like data stucture, but this is not related at all to the DOM Tree
+
+The AST is just a representaton of our entire code inside the engine 
+
+The Next step is Compilation which takes the generated AST and compiles it into Machine Code
+
+That Machine Code then gets executed right away, however that Machine Code isn't optimized 
+
+So While the Machine Code is already executed, in the background, that machine code is being optimized and recompiled, and the unoptimized code is replaced with the optomized code. 
+
+Different Engines do this in different ways, but this is how modern JavaScript is run
+
+So Now whats a JavaScript RunTime?
+
+Runtime in the Browser is a container including all the things that we need to use JavaScript
+
+The Heart of any JavaScript Runtime is its JavaScript Engine
+
+Without an Engine, there is no Runtime, and thus no JavaScript at all
+
+However the Engine Alone is not enough, in order to work properly, you also need access to the web apis
+
+The Web APIs include the DOM, Timers, Fetch APIs, etc.....even the Console.log. So the WEB APIs are the functionalities provided to the engine, accessible on window object 
+
+Again, those WEB API's are not part of the Javascript language itself, JavaScript just gets access to them via the global window object
+
+The Web APIs are however part of the Runtime
+
+All JavaScript runtimes also have whats called a CALLBACK QUEUE that contains all the callback functions that are ready to be executed. 
+
+Such as Click, Timer, Data, etc.....which are event handler functions but also callback functions 
+
+So as the event happens, the click...the callback function will be called, so the first thing that happens is the callback function is placed in the callback queue
+
+then when the callstack is empty, the callback function is passed to the callstack so that is can be executed 
+
+this happens by something called the event loop
+
+So the Event Loop takes Callback functions from the callback queue and puts them into the callstack so they can be executed
+
+And its important to remember that JavaScript can exist outside of the browser, for example in Node JS
+
+The Node JS Runtime looks very simmilar, just without the browser, there are no WEB API's since its the browser that provides them. 
+
+Node JS Runtime however uses C++ bindings and thread pools which are topics for another lecture. 
+
+
+
+
+
+
+
+
+
+
 
 */
