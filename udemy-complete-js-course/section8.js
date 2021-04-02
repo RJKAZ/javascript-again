@@ -188,6 +188,31 @@ The Node JS Runtime looks very simmilar, just without the browser, there are no 
 
 Node JS Runtime however uses C++ bindings and thread pools which are topics for another lecture. 
 
+----------------------------------------------------------------------
+
+What is an Execution Context?
+
+From Compilation --> A global Execution is created for the top level code, 
+Creation of GLobal execution context (for top-level code)
+
+Top Level Code is Code that is not inside a function (which is good because functions should only function when called) So on a regular javascript file, the top level code is the varibales, const, let, var, etc that are on the global scope, as well as function names. However the functions themsevles and all the code in them is not. 
+
+So a Execution Context is an enviroment in which a piece of JavaScript is executed. Stores all the nesessary information for some code to be executed. 
+
+In every JavaScript Project, no matter how large, there is Exactly one global execution context. There is never more then one and it is always there as the default context created for top level code. 
+
+So from Compliation --> 
+1. The Creation fo the global context for the top level code -->
+2. The Execution of the top level code (inside the global execution context)
+3. Execution of functions and waiting for callbacks. (methods as well, since they are functions attached to objects. )
+
+all these execution functions together make up the callstack 
+
+So when all the functions are done executing, the engine will wait for future callbacks
+
+So Whats inside an execution context? 
+
+
 
 
 
