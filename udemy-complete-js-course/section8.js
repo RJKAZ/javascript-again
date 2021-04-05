@@ -210,7 +210,39 @@ all these execution functions together make up the callstack
 
 So when all the functions are done executing, the engine will wait for future callbacks
 
-So Whats inside an execution context? 
+-----------------------------------------------------------
+
+So whats insie and execution context?
+
+Each function gets it own execution context as soon as it is called
+
+So all the variables declared inside a function will end up in its variable environment
+
+However functions can still access a variable outside its enviroment...this is becasue of the scope chain
+
+The Scope Chain consists of references to variables located outside of the current function, and to keep track of the scope chain, it is stored in each execution context. 
+
+Each context also gets a special variable called the "This" keyword
+
+So whats inside an Execution Context 
+1. The Variable Enviroment
+  a. let, const, and var declarations
+  b. Functions
+  c. Argument Object
+2. The Scope Chain
+3. The This keyword
+
+this is all generated in the creation phase which occurs right before execution
+
+One thing to keep in mind, execution contexts belonging to Arrow Functions do not get their own argument keyword, nor do they get the this keyword
+
+----------------------------------------------
+
+Now going back to the Call Stack, just what is it? 
+
+Its a place where execution contexts get stacked on top of each other to keep track of where we are in the execution.
+So the execution context on top of the stack is the one that is currently running. 
+
 
 
 
