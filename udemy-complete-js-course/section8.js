@@ -243,6 +243,36 @@ Now going back to the Call Stack, just what is it?
 Its a place where execution contexts get stacked on top of each other to keep track of where we are in the execution.
 So the execution context on top of the stack is the one that is currently running. 
 
+----------------------------------------------------
+
+Now lets move on to Scope Concepts. 
+
+Scoping: is how our programs variables are oranized and accessed. "where do variables live? or "Where can we access a certain variable, and where not?"
+Lexical Scoping: Which is scoping controlled by the placement of functions and block in the code. 
+
+Scope: Space or Environment in which a certain variable is declared(variable enviroment in case of functions) There is a global scope, function scope, and a block scope
+
+Scope of a variable: The Region of our code where a certain variable can be accessed. 
+
+The Global Scope: is for our top level code. Variables declared outside of any function or block. Variables declared in Global Scope are accessible everywhere
+
+The Function Scope: Every function created has its own scope. and variables declared within are only accessible inside the function, not outside it. This is also called the local scope
+
+All Functions create their own scope, Function declarations, Function Expressions, and Arrow functions all have their own scope.
+
+And with ES6, we now also have Block Scopes: Variables are accessible only inside a block, however this only applies to Let and Const. 
+
+So if you have a if/else statement or a for loop inside of a function, and you declare a let or const variable in those specifc curly braces of the if/else/loop, that variable can only be accessed in the block and nowhere else outside of it. 
+
+Also with ES6, all functions are also block scoped when using Strict Mode. 
+
+Scopes have access to variables from all outer scopes
+
+So....Child Scopes have access to the parent scopes, but parent scopes do not have access to the child scopes
+
+left off at 17:40
+
+
 
 
 
