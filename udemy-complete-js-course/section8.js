@@ -272,6 +272,31 @@ So....Child Scopes have access to the parent scopes, but parent scopes do not ha
 
 left off at 17:40
 
+So the Call Stack goes in the order in which functions are called. 
+The Scope Chain  goes in the order in which functions are written in the code, so the Scope Chain has nothing to do with order in which functions are called
+
+--- so to summaries alot of this. 
+
+Scoping asks the question "where do variables live?" or "where can we access a certain variable, and where not?"
+
+There are 3 types of scope in Javascript, The global scope, the function scope (defined by functions), and the block scope (defined by code blocks)
+
+Only let and const variables are block scoped. Variables with var end up in the closest function scope. 
+
+In Javascript, we have lexical scoping, so the rules of where we can access variables are based on exactly where in the code functions and blocks are written.
+
+Every scope always has access to all the variables from all its outer scopes. This is the scope chain!
+
+When a variable is not in the current scope, the engine looks up in the scope chain until it finds the variable its looking for. this is called variable lookup
+
+the scope chain is a one way street. A scope will never ever hacve access to the variables of an inner scope (unless they use Var I guess lol)?
+
+The scope chain in a certain scope is equal to adding together all the variable enviroments of all the parent scopes
+
+the scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all. 
+
+
+
 
 
 
