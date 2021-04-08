@@ -336,5 +336,66 @@ The creator of JavaScript enabled hositing because it allows
 3. JavaScript wasn't meant to become such a huge programing language, so things like var hositing can't be removed. hence why let and const were added. 
 
 
+--------------------------------------------------------------------
 
+So lets get some additional practice with Hoisitng 
+first lets create one of each variable 
 */
+
+// and log them to the console before we declare them;
+
+// console.log(me);
+// console.log(job);
+// console.log(year);
+
+var me ='Jonas';
+let job = 'teacher';
+const year = 1991;
+
+// the first console log does return an undefinted, because while Var is hoisted, but hoisted to the value of undefinied. 
+
+// the other two however bring back a reference error because they are stuck in the temporal dead zone. 
+
+// lets try functions
+
+// console.log(addDecl(2, 3));
+// console.log(addExpr(2, 3));
+// console.log(addArrow(2, 3));
+
+function addDecl(a,b) {
+  return a + b;
+}
+
+const addExpr = function(a,b) {
+  return a + b;
+}
+
+const addArrow = (a,b) => a + b;
+
+// this creates the same results. The first function works, but since the other two are consts, they remain in the temporal deadzone. 
+
+// if I change addExpr and addArrow to Var instead of Const, then they will return undefined. 
+
+// another Example 
+console.log(undefined);
+if (!numProducts) deleteShoppingCart();
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+  console.log('All products deleted!');
+}
+
+// So the overall takeaways - just don't use Var, stick with let and const. and just declare the variables at the top of the page on the global scope. That solves many hoisitng related problems. 
+
+// And declare all your functions first, but only after the variable declarations 
+
+// another example
+
+var x = 1;
+let y = 1;
+const z = 3;
+
+console.log(x === window.x);
+console.log(y === window.y);
+console.log(z === window.z);
