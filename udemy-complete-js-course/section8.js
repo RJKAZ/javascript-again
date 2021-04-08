@@ -295,18 +295,45 @@ The scope chain in a certain scope is equal to adding together all the variable 
 
 the scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all. 
 
+Also, one side effect of scopes is that you can acctually have the same variable name used twice.
+
+like 
+
+const firstName = 'Jonas' in the global scope
+
+const firstName = "Terry" in the function or block scope. 
+
+You can have both variables named firstName since they are in different scopes and thus not the same variable. 
+
+--------------------------------------------------------------
+
+Hoisting in JavaScript 
+
+Hoisting: Makes some types of variables accessible/usable in the code before they are actually declared. "Variables lifted to the top of their scope".
+
+so behind the scenes - 
+
+Before execution, the code is scanned for variable declarations, and for each variable, a new property is created in the variable environment object. 
 
 
+Function declarations are - are Hoisted, the initial value is the Actual Function, and the scope is Block
+var variable declarations - are Hoisted, the initial value is undefined, and the scope is function
+let and const variables   - are not hoisted...techncially they are yes, but not in practice. The initial value is uninitialized
+  or TDZ (temporal dead zone), and they are blocked scoped.
+Function expressions and Arrow Functions - For those it depeneds if they were created using var or let/const
 
+Why is there a TDZ(Temporal Dead Zone)?
 
+It was created in ES6 , and it makes it easier to avoid and catch errors. Accessing variables before declaration is a bad practice and should be avoided, hence forth we will get an error if we try.
 
+TDZ also makes the const variables actually work as they are supposted to, Const for example cannot be redefined, so setting a const as undefined before execution expecting to get redefined is against its rule and thus a loop hole. The TDZ closes that loophole.
 
+If Hoisting creates so many problems, why does it exist?
 
-
-
-
-
-
+The creator of JavaScript enabled hositing because it allows 
+1. using functions before actual declaration (useful for recursion)
+2. var hoisting is just a byproduct of hoisting functions 
+3. JavaScript wasn't meant to become such a huge programing language, so things like var hositing can't be removed. hence why let and const were added. 
 
 
 
