@@ -348,13 +348,13 @@ first lets create one of each variable
 // console.log(job);
 // console.log(year);
 
-var me ='Jonas';
+var me = 'Jonas';
 let job = 'teacher';
 const year = 1991;
 
-// the first console log does return an undefinted, because while Var is hoisted, but hoisted to the value of undefinied. 
+// the first console log does return an undefinted, because while Var is hoisted, but hoisted to the value of undefinied.
 
-// the other two however bring back a reference error because they are stuck in the temporal dead zone. 
+// the other two however bring back a reference error because they are stuck in the temporal dead zone.
 
 // lets try functions
 
@@ -362,21 +362,21 @@ const year = 1991;
 // console.log(addExpr(2, 3));
 // console.log(addArrow(2, 3));
 
-function addDecl(a,b) {
+function addDecl(a, b) {
   return a + b;
 }
 
-const addExpr = function(a,b) {
+const addExpr = function (a, b) {
   return a + b;
-}
+};
 
-const addArrow = (a,b) => a + b;
+const addArrow = (a, b) => a + b;
 
-// this creates the same results. The first function works, but since the other two are consts, they remain in the temporal deadzone. 
+// this creates the same results. The first function works, but since the other two are consts, they remain in the temporal deadzone.
 
-// if I change addExpr and addArrow to Var instead of Const, then they will return undefined. 
+// if I change addExpr and addArrow to Var instead of Const, then they will return undefined.
 
-// another Example 
+// another Example
 console.log(undefined);
 if (!numProducts) deleteShoppingCart();
 
@@ -386,9 +386,9 @@ function deleteShoppingCart() {
   console.log('All products deleted!');
 }
 
-// So the overall takeaways - just don't use Var, stick with let and const. and just declare the variables at the top of the page on the global scope. That solves many hoisitng related problems. 
+// So the overall takeaways - just don't use Var, stick with let and const. and just declare the variables at the top of the page on the global scope. That solves many hoisitng related problems.
 
-// And declare all your functions first, but only after the variable declarations 
+// And declare all your functions first, but only after the variable declarations
 
 // another example
 
@@ -423,12 +423,12 @@ Its important to note that 'this' does not point to the function itself. And als
 
 // So in practice ------
 
-console.log(this); 
+console.log(this);
 
 // this returns the window element
 
 const calcAge = function (birthYear) {
-  console.log(2037 - birthyear);
+  console.log(2037 - birthYear);
   console.log(this);
 };
 
@@ -436,51 +436,94 @@ calcAge(1991);
 
 // in that above code, with strict mode enabled, the 'this' keyword would return undefined
 
-const calcAgeArrow = birthYear => {
-  console.log(2037 - birthyear);
+const calcAgeArrow = (birthYear) => {
+  console.log(2037 - birthYear);
   console.log(this);
 };
 
 calcAgeArrow(1991);
 
-// that code returns the window scope becasue it is an arrow function, and it does not get its own 'this', it defaults to the parent element which is window. 
+// that code returns the window scope becasue it is an arrow function, and it does not get its own 'this', it defaults to the parent element which is window.
 
 // so lets try it inside another example
 
 const jonas = {
+  firstName: 'Jonas',
   year: 1991,
-  calcAge: function() {
-    console.log(this);
+  calcAge: function () {
+    //console.log(this);
     console.log(2037 - this.year);
-  }
-}
 
-jonas.calcAge()
+    const self = this; // self or that
+    const isMellenial = function () {
+      console.log(self);
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isMellenial();
+  },
+
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstname}`);
+  },
+};
+jonas.greet();
+jonas.calcAge();
+
+// jonas.calcAge();
 
 // in that above case, 'this' will refer to the jonas object
 
-// now one final example 
+// now one final example
 
-const matilda = {
-  year: 2017,
-}
+// const matilda = {
+//  year: 2017,
+// };
 
 // now we can give the calcAge function in Jonas's to matilida using method borrowing.
 
-matilda.calcAge = jonas.calcAge 
+// matilda.calcAge = jonas.calcAge;
 
 // so this copies the calcAge function into the Matilda object
 
-matilda.calcAge();
+// matilda.calcAge();
 
 // in that case 'this' will refer to Matilda not Jonas, since it is Matilda calling it
 
-const f = jonas.calcAge;
+// const f = jonas.calcAge;
 
-// so when we borrow again, but this time a function into another variable 
+// so when we borrow again, but this time a function into another variable
 
-f();
+// f();
 
-// this turns out both undefined and type error. Becasue this F is just a regular functon call, 
-// there is no owner of F at this point, so 'this' becomes undefined. 
+// this turns out both undefined and type error. Becasue this F is just a regular functon call,
+// there is no owner of F at this point, so 'this' becomes undefined.
 
+// Now with Arrow Functions vs Regular Functions
+
+/*
+Never use an Arrow Functon as a Method 
+
+*/
+
+// Arguments keyword
+
+const addExprs = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+addExprs(2, 5);
+// even though it only takes in two arguments, you an add more technically
+addExprs(2, 5, 8, 12);
+
+var addArrow1 = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+
+//addArrow(2, 5, 8);
+
+// So the Arguments keyword does exist in regular functions,  just not in arrow functions
+
+// largely though with Modern JavaScript, the Argument Keyword is not nessesary anymore.
