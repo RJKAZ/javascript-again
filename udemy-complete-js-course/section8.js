@@ -399,3 +399,88 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+/*
+------------------------------------------------------------------
+
+Now lets Discuss the ' this ' keyword
+
+'This' keyword is a special variable that is created for every execution context (every function).
+It takes the value of (or rather points to) the "owner" of the function in which the this keyword is used. 
+
+'this' is not static. it depends on how the function is called, and its value is only assigned when the function is actually called.
+
+Method -> 'this' = the object calling the method
+
+Simple Function Call -> 'this' = undefinied (in strict mode only, without strict it will point to a global object like the window)
+
+Arrow Functions -> 'this' = 'this' of the surrounding function (lexical this). Arrow functions do not get their own 'this'
+
+Event listener -> 'this' = Dom element that the handler is attached to.
+
+Its important to note that 'this' does not point to the function itself. And also not the its variable environment. 
+*/
+
+// So in practice ------
+
+console.log(this); 
+
+// this returns the window element
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthyear);
+  console.log(this);
+};
+
+calcAge(1991);
+
+// in that above code, with strict mode enabled, the 'this' keyword would return undefined
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthyear);
+  console.log(this);
+};
+
+calcAgeArrow(1991);
+
+// that code returns the window scope becasue it is an arrow function, and it does not get its own 'this', it defaults to the parent element which is window. 
+
+// so lets try it inside another example
+
+const jonas = {
+  year: 1991,
+  calcAge: function() {
+    console.log(this);
+    console.log(2037 - this.year);
+  }
+}
+
+jonas.calcAge()
+
+// in that above case, 'this' will refer to the jonas object
+
+// now one final example 
+
+const matilda = {
+  year: 2017,
+}
+
+// now we can give the calcAge function in Jonas's to matilida using method borrowing.
+
+matilda.calcAge = jonas.calcAge 
+
+// so this copies the calcAge function into the Matilda object
+
+matilda.calcAge();
+
+// in that case 'this' will refer to Matilda not Jonas, since it is Matilda calling it
+
+const f = jonas.calcAge;
+
+// so when we borrow again, but this time a function into another variable 
+
+f();
+
+// this turns out both undefined and type error. Becasue this F is just a regular functon call, 
+// there is no owner of F at this point, so 'this' becomes undefined. 
+
