@@ -527,3 +527,64 @@ var addArrow1 = (a, b) => {
 // So the Arguments keyword does exist in regular functions,  just not in arrow functions
 
 // largely though with Modern JavaScript, the Argument Keyword is not nessesary anymore.
+
+// -------------------------------------------------------------------------------------
+
+// Primatives VS. Objects (primitive vs reference types) Notes
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+// this turns out the way we would expect because old age is refering the inital value of age given its placement in the code
+
+const me1 = {
+  name: 'jonas',
+  age: 30,
+};
+
+const friend = me1;
+friend.age = 27;
+console.log('Friend:', friend);
+console.log('Me', me1);
+
+// however in this example, it doesn't turn out the way we expect. both ages become 27, why does this work this way?
+
+/*
+
+So JavaScript has primative data types = Number, Strings, Boolean, Undefined, Null, Symbol, and BigInt.
+
+Everything else is basicly an object; Object Literals, Array's, Functions and many more.
+These are refered to as refernece types
+
+So Primatives are Primative Types, and Objects are Reference Types. 
+
+In regards to this remember how JavaScript works beneath the engine. 
+
+It has 2 componenets, the Call Stack and the Heap
+
+The Call Stack is where functions are executed and the Heap is where objects are stored in memory 
+
+So All Objects (or Reference Types) will get stored in the Memory Heap 
+
+Now Primitive's are stored in the Call Stack, or rather they are stored in their execuition context. 
+
+So back to those earlier examples, the first example is only primatives so they are all stored in the call stack. Where as the 2nd example, and Object or Reference Type is stored in the Heap.
+
+So when the Me Object is accessed in the Callstack, instead of referencing somewhere else on the call stack, its refrencing whats stored in the Heap 
+
+So when we try to change the value in the Me object for the friend object, its still refering to the object in the heap, so by changing the value in the heap, we are changing it for both since they both are refering to the heap.
+
+So when you think you are copying an object, you are actually creating a new variable that just points to the same object. 
+
+There are a few other topics that are very important with how JavaScript works behind the scenese, but we'll go over those in other topics. 
+
+1. Prototypal Inheritance - We will address in Object Oriented Programming (OPP)
+2. Event Loop - We will address in the Asynchronous javaScript: Promises, Async/Await and Ajax
+3. How the DOM really works. - We will address in the Advnaced Dom and Events 
+
+________________________________________________________________________________________
+
+*/
