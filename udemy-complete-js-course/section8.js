@@ -587,4 +587,7 @@ There are a few other topics that are very important with how JavaScript works b
 
 ________________________________________________________________________________________
 
+Almost Done with Section 8 - Need to come up with a way to finish this faster
+
+
 */
