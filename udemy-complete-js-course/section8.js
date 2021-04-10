@@ -589,5 +589,7 @@ ________________________________________________________________________________
 
 Almost Done with Section 8 - Need to come up with a way to finish this faster
 
+So I can then start the next three
+
 
 */
