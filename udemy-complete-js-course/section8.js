@@ -587,4 +587,83 @@ There are a few other topics that are very important with how JavaScript works b
 
 ________________________________________________________________________________________
 
+Lets run thru some more examples 
+
+
 */
+//primative types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName);  // console.logs Davis
+console.log(oldLastName); // console.logs Williams
+
+// It works the way we expect, and it works this way becasue each primative value will be saved into its own piece of memory in the callstack.
+
+// Now lets do the same thing with an object/Reference Values
+// to reiterate, reference values are stored in heap and the callStack just refers to them.
+
+//reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+const marriedJessica = jessica; 
+// This looks like we are copying the entire object, but behind the scenes
+// what we are acctually doing is just copying the reference which points to the jessica object
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage: ', marriedJessica);
+
+// this changed both to the new last name of Davis
+
+// It did this because when we attempted to copy the original Jessica object, it didn't create a new object
+// its just references the original Jessica Object
+
+// so marriedJessica is not a new object in the heap. 
+// marriedJessica is just a new varibale in the callstack that hosts the referene to the original object
+// so both of the variables point to the same memory address in the heap. 
+
+// so when you change a value on Married Jessica, it will do so to regular Jessica as well
+
+// Now there is a way around this sort of
+
+//copying objects 
+const jessica2= {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage: ', jessicaCopy);
+
+// Now the last name is preserved in both. By using Object.assign, we basicly copied the object into a new object
+
+// so behind the scenes, a new object was created in the heap and jessicaCopy is point to that new object
+
+// Now using Object.assign does have flaws and limits
+// It only works on the first level, like it you have an object inside and object
+// the inner object will stay the same and point to the same place in memory
+
+// so Object.assing really just create a cheap/shallow copy and not a full clone
+
+// so lets try and add some more family members
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage: ', jessicaCopy);
+
+// so we see here the name changed, because it was first level.
+// but since the object is nested, its still refering to the original object, so changing it, changes the original object as well
+
+// now to create a deep clone....it is possible but very difficult and a lesson for another day 
+
+// and with that Section 8 is finished!
