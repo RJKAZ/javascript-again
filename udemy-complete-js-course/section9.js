@@ -149,3 +149,37 @@ const {
   fri: { open: op, close: cl },
 } = openingHours;
 console.log(op, cl);
+
+// ----------------------------------------------------------------------
+
+// Now lets talk about the Spread Operator
+
+// so as an example, let say you wanted to add to an array
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+// that is one way to do it, but lets try the spread operator  ' ... '
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+// and this gives the same result.
+
+// The Spread operator takes all the values out of the array and is like writing them manually.
+
+// So we can use the spread operator everytime we would write multiple code sperated by commas.  Such as Array literals
+
+console.log(...newArr);
+// is the same as writing
+console.log(1, 2, 7, 8, 9);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// keep in mind, this is creating a completely new array.
+
+// in a way the spread operator is similar to destructuing.
+
+// left off on 6:14 in the video
