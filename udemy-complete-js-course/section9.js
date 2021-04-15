@@ -40,7 +40,13 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delievered to ${address} at ${time} `
     );
   },
+
+  orderPasta: function(ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`);
+  }
 };
+
+
 
 restaurant.orderDelivery({
   time: '22:30',
@@ -156,13 +162,13 @@ console.log(op, cl);
 
 // so as an example, let say you wanted to add to an array
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+const arr1 = [7, 8, 9];
+const badNewArr = [1, 2, arr1[0], arr1[1], arr1[2]];
 console.log(badNewArr);
 
 // that is one way to do it, but lets try the spread operator  ' ... '
 
-const newArr = [1, 2, ...arr];
+const newArr = [1, 2, ...arr1];
 console.log(newArr);
 
 // and this gives the same result.
@@ -183,3 +189,53 @@ console.log(newMenu);
 // in a way the spread operator is similar to destructuing.
 
 // left off on 6:14 in the video
+
+// So the spread operator takes all the elements from the array, but unlike destructuring, it does not make any new variables. 
+// Because of that, the spread operator can only be used in places were we would write values seperated by commas
+
+// copy array 
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// join 2 Arrays 
+const menuJoined = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menuJoined);
+
+//even thought the spread operator works on Arrays,it acctualy just works on all iterables
+// Iterables are things like arrays, strings, maps, or sets....just not Objects 
+
+// Now since strings are also Iterables, you can also use the spread operator on them as well
+
+const str = "Jonas";
+const letters = [...str, ' ', 's.'];
+console.log(letters);
+
+// but even with strings, you can only use the spread operator when building an array or passing values into a function. 
+
+console.log(letters);
+console.log(...str);
+console.log('j', 'o');
+//template literals won't work with these
+// console.log(`${...str} Schmedtmann`);
+
+// lets do a real world example - added an orderPasta function to the top code 
+
+const ingredients = [
+  //prompt("Let\'s make pasta! Ingredient 1?"), 
+  //prompt("Ingredient 2?"),
+  //prompt("Ingredient 3?")  
+];
+
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
+
+// Objects
+
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Pizza Shack';
+console.log(restaurantCopy.name);
+console.log(restaurantName);
