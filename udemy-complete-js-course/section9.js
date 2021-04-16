@@ -239,3 +239,37 @@ const restaurantCopy = {...restaurant};
 restaurantCopy.name = 'Pizza Shack';
 console.log(restaurantCopy.name);
 console.log(restaurantName);
+
+// ----------------------------------------------------------------------------------------------------
+
+// Now Notes of Rest Pattern and Parameters
+
+// The Rest Pattern looks the same as the spread operator with three dots, but it does the opposite. 
+
+// So we use the Spread Operator to build new Arrays or pass multiple values into a function. Or we can use it to spread an array into individual elements
+
+// Now the Rest Pattern does the opposite and takes multiple seperate elments and condenses them into an Array.
+
+// So Spread is to unpack elements from an Array and Rest Pattern is to pack elements into an Array
+
+// Spread on the Right of =
+const arr2 = [1, 2, ... [3, 4]];
+
+// Rest on the Left of =
+const [m, n, ...others] = [1, 2, 3, 4, 5];
+console.log(m, n, others);
+
+const [pizza, , risotto, ...otherFood ] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(pizza, risotto, otherFood);
+
+// now the rest element must be the last element, hence forth there an only be one rest 
+
+// this also works in objects, now remaing elements will be collected into a new object instead of a new array
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 1st Part was Destructuring 
+// 2nd Part is Functions
+
+//left off at 9:10
