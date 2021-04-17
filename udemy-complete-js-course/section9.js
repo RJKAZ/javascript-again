@@ -43,6 +43,11 @@ const restaurant = {
 
   orderPasta: function(ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   }
 };
 
@@ -273,3 +278,26 @@ console.log(weekdays);
 // 2nd Part is Functions
 
 //left off at 9:10
+
+// Functions
+const add = function(...numbers) {
+  let sum = 0;
+  for(let i = 0; i<numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+
+};
+
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const e = [23, 5, 7];
+add(...e);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms');
+
+// so to recap, both the spread and the rest syntax look exactly the same, but they work in opposite ways depending on where they are used. 
+
+// And Spread is used where we would write values seperated by commas, and the Rest is used where we would otherwise write variable names seperated by commas (so not values)
+
