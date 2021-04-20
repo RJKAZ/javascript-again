@@ -301,3 +301,41 @@ restaurant.orderPizza('mushrooms');
 
 // And Spread is used where we would write values seperated by commas, and the Rest is used where we would otherwise write variable names seperated by commas (so not values)
 
+// -----------------------------------------------------------------------
+
+// Now lets get back to the "and" and "or" operators ( && AND || )
+// And how we can use them for short circuiting
+
+// Here are some rules regarding the || (or) operator 
+// 1.  Can use any data type
+// 2. Can return any data type
+// 3. Short Circuit evaluations (Short circuiting)
+console.log(3 || 'Jonas');
+
+// in case of the '||' operator, short circuiting means that if the first value is truthy, it will
+// immediantly return that first value, which is what the above console.log demonstrates by returning 3 which is a truthy value 
+// So if the 1st value is truthy, the 2nd value (the other operand) will not even be evaluated 
+// JavaScript won't even read it, hence why its called Short Circutiing 
+
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// in this example, "Hello" is the first truthy value
+// undefined, 0, and '' are falsy
+
+//restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10 
+console.log(guests2);
+
+console.log('----- AND ------');
+
+// in Short Circuting, the AND operator works in the complete opposite way that the OR operator does. 
+// left off around the 10min mark
+
