@@ -339,3 +339,37 @@ console.log('----- AND ------');
 // in Short Circuting, the AND operator works in the complete opposite way that the OR operator does. 
 // left off around the 10min mark
 
+console.log( 0 && 'Jonas');
+
+// basicly with the && operator, if the first value is falsy, it will return falsey and not even look at the 2nd value 
+
+
+console.log( 7 && 'Jonas');
+console.log( 7 || 'Jonas');
+
+console.log('Hello' && 23 && null && 'jonas');
+// Null is the output because it is the first falsy value
+
+console.log('Hello' || 23 || null || 'jonas');
+// 'Hello' is the output because it is the first truthy value
+
+//practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach')
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// DO NOT REPLACE if/else with &&/||
+
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// there is another operator the Nullish Coalescing Operator ??
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect); 
+
+//  This operator ?? works with the concept of nullish value instead of truthy and falsey 
+// Nullish: null and undefined (Not 0 or 'empty string')
