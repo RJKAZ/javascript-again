@@ -373,3 +373,85 @@ console.log(guestCorrect);
 
 //  This operator ?? works with the concept of nullish value instead of truthy and falsey 
 // Nullish: null and undefined (Not 0 or 'empty string')
+
+//_______________________________________________________
+
+// Now lets focus on Looping Arrays the For-of-loop
+
+// so lets say we want to loop over the entire menu 
+
+const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu2) console.log(item);
+
+// So the for-of-loop will loop over the entire array, and at each iteration it will give us access to the current element
+
+// which in this example is 'item', so when logged to the conosle, we get each element logged one by one 
+
+// now what if we wanted the current index, not just the element?
+
+// this is a pain in the for-of-loop
+for (const item of menu2.entries()) {
+  console.log(item);
+}
+
+for (const item of menu2.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`)
+}
+
+// since item is now an array, we can destructure it
+
+for (const [i, el] of menu2.entries()) {
+  console.log(`${i + 1}: ${el}`)
+}
+
+//____________________________________________________
+
+// Now lets discuess Enhanced Object Literals 
+
+// and in the lecture he changed all the data, so I'm not sure how to make notes without bricking the rest of the page. \
+//study this more sepretly
+//_______________________________________________________________
+
+// So lets try leaning Optional Chaining 
+
+// so lets say we wanted to get the opening hours of the restaurant for monday
+
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+ console.log(restaurant.openingHours.mon.open);
+
+// With optional chaining 
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example - lets loop over this array and log to the console if the restautant is open or closed on each day
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for(const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// the above is a perfect example of Optional Chaining and the Nullish Coalescing Operator
+
+// Optional chainging also works on calling methods
+
+console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
+
+console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
+
+// Optional Chaining even works on Arrays and we can use it to
+// check if an array is empty
+
+// Arrays
+// const users = [
+//  {name: 'Jonas', email: 'hello@jonas.io'}];
+const users = []
+
+console.log(users[0]?.name ?? 'User array empty')
+
+// so to write that without operational chaining
+
+if(users.length > 0) console.log(users[0].name); 
+else console.log('user array empty');
