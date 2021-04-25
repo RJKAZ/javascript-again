@@ -14,12 +14,12 @@ let johnHeight = 1.76;
 
 let markBmi = markWeight / markHeight ** 2;
 
-console.log( markWeight / markHeight ** 2)
+console.log(markWeight / markHeight ** 2);
 console.log(markBmi);
 
 let johnBmi = johnWeight / (johnHeight * johnHeight);
 
-console.log( johnWeight / johnHeight ** 2)
+console.log(johnWeight / johnHeight ** 2);
 console.log(johnBmi);
 
 //let markHigherBMI = markBmi > johnBmi;
@@ -32,11 +32,14 @@ console.log(johnBmi);
 // use a template literal to inclide the BMI values in the outputs .
 
 if (markBmi > johnBmi) {
-    console.log(`Marks BMI of ${markBmi} is higher than Johns BMI of ${johnBmi}!`)
+  console.log(
+    `Marks BMI of ${markBmi} is higher than Johns BMI of ${johnBmi}!`
+  );
 } else {
-    console.log(`Johns BMI of ${johnBmi} is higher than Marks BMI of ${markBmi}!`)
+  console.log(
+    `Johns BMI of ${johnBmi} is higher than Marks BMI of ${markBmi}!`
+  );
 }
-
 
 // Challenge 3
 
@@ -63,39 +66,39 @@ Test data:
 */
 
 //Data Set 1
-let dolphinsAverage1 = (96 + 108 + 89) /3;
-let koalasAverage1 = (88 + 91 + 110) /3;
+let dolphinsAverage1 = (96 + 108 + 89) / 3;
+let koalasAverage1 = (88 + 91 + 110) / 3;
 
 if (dolphinsAverage1 > koalasAverage1) {
-    console.log("The Dolphins Win!!!")
+  console.log('The Dolphins Win!!!');
 } else if (dolphinsAverage1 === koalasAverage1) {
-    console.log("We have a Tie!")
+  console.log('We have a Tie!');
 } else {
-    console.log("The Koalas Win");
+  console.log('The Koalas Win');
 }
 
 //Data Set 2
-let dolphinsAverage2 = (97 + 112 + 101) /3;
-let koalasAverage2 = (109 + 95 + 123) /3;
+let dolphinsAverage2 = (97 + 112 + 101) / 3;
+let koalasAverage2 = (109 + 95 + 123) / 3;
 
 if (dolphinsAverage2 > koalasAverage2) {
-    console.log("The Dolphins Win!!!")
+  console.log('The Dolphins Win!!!');
 } else if (dolphinsAverage2 === koalasAverage2) {
-    console.log("We have a Tie!")
+  console.log('We have a Tie!');
 } else {
-    console.log("The Koalas Win");
+  console.log('The Koalas Win');
 }
 
 // Data Set 3
-let dolphinsAverage3 = (97 + 112 + 101) /3;
-let koalasAverage3 = (109 + 95 + 106) /3;
+let dolphinsAverage3 = (97 + 112 + 101) / 3;
+let koalasAverage3 = (109 + 95 + 106) / 3;
 
 if (dolphinsAverage3 > koalasAverage3) {
-    console.log("The Dolphins Win!!!")
+  console.log('The Dolphins Win!!!');
 } else if (dolphinsAverage3 === koalasAverage3) {
-    console.log("We have a Tie!")
+  console.log('We have a Tie!');
 } else {
-    console.log("The Koalas Win");
+  console.log('The Koalas Win');
 }
 // the offical answer with the bonus'es
 /*
@@ -119,13 +122,17 @@ const scoreKoalas = (109 + 95 + 86) / 3;
 console.log(scoreDolphines, scoreKoalas);
 
 if (scoreDolphines > scoreKoalas && scoreDolphines >= 100) {
-    console.log('Dolphons win the Trophy');
+  console.log('Dolphons win the Trophy');
 } else if (scoreKoalas > scoreDolphines && scoreKoalas >= 100) {
-    console.log('Koalas Win!');
-} else if (scoreDolphines === scoreKoalas && scoreDolphines >= 100 && scoreKoalas >= 100) {
-    console.log('We have a Tie')
+  console.log('Koalas Win!');
+} else if (
+  scoreDolphines === scoreKoalas &&
+  scoreDolphines >= 100 &&
+  scoreKoalas >= 100
+) {
+  console.log('We have a Tie');
 } else {
-    console.log("No One Wins :( ")
+  console.log('No One Wins :( ');
 }
 
 /* Coding Challenge #4
@@ -165,8 +172,7 @@ console.log( bill + tip);
 const bill = 275;
 const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
 console.log(`The bill was ${bill}, the tip was ${tip}, and the total value
-${bill + tip}`)
-
+${bill + tip}`);
 
 // Javascript Fundamentals Part 2
 
@@ -216,28 +222,26 @@ let dolphineScore = calcAverage(44, 23, 71);
 let koalaScore = calcAverage(65, 54, 49);
 console.log(dolphineScore, koalaScore);
 
-const checkWinner = function(dolphineAvg, koalasAvg) {
-    if (dolphineAvg >= 2 * koalasAvg ) {
-        console.log(`Dolphines win! (${dolphineAvg} vs. ${koalasAvg}) `)
-    } else if (koalasAvg >= 2 * dolphineAvg) {
-        console.log(`Koalas win! (${koalasAvg} vs. ${dolphineAvg}) `)
-    } else {
-        console.log('No team wins');
-    }
-    
-} 
+const checkWinner = function (dolphineAvg, koalasAvg) {
+  if (dolphineAvg >= 2 * koalasAvg) {
+    console.log(`Dolphines win! (${dolphineAvg} vs. ${koalasAvg}) `);
+  } else if (koalasAvg >= 2 * dolphineAvg) {
+    console.log(`Koalas win! (${koalasAvg} vs. ${dolphineAvg}) `);
+  } else {
+    console.log('No team wins');
+  }
+};
 
-checkWinner(dolphineScore, koalaScore)
-// then with pluggin in random number values 
+checkWinner(dolphineScore, koalaScore);
+// then with pluggin in random number values
 checkWinner(576, 111);
 
 // test 2
 
 dolphineScore = calcAverage(85, 54, 41);
 koalaScore = calcAverage(23, 34, 27);
-console.log(dolphineScore, koalaScore)
-checkWinner(dolphineScore, koalaScore)
-
+console.log(dolphineScore, koalaScore);
+checkWinner(dolphineScore, koalaScore);
 
 // Part 2 Coding Challenge 2
 
@@ -283,7 +287,7 @@ calcTip(total[2]);
 
 // And this is the offical example
 
-// the solution as a function expresion 
+// the solution as a function expresion
 
 /*const calcTip = function(bill) {
     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
@@ -320,42 +324,40 @@ tall.
 */
 
 const markMiller = {
-    fullName: 'Mark Miller',
-    mass: 78,
-    height: 1.69,
+  fullName: 'Mark Miller',
+  mass: 78,
+  height: 1.69,
 
-    calcBMI: function () {
-        this.bmi = this.mass / this.height ** 2;
-        return this.bmi;
-    },
-
-}
-
-
-
-
+  calcBMI: function () {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  },
+};
 
 const johnSmith = {
-    fullName: 'John Smith',
-    mass: 92,
-    height: 1.95,
+  fullName: 'John Smith',
+  mass: 92,
+  height: 1.95,
 
-    calcBMI: function () {
-        this.bmi = this.mass / this.height ** 2;
-        return this.bmi;
-    },
-
-}
+  calcBMI: function () {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  },
+};
 
 markMiller.calcBMI();
 johnSmith.calcBMI();
 
 console.log(johnSmith.bmi, markMiller.bmi);
 
-if(markMiller.bmi > johnSmith.bmi) {
-    console.log(`${markMiller.fullName}'s BMI (${markMiller.bmi}) is higher than ${johnSmith.fullName}'s BMI (${johnSmith.bmi})`)
+if (markMiller.bmi > johnSmith.bmi) {
+  console.log(
+    `${markMiller.fullName}'s BMI (${markMiller.bmi}) is higher than ${johnSmith.fullName}'s BMI (${johnSmith.bmi})`
+  );
 } else if (johnSmith.bmi > markMiller.bmi) {
-    console.log(`${johnSmith.fullName}'s BMI (${johnSmith.bmi}) is higher than ${markMiller.fullName}'s BMI (${markMiller.bmi})`)
+  console.log(
+    `${johnSmith.fullName}'s BMI (${johnSmith.bmi}) is higher than ${markMiller.fullName}'s BMI (${markMiller.bmi})`
+  );
 }
 
 // Part 2 - Coding Challenge #4
@@ -388,9 +390,9 @@ length of the array (because that's the number of elements)
 GOOD LUCK �
 */
 
-const calcTip = function(bill) {
-    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-}
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
 
 const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 const tips = [];
@@ -399,29 +401,28 @@ const totals = [];
 // so we need to loop over the bills array to fill up the tips and total arrays
 
 for (let i = 0; i < bills.length; i++) {
-    const tip = calcTip(bills[i]);  // passing in the bills at its current position 
-    tips.push(tip);
-    totals.push(tip + bills[i]);
+  const tip = calcTip(bills[i]); // passing in the bills at its current position
+  tips.push(tip);
+  totals.push(tip + bills[i]);
 }
 console.log(bills, tips, totals);
 
 // Bonus
 
-const calcAverageNew = function(arr){
-    let sum = 0;
-    for(let i = 0; i < arr.length; i++) {
-        // sum = sum + arr[i] this is the same as the line below
-        sum += arr[i];
-    }
-    
-    return sum /arr.length;
-}
+const calcAverageNew = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // sum = sum + arr[i] this is the same as the line below
+    sum += arr[i];
+  }
+
+  return sum / arr.length;
+};
 console.log(calcAverageNew([2, 3, 7]));
 console.log(calcAverageNew(totals));
 console.log(calcAverageNew(tips));
 
-
-// Section 9 Coding Challenge 
+// Section 9 Coding Challenge
 
 /*
 We're building a football betting app (soccer for my American friends �)!
@@ -452,46 +453,45 @@ Then, call the function again with players from game.scored
 */
 
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
     [
-    'Neuer',
-    'Pavard',
-    'Martinez',
-    'Alaba',
-    'Davies',
-    'Kimmich',
-    'Goretzka',
-    'Coman',
-    'Muller',
-    'Gnarby',
-    'Lewandowski',
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
     ],
     [
-    'Burki',
-    'Schulz',
-    'Hummels',
-    'Akanji',
-    'Hakimi',
-    'Weigl',
-    'Witsel',
-    'Hazard',
-    'Brandt',
-    'Sancho',
-    'Gotze',
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
     ],
-    ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
-    'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
     team1: 11.33,
     x: 3.25,
     team2: 6.5,
-    },
-    };
+  },
+};
 
 // 1. Create one player array for each team (variables 'players1' and
 // 'players2')
@@ -525,24 +525,24 @@ console.log(players1Final);
 // 5. Based on the game.odds object, create one variable for each odd (called
 //    'team1', 'draw' and 'team2')
 
-const {odds: {team1, x: draw, team2}} = game;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
 console.log(team1, draw, team2);
 
 // 6. Write a function ('printGoals') that receives an arbitrary number of player
 // names (not an array) and prints each of them to the console, along with the
 // number of goals that were scored in total (number of player names passed in)
 
-const printGoals = function(...players) {
-    console.log(players);
-console.log(`${players.length} goals were scored`);
+const printGoals = function (...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`);
 };
 
-printGoals('Lewandowski', 'Gnarby', 'Lewandowski',
-'Hummels');
+printGoals('Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels');
 
 printGoals('Davies', 'Muller');
 printGoals(...game.scored);
-
 
 // 7. The team with the lower odd is more likely to win. Print to the console which
 // team is more likely to win, without using an if/else statement or the ternary
@@ -556,19 +556,38 @@ Coding Challenge #2
 Let's continue with our football betting app! Keep using the 'game' variable from
 before.
 Your tasks:
-1. Loop over the game.scored array and print each player name to the console,
-along with the goal number (Example: "Goal 1: Lewandowski")
-2. Use a loop to calculate the average odd and log it to the console (We already
-studied how to calculate averages, you can go check if you don't remember)
-3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
-Odd of victory Bayern Munich: 1.33
-Odd of draw: 3.25
-Odd of victory Borrussia Dortmund: 6.5
-Get the team names directly from the game object, don't hardcode them
-(except for "draw"). Hint: Note how the odds and the game objects have the
-same property names �
-4. Bonus: Create an object called 'scorers' which contains the names of the
-players who scored as properties, and the number of goals as the value. In this
+*/
+
+//1. Loop over the game.scored array and print each player name to the console,
+// along with the goal number (Example: "Goal 1: Lewandowski")
+
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+
+// 2. Use a loop to calculate the average odd and log it to the console (We already
+//  studied how to calculate averages, you can go check if you don't remember)
+
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
+
+// 3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
+//    Odd of victory Bayern Munich: 1.33
+//    Odd of draw: 3.25
+//    Odd of victory Borrussia Dortmund: 6.5
+//    Get the team names directly from the game object, don't hardcode them
+//    (except for "draw"). Hint: Note how the odds and the game objects have the
+//    same property names �
+
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+
+/* 4. Bonus: Create an object called 'scorers' which contains the names of the
+ players who scored as properties, and the number of goals as the value. In this
 game, it will look like this:
 {
  Gnarby: 1,
@@ -576,6 +595,4 @@ game, it will look like this:
  Lewandowski: 2
 }
 GOOD LUCK �
-
-
 */
