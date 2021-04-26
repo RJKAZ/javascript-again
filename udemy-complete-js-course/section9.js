@@ -484,3 +484,70 @@ for (const [key, {open, close}] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
 
+//______________________________________________________________________
+
+// Now lets discuss Sets 
+
+// a set is a collection of unique values, so by its very nature it can't have any duplicates which makes it useful in certain situations 
+
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+console.log(ordersSet);
+// in this case, it ignores the duplicates and only logs the set as 3.
+
+// the order of elements within a set is irrelevant 
+
+// both sets and strings are iterables
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+//ordersSet.clear();
+console.log(ordersSet);
+
+// so within sets, you have some methods, you can see the size, return a boolean for something in the set, add, and delete into the set, or clear the whole set, but one thing you can't do is pull up by an index
+//console.log(ordersSet[1]);
+// Trying to pull up the 1st index value of a set won't work because sets don't have index values
+// This is because there is no point to get data out of a set, because if you need to get data out of something, you would just use an Array 
+// For sets all we need to know if a value is in a set or not
+
+// Since sets are iterables, they can be looped over
+
+for (const order of ordersSet) console.log(order);
+
+// the main purpose of a Set is remove duplicates from an Array
+// Heres an example an array of staff at a restaurnt with multiple waiters and chefs as a resturant would have. 
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+console.log(staff);
+
+// now what if we just wanted to pull the positions out of that to see what postitions there are.
+// to do that, we create a set
+
+const staffUnique = new Set(staff);
+console.log(staffUnique);
+// now to turn the set into an Array
+const staffUnique2 = [...new Set(staff)];
+console.log(staffUnique2);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('Kazanowski').size);
+
+// so to sum things up, Sets are not intended to replace Arrays at all, and although sets have some use, they are not nearly as important as Arrays 
+
+
