@@ -551,3 +551,182 @@ console.log(new Set('Kazanowski').size);
 // so to sum things up, Sets are not intended to replace Arrays at all, and although sets have some use, they are not nearly as important as Arrays 
 
 
+//_____________________________________________________________
+
+// Now lets learn about Maps, which are alot more useful then sets
+
+// In JavaScript, a Map is a data structure we can use to map values to keys
+// like in objects, in Maps, data is stored in key value pairs
+
+// The main difference between an Object and a Map, is that in Maps, the key can have any type
+// Compared to objects, where most values are strings, this is important
+// The keys can even be objects, arrays, or other maps
+
+// lets create a restaurant map
+// Maps are eaiser to create by leaving them empty at first and then filling them in later
+// and we pass them in using the set method
+
+const rest = new Map();
+rest.set('name', 'Bubbas Pizza Shack');
+rest.set(1, 'Brisbane, AU')
+console.log(rest.set(2, 'Cairns, AU'));
+
+rest
+  .set('categories', ['cheese', 'saussage', 'pepperoni', 'bacon'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are Closed :(')
+
+
+// even though the console.log is above these sets, it still reflect the changes they make 
+
+// to read data from a map, you use the get method, and pass in the name of the key 
+
+  console.log(rest.get('name'));
+  console.log(rest.get(true));
+  console.log(rest.get(1));
+
+  const time = 21;
+  console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+  // other map methods include the 'has' - 'delete' - 'size' - 'clear' methods 
+
+  console.log(rest.has('categories'));
+  rest.delete(2);
+  // rest.clear();
+  rest.set([1,2], 'Test');
+  // rest.set(document.querySelector('h1'), 'Heading');
+  console.log(rest);
+  console.log(rest.size);
+
+  console.log(rest.get([1, 2]));
+  // this console log returns undefined because even though they are written the same, in the Heap, they are consider unique and have a different place in memory 
+
+  // a workaround to get access an array stored in a map
+
+  const array2 = [3,4];
+  rest.set(array2, 'Test2');
+  console.log(rest.get(array2));
+  // by establishing array2 as a const, and calling that array by name, it will refer to the same data/memory
+
+  // Maps and Sets were both introduced in ES6
+
+  // There is also another way to populate a map without using the set method 
+
+  const question = new Map([
+    ['question', 'What is the best programming language in the world?'],
+    [1, 'C'],
+    [2, 'Java'],
+    [3, 'JavaScript'],
+    ['correct', 3],
+    [true, 'Correct!'],
+    [false, 'Try Again!'],
+  ]);
+
+  console.log(question);
+
+  // if this map/array structure looks similar, it should, its from the same 
+  // structure returned from calling Object.entries
+
+
+  // Given the simmilarity to objects, there is a way to convert objects to maps
+
+  
+  console.log(Object.entries(openingHours));
+  const hoursMap = new Map(Object.entries(openingHours));
+
+  console.log(hoursMap);
+
+  // Iteration is also possible on maps, so you can use a for loop
+
+  // Quiz App
+  console.log(question.get('question'));
+
+  for (const [key, value] of question) {
+    if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+  }
+
+  // const answer = Number(prompt('Your answer'));
+  // console.log(answer)
+  // console.log(question.get(question.get('correct') === answer));
+
+  // Sometimes it is also nessesary to convert a map back into an Array 
+  // to do so, you build a new array and then unpack using the spread operator 
+
+  console.log([...question]);
+
+  // you also have acces to other array methods
+
+  //console.log(question.entries());
+  console.log([...question.keys()]);
+  console.log([...question.values()]);
+
+  // _________________________________________________________________
+
+  // So Objects, Arrays, Sets, and Maps, which data structure do I use? 
+
+  // there are 3 sources of data
+  // 1. From the Program itself: Data written directly in source code (status messages)
+  // 2. From the UI: Data input from the user or data written in the DOM (tasks in a todo app)
+  // 3. From external sources: Data fetched for example from Web API (recipe objects);
+
+  // Reminder - API = Application programing interface 
+
+  // So no matter what the data comes from or what the data is, we usually have
+  // Collections of Data
+  // these collections need to be stored somewhere, hence Data Structures 
+  // JavaScript has 4, Arrays, Objects, Sets, Maps
+
+  // If you have a simple list of data, you use an Array or a Set
+  // If you need key/value pairs, you use an Object or a Map
+
+  // with Key/Value pairs, the keys allow us to describe values 
+  // with a simple list like an array, we just have the value without any description
+  
+  // Web API's are the most common source of data in JavaScript 
+  // Most API's return data in JSON format which uses the same formatting as JavaScript objects and Arrays 
+
+  // On a Side note, there are also two additional data strucutres built into JavaScript,  WeakMap and WeakSet
+  // Other Coding Languages, there are alot more data strucutres. Such as Stacks, Ques, Linked Lists, Trees, and Hash Tables
+
+  /* 
+  So for Arrays Vs Sets - we should use them for simple sets of values when we do not need to describe the value
+
+  We use Arrays when 
+  1. When we need an ordered list of values (that might contain duplicates)
+  2. Use when you need to manipulate data
+
+  We use Sets when 
+  1. You need to work with unique values
+  2. Use when High Performance is really important 
+  3. Use to remove duplicates from Arrays
+
+  so Sets aren't intended to replace arrays, but to compliment them when dealing with unique values
+
+  So for Objects VS Maps - we should use them when we need to describe values using keys
+
+  We use Objects when
+  1. More Traditional key/value store (maps is only from ES6 and up)
+  2. Easier to write and access values with ' . ' and ' [] '
+  3. Use when you need to include functions (methods)
+  4. Use when working with JSON (can convert to map)
+
+  We use Maps for
+  1. Better performance
+  2. Keys can have any data type
+  3. Easy to iterate
+  4. Easy to compute size
+  5. Use when you simply need to map keys to values
+  6. Use when you need keys that are not strings 
+
+  although Maps are technically superior, Objects, since they are legacy are far more wildly used
+
+
+
+
+
+
+  */
+
+
