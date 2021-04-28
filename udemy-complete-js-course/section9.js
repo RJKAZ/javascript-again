@@ -723,10 +723,69 @@ rest
   although Maps are technically superior, Objects, since they are legacy are far more wildly used
 
 
-
-
-
-
   */
 
+  // WORKING WITH STRINGS PART 1 ____________________________________
+  
 
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+// with these are accesing the index value of each letter in the string
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+
+// doing the same, but with a console log inputed value and not an actual variable
+console.log('B737' [0]);
+
+// length method which returns the number of indexs
+console.log(airline.length);
+console.log('B737'.length);
+
+// the indexOf method to get a specific position in the string 
+
+console.log(airline.indexOf('r'));
+
+// lastIndexOf
+
+console.log(airline.lastIndexOf('r'));
+
+// this also works with words
+
+console.log(airline.indexOf('Portugal'));
+
+// being able to target parts of strings by their index is useful for other methods like slice
+
+console.log(airline.slice(4));
+// since it takes part of the string, this is called a sub-string 
+
+console.log(airline.slice(4, 7)); // this is 7 - 4 = 3, so it keeps 3
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2)); // using negatives with slices returns the from the end instead
+console.log(airline.slice(1, -1));
+
+// practice function 
+
+const checkMiddleSeat = function(seat) {
+  // B & E are middle seats
+  const s = seat.slice(-1);
+  if( s === 'B' || s === 'E')
+  console.log('You got the middle seat');
+  else console.log('You got lucky');
+
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+// now behind the sceness, when you call a method on an array in JavaScript it will turn it into an Array
+// but when the object is done, Javascript will return it to a primative string 
+
+console.log(new String('jonas'));
+console.log(typeof new String('jonas'));
+console.log(typeof new String('jonas').slice(1));
