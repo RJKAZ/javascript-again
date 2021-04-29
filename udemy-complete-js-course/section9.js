@@ -41,17 +41,17 @@ const restaurant = {
     );
   },
 
-  orderPasta: function(ing1, ing2, ing3) {
-    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`);
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+    );
   },
 
-  orderPizza: function(mainIngredient, ...otherIngredients){
+  orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
-  }
+  },
 };
-
-
 
 restaurant.orderDelivery({
   time: '22:30',
@@ -195,26 +195,26 @@ console.log(newMenu);
 
 // left off on 6:14 in the video
 
-// So the spread operator takes all the elements from the array, but unlike destructuring, it does not make any new variables. 
+// So the spread operator takes all the elements from the array, but unlike destructuring, it does not make any new variables.
 // Because of that, the spread operator can only be used in places were we would write values seperated by commas
 
-// copy array 
+// copy array
 const mainMenuCopy = [...restaurant.mainMenu];
 
-// join 2 Arrays 
+// join 2 Arrays
 const menuJoined = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log(menuJoined);
 
 //even thought the spread operator works on Arrays,it acctualy just works on all iterables
-// Iterables are things like arrays, strings, maps, or sets....just not Objects 
+// Iterables are things like arrays, strings, maps, or sets....just not Objects
 
 // Now since strings are also Iterables, you can also use the spread operator on them as well
 
-const str = "Jonas";
+const str = 'Jonas';
 const letters = [...str, ' ', 's.'];
 console.log(letters);
 
-// but even with strings, you can only use the spread operator when building an array or passing values into a function. 
+// but even with strings, you can only use the spread operator when building an array or passing values into a function.
 
 console.log(letters);
 console.log(...str);
@@ -222,12 +222,12 @@ console.log('j', 'o');
 //template literals won't work with these
 // console.log(`${...str} Schmedtmann`);
 
-// lets do a real world example - added an orderPasta function to the top code 
+// lets do a real world example - added an orderPasta function to the top code
 
 const ingredients = [
-  //prompt("Let\'s make pasta! Ingredient 1?"), 
+  //prompt("Let\'s make pasta! Ingredient 1?"),
   //prompt("Ingredient 2?"),
-  //prompt("Ingredient 3?")  
+  //prompt("Ingredient 3?")
 ];
 
 console.log(ingredients);
@@ -237,10 +237,10 @@ restaurant.orderPasta(...ingredients);
 
 // Objects
 
-const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
 console.log(newRestaurant);
 
-const restaurantCopy = {...restaurant};
+const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Pizza Shack';
 console.log(restaurantCopy.name);
 console.log(restaurantName);
@@ -249,7 +249,7 @@ console.log(restaurantName);
 
 // Now Notes of Rest Pattern and Parameters
 
-// The Rest Pattern looks the same as the spread operator with three dots, but it does the opposite. 
+// The Rest Pattern looks the same as the spread operator with three dots, but it does the opposite.
 
 // So we use the Spread Operator to build new Arrays or pass multiple values into a function. Or we can use it to spread an array into individual elements
 
@@ -258,33 +258,35 @@ console.log(restaurantName);
 // So Spread is to unpack elements from an Array and Rest Pattern is to pack elements into an Array
 
 // Spread on the Right of =
-const arr2 = [1, 2, ... [3, 4]];
+const arr2 = [1, 2, ...[3, 4]];
 
 // Rest on the Left of =
 const [m, n, ...others] = [1, 2, 3, 4, 5];
 console.log(m, n, others);
 
-const [pizza, , risotto, ...otherFood ] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
 console.log(pizza, risotto, otherFood);
 
-// now the rest element must be the last element, hence forth there an only be one rest 
+// now the rest element must be the last element, hence forth there an only be one rest
 
 // this also works in objects, now remaing elements will be collected into a new object instead of a new array
 
 const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays);
 
-// 1st Part was Destructuring 
+// 1st Part was Destructuring
 // 2nd Part is Functions
 
 //left off at 9:10
 
 // Functions
-const add = function(...numbers) {
+const add = function (...numbers) {
   let sum = 0;
-  for(let i = 0; i<numbers.length; i++) sum += numbers[i];
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
   console.log(sum);
-
 };
 
 add(2, 3);
@@ -297,7 +299,7 @@ add(...e);
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
 
-// so to recap, both the spread and the rest syntax look exactly the same, but they work in opposite ways depending on where they are used. 
+// so to recap, both the spread and the rest syntax look exactly the same, but they work in opposite ways depending on where they are used.
 
 // And Spread is used where we would write values seperated by commas, and the Rest is used where we would otherwise write variable names seperated by commas (so not values)
 
@@ -306,16 +308,16 @@ restaurant.orderPizza('mushrooms');
 // Now lets get back to the "and" and "or" operators ( && AND || )
 // And how we can use them for short circuiting
 
-// Here are some rules regarding the || (or) operator 
+// Here are some rules regarding the || (or) operator
 // 1.  Can use any data type
 // 2. Can return any data type
 // 3. Short Circuit evaluations (Short circuiting)
 console.log(3 || 'Jonas');
 
 // in case of the '||' operator, short circuiting means that if the first value is truthy, it will
-// immediantly return that first value, which is what the above console.log demonstrates by returning 3 which is a truthy value 
-// So if the 1st value is truthy, the 2nd value (the other operand) will not even be evaluated 
-// JavaScript won't even read it, hence why its called Short Circutiing 
+// immediantly return that first value, which is what the above console.log demonstrates by returning 3 which is a truthy value
+// So if the 1st value is truthy, the 2nd value (the other operand) will not even be evaluated
+// JavaScript won't even read it, hence why its called Short Circutiing
 
 console.log(3 || 'Jonas');
 console.log('' || 'Jonas');
@@ -331,21 +333,20 @@ console.log(undefined || 0 || '' || 'Hello' || 23 || null);
 const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 console.log(guests1);
 
-const guests2 = restaurant.numGuests || 10 
+const guests2 = restaurant.numGuests || 10;
 console.log(guests2);
 
 console.log('----- AND ------');
 
-// in Short Circuting, the AND operator works in the complete opposite way that the OR operator does. 
+// in Short Circuting, the AND operator works in the complete opposite way that the OR operator does.
 // left off around the 10min mark
 
-console.log( 0 && 'Jonas');
+console.log(0 && 'Jonas');
 
-// basicly with the && operator, if the first value is falsy, it will return falsey and not even look at the 2nd value 
+// basicly with the && operator, if the first value is falsy, it will return falsey and not even look at the 2nd value
 
-
-console.log( 7 && 'Jonas');
-console.log( 7 || 'Jonas');
+console.log(7 && 'Jonas');
+console.log(7 || 'Jonas');
 
 console.log('Hello' && 23 && null && 'jonas');
 // Null is the output because it is the first falsy value
@@ -355,7 +356,7 @@ console.log('Hello' || 23 || null || 'jonas');
 
 //practical example
 if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushrooms', 'spinach')
+  restaurant.orderPizza('mushrooms', 'spinach');
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
@@ -369,16 +370,16 @@ console.log(guests);
 // there is another operator the Nullish Coalescing Operator ??
 
 const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect); 
+console.log(guestCorrect);
 
-//  This operator ?? works with the concept of nullish value instead of truthy and falsey 
+//  This operator ?? works with the concept of nullish value instead of truthy and falsey
 // Nullish: null and undefined (Not 0 or 'empty string')
 
 //_______________________________________________________
 
 // Now lets focus on Looping Arrays the For-of-loop
 
-// so lets say we want to loop over the entire menu 
+// so lets say we want to loop over the entire menu
 
 const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
@@ -386,7 +387,7 @@ for (const item of menu2) console.log(item);
 
 // So the for-of-loop will loop over the entire array, and at each iteration it will give us access to the current element
 
-// which in this example is 'item', so when logged to the conosle, we get each element logged one by one 
+// which in this example is 'item', so when logged to the conosle, we get each element logged one by one
 
 // now what if we wanted the current index, not just the element?
 
@@ -396,39 +397,38 @@ for (const item of menu2.entries()) {
 }
 
 for (const item of menu2.entries()) {
-  console.log(`${item[0] + 1}: ${item[1]}`)
+  console.log(`${item[0] + 1}: ${item[1]}`);
 }
 
 // since item is now an array, we can destructure it
 
 for (const [i, el] of menu2.entries()) {
-  console.log(`${i + 1}: ${el}`)
+  console.log(`${i + 1}: ${el}`);
 }
 
 //____________________________________________________
 
-// Now lets discuess Enhanced Object Literals 
+// Now lets discuess Enhanced Object Literals
 
 // and in the lecture he changed all the data, so I'm not sure how to make notes without bricking the rest of the page. \
 //study this more sepretly
 //_______________________________________________________________
 
-// So lets try leaning Optional Chaining 
+// So lets try leaning Optional Chaining
 
 // so lets say we wanted to get the opening hours of the restaurant for monday
 
-
 if (restaurant.openingHours && restaurant.openingHours.mon)
- console.log(restaurant.openingHours.mon.open);
+  console.log(restaurant.openingHours.mon.open);
 
-// With optional chaining 
+// With optional chaining
 console.log(restaurant.openingHours.mon?.open);
 console.log(restaurant.openingHours?.mon?.open);
 
 // Example - lets loop over this array and log to the console if the restautant is open or closed on each day
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-for(const day of days) {
+for (const day of days) {
   const open = restaurant.openingHours[day]?.open ?? 'closed';
   console.log(`On ${day}, we open at ${open}`);
 }
@@ -437,9 +437,9 @@ for(const day of days) {
 
 // Optional chainging also works on calling methods
 
-console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
 
-console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
 
 // Optional Chaining even works on Arrays and we can use it to
 // check if an array is empty
@@ -447,48 +447,48 @@ console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
 // Arrays
 // const users = [
 //  {name: 'Jonas', email: 'hello@jonas.io'}];
-const users = []
+const users = [];
 
-console.log(users[0]?.name ?? 'User array empty')
+console.log(users[0]?.name ?? 'User array empty');
 
 // so to write that without operational chaining
 
-if(users.length > 0) console.log(users[0].name); 
+if (users.length > 0) console.log(users[0].name);
 else console.log('user array empty');
 
 //-______________________________________________________
 
 // Looping Objects: Object Keys, Values, and Entries
 
-//Property Names 
+//Property Names
 
 const properties = Object.keys(openingHours);
 console.log(properties);
 
-let openStr = `We are open on ${properties.length} days: `
+let openStr = `We are open on ${properties.length} days: `;
 for (const day of properties) {
   openStr += `${day}, `;
-};
+}
 console.log(openStr);
 
 // Property Values
 
-const values = Object.values(openingHours)
+const values = Object.values(openingHours);
 console.log(values);
 
 // entire object
 const entries = Object.entries(openingHours);
 console.log(entries);
 
-for (const [key, {open, close}] of entries) {
+for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
 
 //______________________________________________________________________
 
-// Now lets discuss Sets 
+// Now lets discuss Sets
 
-// a set is a collection of unique values, so by its very nature it can't have any duplicates which makes it useful in certain situations 
+// a set is a collection of unique values, so by its very nature it can't have any duplicates which makes it useful in certain situations
 
 const ordersSet = new Set([
   'Pasta',
@@ -502,7 +502,7 @@ const ordersSet = new Set([
 console.log(ordersSet);
 // in this case, it ignores the duplicates and only logs the set as 3.
 
-// the order of elements within a set is irrelevant 
+// the order of elements within a set is irrelevant
 
 // both sets and strings are iterables
 
@@ -520,7 +520,7 @@ console.log(ordersSet);
 // so within sets, you have some methods, you can see the size, return a boolean for something in the set, add, and delete into the set, or clear the whole set, but one thing you can't do is pull up by an index
 //console.log(ordersSet[1]);
 // Trying to pull up the 1st index value of a set won't work because sets don't have index values
-// This is because there is no point to get data out of a set, because if you need to get data out of something, you would just use an Array 
+// This is because there is no point to get data out of a set, because if you need to get data out of something, you would just use an Array
 // For sets all we need to know if a value is in a set or not
 
 // Since sets are iterables, they can be looped over
@@ -528,7 +528,7 @@ console.log(ordersSet);
 for (const order of ordersSet) console.log(order);
 
 // the main purpose of a Set is remove duplicates from an Array
-// Heres an example an array of staff at a restaurnt with multiple waiters and chefs as a resturant would have. 
+// Heres an example an array of staff at a restaurnt with multiple waiters and chefs as a resturant would have.
 
 const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 console.log(staff);
@@ -548,8 +548,7 @@ console.log(
 
 console.log(new Set('Kazanowski').size);
 
-// so to sum things up, Sets are not intended to replace Arrays at all, and although sets have some use, they are not nearly as important as Arrays 
-
+// so to sum things up, Sets are not intended to replace Arrays at all, and although sets have some use, they are not nearly as important as Arrays
 
 //_____________________________________________________________
 
@@ -568,7 +567,7 @@ console.log(new Set('Kazanowski').size);
 
 const rest = new Map();
 rest.set('name', 'Bubbas Pizza Shack');
-rest.set(1, 'Brisbane, AU')
+rest.set(1, 'Brisbane, AU');
 console.log(rest.set(2, 'Cairns, AU'));
 
 rest
@@ -576,121 +575,118 @@ rest
   .set('open', 11)
   .set('close', 23)
   .set(true, 'We are open :D')
-  .set(false, 'We are Closed :(')
+  .set(false, 'We are Closed :(');
 
+// even though the console.log is above these sets, it still reflect the changes they make
 
-// even though the console.log is above these sets, it still reflect the changes they make 
+// to read data from a map, you use the get method, and pass in the name of the key
 
-// to read data from a map, you use the get method, and pass in the name of the key 
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
 
-  console.log(rest.get('name'));
-  console.log(rest.get(true));
-  console.log(rest.get(1));
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
 
-  const time = 21;
-  console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+// other map methods include the 'has' - 'delete' - 'size' - 'clear' methods
 
-  // other map methods include the 'has' - 'delete' - 'size' - 'clear' methods 
+console.log(rest.has('categories'));
+rest.delete(2);
+// rest.clear();
+rest.set([1, 2], 'Test');
+// rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+console.log(rest.size);
 
-  console.log(rest.has('categories'));
-  rest.delete(2);
-  // rest.clear();
-  rest.set([1,2], 'Test');
-  // rest.set(document.querySelector('h1'), 'Heading');
-  console.log(rest);
-  console.log(rest.size);
+console.log(rest.get([1, 2]));
+// this console log returns undefined because even though they are written the same, in the Heap, they are consider unique and have a different place in memory
 
-  console.log(rest.get([1, 2]));
-  // this console log returns undefined because even though they are written the same, in the Heap, they are consider unique and have a different place in memory 
+// a workaround to get access an array stored in a map
 
-  // a workaround to get access an array stored in a map
+const array2 = [3, 4];
+rest.set(array2, 'Test2');
+console.log(rest.get(array2));
+// by establishing array2 as a const, and calling that array by name, it will refer to the same data/memory
 
-  const array2 = [3,4];
-  rest.set(array2, 'Test2');
-  console.log(rest.get(array2));
-  // by establishing array2 as a const, and calling that array by name, it will refer to the same data/memory
+// Maps and Sets were both introduced in ES6
 
-  // Maps and Sets were both introduced in ES6
+// There is also another way to populate a map without using the set method
 
-  // There is also another way to populate a map without using the set method 
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try Again!'],
+]);
 
-  const question = new Map([
-    ['question', 'What is the best programming language in the world?'],
-    [1, 'C'],
-    [2, 'Java'],
-    [3, 'JavaScript'],
-    ['correct', 3],
-    [true, 'Correct!'],
-    [false, 'Try Again!'],
-  ]);
+console.log(question);
 
-  console.log(question);
+// if this map/array structure looks similar, it should, its from the same
+// structure returned from calling Object.entries
 
-  // if this map/array structure looks similar, it should, its from the same 
-  // structure returned from calling Object.entries
+// Given the simmilarity to objects, there is a way to convert objects to maps
 
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
 
-  // Given the simmilarity to objects, there is a way to convert objects to maps
+console.log(hoursMap);
 
-  
-  console.log(Object.entries(openingHours));
-  const hoursMap = new Map(Object.entries(openingHours));
+// Iteration is also possible on maps, so you can use a for loop
 
-  console.log(hoursMap);
+// Quiz App
+console.log(question.get('question'));
 
-  // Iteration is also possible on maps, so you can use a for loop
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
 
-  // Quiz App
-  console.log(question.get('question'));
+// const answer = Number(prompt('Your answer'));
+// console.log(answer)
+// console.log(question.get(question.get('correct') === answer));
 
-  for (const [key, value] of question) {
-    if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-  }
+// Sometimes it is also nessesary to convert a map back into an Array
+// to do so, you build a new array and then unpack using the spread operator
 
-  // const answer = Number(prompt('Your answer'));
-  // console.log(answer)
-  // console.log(question.get(question.get('correct') === answer));
+console.log([...question]);
 
-  // Sometimes it is also nessesary to convert a map back into an Array 
-  // to do so, you build a new array and then unpack using the spread operator 
+// you also have acces to other array methods
 
-  console.log([...question]);
+//console.log(question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
 
-  // you also have acces to other array methods
+// _________________________________________________________________
 
-  //console.log(question.entries());
-  console.log([...question.keys()]);
-  console.log([...question.values()]);
+// So Objects, Arrays, Sets, and Maps, which data structure do I use?
 
-  // _________________________________________________________________
+// there are 3 sources of data
+// 1. From the Program itself: Data written directly in source code (status messages)
+// 2. From the UI: Data input from the user or data written in the DOM (tasks in a todo app)
+// 3. From external sources: Data fetched for example from Web API (recipe objects);
 
-  // So Objects, Arrays, Sets, and Maps, which data structure do I use? 
+// Reminder - API = Application programing interface
 
-  // there are 3 sources of data
-  // 1. From the Program itself: Data written directly in source code (status messages)
-  // 2. From the UI: Data input from the user or data written in the DOM (tasks in a todo app)
-  // 3. From external sources: Data fetched for example from Web API (recipe objects);
+// So no matter what the data comes from or what the data is, we usually have
+// Collections of Data
+// these collections need to be stored somewhere, hence Data Structures
+// JavaScript has 4, Arrays, Objects, Sets, Maps
 
-  // Reminder - API = Application programing interface 
+// If you have a simple list of data, you use an Array or a Set
+// If you need key/value pairs, you use an Object or a Map
 
-  // So no matter what the data comes from or what the data is, we usually have
-  // Collections of Data
-  // these collections need to be stored somewhere, hence Data Structures 
-  // JavaScript has 4, Arrays, Objects, Sets, Maps
+// with Key/Value pairs, the keys allow us to describe values
+// with a simple list like an array, we just have the value without any description
 
-  // If you have a simple list of data, you use an Array or a Set
-  // If you need key/value pairs, you use an Object or a Map
+// Web API's are the most common source of data in JavaScript
+// Most API's return data in JSON format which uses the same formatting as JavaScript objects and Arrays
 
-  // with Key/Value pairs, the keys allow us to describe values 
-  // with a simple list like an array, we just have the value without any description
-  
-  // Web API's are the most common source of data in JavaScript 
-  // Most API's return data in JSON format which uses the same formatting as JavaScript objects and Arrays 
+// On a Side note, there are also two additional data strucutres built into JavaScript,  WeakMap and WeakSet
+// Other Coding Languages, there are alot more data strucutres. Such as Stacks, Ques, Linked Lists, Trees, and Hash Tables
 
-  // On a Side note, there are also two additional data strucutres built into JavaScript,  WeakMap and WeakSet
-  // Other Coding Languages, there are alot more data strucutres. Such as Stacks, Ques, Linked Lists, Trees, and Hash Tables
-
-  /* 
+/* 
   So for Arrays Vs Sets - we should use them for simple sets of values when we do not need to describe the value
 
   We use Arrays when 
@@ -725,8 +721,7 @@ rest
 
   */
 
-  // WORKING WITH STRINGS PART 1 ____________________________________
-  
+// WORKING WITH STRINGS PART 1 ____________________________________
 
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
@@ -737,13 +732,13 @@ console.log(plane[1]);
 console.log(plane[2]);
 
 // doing the same, but with a console log inputed value and not an actual variable
-console.log('B737' [0]);
+console.log('B737'[0]);
 
 // length method which returns the number of indexs
 console.log(airline.length);
 console.log('B737'.length);
 
-// the indexOf method to get a specific position in the string 
+// the indexOf method to get a specific position in the string
 
 console.log(airline.indexOf('r'));
 
@@ -758,7 +753,7 @@ console.log(airline.indexOf('Portugal'));
 // being able to target parts of strings by their index is useful for other methods like slice
 
 console.log(airline.slice(4));
-// since it takes part of the string, this is called a sub-string 
+// since it takes part of the string, this is called a sub-string
 
 console.log(airline.slice(4, 7)); // this is 7 - 4 = 3, so it keeps 3
 
@@ -768,24 +763,96 @@ console.log(airline.slice(airline.lastIndexOf(' ') + 1));
 console.log(airline.slice(-2)); // using negatives with slices returns the from the end instead
 console.log(airline.slice(1, -1));
 
-// practice function 
+// practice function
 
-const checkMiddleSeat = function(seat) {
+const checkMiddleSeat = function (seat) {
   // B & E are middle seats
   const s = seat.slice(-1);
-  if( s === 'B' || s === 'E')
-  console.log('You got the middle seat');
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
   else console.log('You got lucky');
-
-}
+};
 
 checkMiddleSeat('11B');
 checkMiddleSeat('23C');
 checkMiddleSeat('3E');
 
 // now behind the sceness, when you call a method on an array in JavaScript it will turn it into an Array
-// but when the object is done, Javascript will return it to a primative string 
+// but when the object is done, Javascript will return it to a primative string
 
 console.log(new String('jonas'));
 console.log(typeof new String('jonas'));
 console.log(typeof new String('jonas').slice(1));
+
+//____________________________________________________________________
+
+// STRINGS PART 2
+
+// lets go over some methods for changing the case of a string
+
+const airport = 'Heathrow';
+
+console.log(airport.toLowerCase());
+console.log(airport.toUpperCase());
+
+// obviously these will transform the string into either all uppercase or all lowercase
+
+// fix capitalization in name
+
+const passenger = 'jOnAS';
+const passengerLower = passenger.toLowerCase(); // creates a new variable which is the string is turned to all lowercase 'jonas'
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1); // create a new variable that takes the previous variable, and uppercases its first letter (or index), and then using slice, replaces the lowercase first letter
+console.log(passengerCorrect);
+
+// comparing email
+
+const email = 'hello@jonas.io';
+const loginEmail = 'Hello@Jonas.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// replacing parts of strings
+
+const priceGB = '288,97£'; // so lets convert this british price to a US price
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcment =
+  'All passengers come to boarding door 23. Boarding door 23!';
+
+console.log(announcment.replace('door', 'gate'));
+
+// kind of complicated, but this is using a 'regular expression'
+console.log(announcment.replace(/door/g, 'gate'));
+// the g stands for global and it replaces all instances of door
+
+// there are methods that also return booleans, these are 'includes', 'starts with', and 'ends with'
+// if you need to make a decision based on the content of the string, these methods come in handy
+const newPlane = 'A320neo';
+console.log(newPlane.includes('A320'));
+console.log(newPlane.includes('Boeing'));
+console.log(newPlane.startsWith('Airb'));
+
+if (newPlane.startsWith('Airbus') && newPlane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus Family');
+}
+
+// Practice Exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase(); // by default when accepting User input, always convert to lowercase
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('You may board, Enjoy your Flight');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and a camera');
+checkBaggage('Got some snacks and a gun for protection');
