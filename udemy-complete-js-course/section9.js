@@ -856,3 +856,81 @@ const checkBaggage = function (items) {
 checkBaggage('I have a laptop, some Food and a pocket Knife');
 checkBaggage('Socks and a camera');
 checkBaggage('Got some snacks and a gun for protection');
+
+//__________________________________________
+
+// Strings Part 3
+
+// One of the most powerful string methods is the split method
+// Split allows you to split a string, and join to join a string
+
+console.log('a+very+nice+string'. split('+'));
+
+// heres an example of both
+
+
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ')
+
+console.log(firstName);
+console.log(lastName);
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+// another example
+
+const capitalizeName = function(name){
+  const names = name.split(' ');
+  const namesUpper = [];
+
+
+  for(const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    // another way to do it
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()
+    ));
+  }
+
+  console.log(namesUpper.join(' '));
+
+};
+
+capitalizeName('jessica ann smith davis')
+capitalizeName('rj kazanowski')
+
+// Padding Method
+
+const message = 'Go to gate 23!'
+console.log(message.padStart(25, '+'));
+
+console.log('Jonas'.padStart(25, '+'));
+
+console.log(message.padStart(25, '+').padEnd(30, '+'));
+console.log('Jonas'.padStart(25, '+').padEnd(30, '+'));
+
+// a more real work example
+
+const maskCreditCard = function(number){
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+}
+
+console.log(maskCreditCard(64637836));
+console.log(maskCreditCard(43378463864647384));
+console.log(maskCreditCard('334859493847755774747'));
+
+// The Repeat Method
+
+const message2 = 'Bad weather... All Departures Delayed...';
+console.log(message2.repeat(5));
+
+const planesInLine = function(n) {
+  console.log(`There are ${n} planes in line ${'!'.repeat(n)}`);
+}
+
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
