@@ -123,6 +123,7 @@ console.log(p, q, r);
 
 // to the above Restaraunt Object, I added in an object for opening hours on thu - sun.
 
+
 // to destructure objects, we use curly braces
 
 const { name, openingHours, categories } = restaurant;
