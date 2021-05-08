@@ -149,3 +149,5 @@ console.log(...evenMoreCities);
 console.log(evenMoreCities);
 
 // left off on code line 200 of section 9 
+
+// need to start eariler courses
