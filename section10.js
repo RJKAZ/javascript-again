@@ -1,6 +1,6 @@
 'use strict';
 // Default Parameters
-
+/*
 const bookings = [];
 
 const createBooking = function (
@@ -82,7 +82,7 @@ const newPassport = function (person) {
 };
 
 newPassport(reese);
-checkIn(flight, jonas);
+checkIn(flight, reese);
 // this returns both in order, since in effect we have two functions manipulating the same object
 
 /*
@@ -94,4 +94,73 @@ To reiterate, JavaScript does not have passing by reference, it only passes by v
 C++ for example you can pass a reference to any value 
 So even though for passing in objects, when we pass in the objects Reference, that reference is techncially still a value,
 a value that just happens to contain a memory address. 
+
+
+//__________________________________________________________________________________________________
+
+ First Class VS Higher Order Functions
+
+1. JavaScript treats functions as first class functions
+2. This means that functions are simply values
+3. Functions are just another "type" of object
+
+Since objects are values, so to are functions, and this has many benefits
+1. We can store functions in variables or properties
+2. We can pass functions as arguments to other functions
+3. We can return fucntions from functions
+4. We can call methods on functions 
+
+
+Now there are also Higher Order Functions
+1. It is a function that recieves another function an an argument, that returns a new function, or both.
+2. This is only possible because of first class functions
+3. An example of this is the addEventListener. It is a higher order function because it is a function that recieves another function, which in this case would eb a Callback function (that function you pass into it). Its called Callback function becasue that function will get 'called" by the higher order function 
+4. but it is still a function that returns a new function
+
+Now lets create out own higher order functions.
+
+we will create a function that takes other functions as input 
+We will start by making two very simple string transformation functions
 */
+
+// this code takes a string and takes all the empty spaces and returns them with an empty string, and then also converts it to lowercase, essentially turning multiple words into one longer word
+
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+}
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+}
+
+// so we will use these two functions to create a higher order function 
+
+const transformer = function(str, fn){
+  //so this function will take in both a string and a function, so this is a higher order function
+  console.log(`Original String: ${str}`) 
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+
+}
+
+transformer('JavaScript is the best!', upperFirstWord)
+transformer('JavaScript is the best!', oneWord)
+
+
+// another example - JavaScript uses Callbacks all the time
+
+const happyFace = function() {
+  console.log(':)');
+}
+document.body.addEventListener('click', happyFace);
+['Jonas', 'Martha, Adam'].forEach(happyFace);
+
+// callback functions are great for Javascript because they allow us to split up our code into more reusable and intterconnected parts 
+
+//The other big benefit of callbacks functions is they allow us to create Abstraction 
+
+// Absrraction basicly hides low level code (or level of detail) so we can focus on higher level code ( I think)
+
+// so in relation, the higher level function doesn't care how the lower level functions accomplish their code, just that they accomplish it. Its focused on the higher level big picture, and not the low level functions
+
