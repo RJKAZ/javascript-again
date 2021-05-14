@@ -127,40 +127,124 @@ We will start by making two very simple string transformation functions
 
 const oneWord = function (str) {
   return str.replace(/ /g, '').toLowerCase();
-}
+};
 
 const upperFirstWord = function (str) {
   const [first, ...others] = str.split(' ');
   return [first.toUpperCase(), ...others].join(' ');
-}
+};
 
-// so we will use these two functions to create a higher order function 
+// so we will use these two functions to create a higher order function
 
-const transformer = function(str, fn){
+const transformer = function (str, fn) {
   //so this function will take in both a string and a function, so this is a higher order function
-  console.log(`Original String: ${str}`) 
+  console.log(`Original String: ${str}`);
   console.log(`Transformed string: ${fn(str)}`);
   console.log(`Transformed by: ${fn.name}`);
+};
 
-}
-
-transformer('JavaScript is the best!', upperFirstWord)
-transformer('JavaScript is the best!', oneWord)
-
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
 
 // another example - JavaScript uses Callbacks all the time
 
-const happyFace = function() {
+const happyFace = function () {
   console.log(':)');
-}
+};
 document.body.addEventListener('click', happyFace);
 ['Jonas', 'Martha, Adam'].forEach(happyFace);
 
-// callback functions are great for Javascript because they allow us to split up our code into more reusable and intterconnected parts 
+// callback functions are great for Javascript because they allow us to split up our code into more reusable and intterconnected parts
 
-//The other big benefit of callbacks functions is they allow us to create Abstraction 
+//The other big benefit of callbacks functions is they allow us to create Abstraction
 
 // Absrraction basicly hides low level code (or level of detail) so we can focus on higher level code ( I think)
 
 // so in relation, the higher level function doesn't care how the lower level functions accomplish their code, just that they accomplish it. Its focused on the higher level big picture, and not the low level functions
 
+//_____________________________________
+// FUNCTIONS RETURNING FUNCTIONS
+
+// so this is a simple greet functon that takes in a function and returns another function
+//
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Jonas');
+
+// challenge to do this in a quicker way (but more confusing since its an arrow function returning another arrow function)
+const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
+greetArr('Hi')('Jonas');
+
+//_____________________________________________________________
+
+// THE CALL AND APPLY METHODS
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  //book: function() {}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Jonas Schedtamnn');
+lufthansa.book(635, 'John Smith');
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+// that book function above we are storeing in a new variable
+const book = lufthansa.book;
+
+book(23, 'Sarah Williams');
+
+// unfortunatly this won't work because of the use of the "this" keyword
+// so we need to tell Javascript what keyword 'this' is refering to
+// for this we use the call and apply methods
+
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+// so in that above use, we didn't call the book function ourselves, instead we called the call method, and the call method calls the book function with the 'this' keyword set to eurowings
+// so this basicly manually sets the this keyword
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Line',
+  iataCode: 'LX',
+  booking: [],
+};
+
+book.call(swiss, 583, 'Mary Cooper');
+console.log(swiss);
+
+// now the apply method does almost the same thing as the call method, but it doesn't receive a list of items, but rathe an array
+
+const flightData = [582, 'Goerge Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+// the apply method isn't really used much in modern day javascript anymore.
+
+book.call(swiss, ...flightData);
+
+// for modern javascript its preferable to just use the call method and then the spread operator to spread out the array
