@@ -189,10 +189,10 @@ greetArr('Hi')('Jonas');
 // THE CALL AND APPLY METHODS
 
 const lufthansa = {
-  airline: 'Lufthansa',
+  airline: 'Lutthansa',
   iataCode: 'LH',
   bookings: [],
-  //book: function() {}
+
   book(flightNum, name) {
     console.log(
       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
@@ -210,28 +210,21 @@ const eurowings = {
   bookings: [],
 };
 
-// that book function above we are storeing in a new variable
 const book = lufthansa.book;
 
-book(23, 'Sarah Williams');
-
-// unfortunatly this won't work because of the use of the "this" keyword
-// so we need to tell Javascript what keyword 'this' is refering to
-// for this we use the call and apply methods
+// does not work because book is just a regular function, so the this keyword will return undefined
+// book(23, 'Sarah Williams');
 
 book.call(eurowings, 23, 'Sarah Williams');
 console.log(eurowings);
-
-// so in that above use, we didn't call the book function ourselves, instead we called the call method, and the call method calls the book function with the 'this' keyword set to eurowings
-// so this basicly manually sets the this keyword
 
 book.call(lufthansa, 239, 'Mary Cooper');
 console.log(lufthansa);
 
 const swiss = {
-  airline: 'Swiss Air Line',
+  airline: 'Swiss Air Lines',
   iataCode: 'LX',
-  booking: [],
+  bookings: [],
 };
 
 book.call(swiss, 583, 'Mary Cooper');
@@ -248,3 +241,57 @@ console.log(swiss);
 book.call(swiss, ...flightData);
 
 // for modern javascript its preferable to just use the call method and then the spread operator to spread out the array
+
+// Now onto the Bind Method
+
+// Like the Call Method, the Bind Method also allows us to set the "this" keyword, but bind does not immediantly call the function
+// instead it returns a new function where the this keyword is bound. So its set into what value we pass into bind.
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookXL = book.bind(swiss);
+
+bookEW(23, 'Steven Willaims');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+
+// The Bind method is very useful when used together with Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+//lufthansa.buyPlane();
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// that code returns NaN becuase the 'this' keyword is technially refering to the ('.buy')
+// It does this becasue when using event listeners, the 'this' keyword will always point to the element the event listner is attached to
+// to fix this we need to manual define the 'this' keyword, so we use the bind method which will return a new function
+
+// Partial Application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = value => value + value * 0.23;
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT(100));
+console.log(addVAT(23));
