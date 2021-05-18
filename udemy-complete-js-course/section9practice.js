@@ -151,3 +151,18 @@ console.log(evenMoreCities);
 // left off on code line 200 of section 9 
 
 // need to start eariler courses
+
+
+
+const bootCampGradsReadyToDrink = ['RJ', 'Connor', 'and', 'Joey'];
+const bar = "Watering hole to be decided at a later point";
+
+console.log(`So so far it is ${bootCampGradsReadyToDrink[0]}, ${bootCampGradsReadyToDrink[1]}, and ${bootCampGradsReadyToDrink[3]} who are game for a reunion round of drinks at a ${bar}.`)
+
+const entireClass = ['lee', 'Evan', 'Jui', 'Rachel', 'Cassidy', 'Lili', 'Dayna', 'Jeff', 'Catherine', 'Sudar', 'Brett', 'Alex', ...bootCampGradsReadyToDrink];
+const everyoneHopefullyComing = entireClass.join(' ');
+
+console.log(`So hopefully one day soon it will be ${everyoneHopefullyComing} having a round of drinks!`);
+
+
+
