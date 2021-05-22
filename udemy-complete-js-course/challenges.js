@@ -797,7 +797,28 @@ const poll = {
     );
     console.log(answer);
     // Register Answer Part 2
-    //left off here
+    typeof answer === 'number' && 'answer' < this.
+    answers.length && this.answers[answer]++;
+
+    this.displayResults();
+    this.displayResults('string');    
   },
+
+  displayResults(type = 'array' ) {
+    if(type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      //poll results are 12, 2, 4, 1
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+    }
+  }
 };
-poll.registerNewAnswer();
+// poll.registerNewAnswer();
+
+// 2. Call this method whenever the user clicks the "Answer poll" button.
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.
+  bind(poll));
+
+  poll.displayResults.call({answers: [5, 2, 3] }, 'string');
