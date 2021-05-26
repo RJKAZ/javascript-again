@@ -296,7 +296,6 @@ const addVAT2 = addTaxRate(0.23);
 console.log(addVAT(100));
 console.log(addVAT(23));
 
-
 // Imediantly Invoked Function Expressions ... The IIFE
 
 /*
@@ -315,10 +314,10 @@ runOnce();
 // So what we want to do is instead run a function imediantly without saving it anywhere, kind of like the function self destructs after use so you can only use it the one time
 
 // a workaround is to basicly create a function without a name, which normally Javascript will not let you do
-// so to trick the Javascript into running it, you wrap the whole thing in paraneteses and Javascript will then change from expecting a Statement to instead expecting an expression 
-// and then your add the () at the end to instantly call it. 
+// so to trick the Javascript into running it, you wrap the whole thing in paraneteses and Javascript will then change from expecting a Statement to instead expecting an expression
+// and then your add the () at the end to instantly call it.
 
-(function() {
+(function () {
   console.log('Now this truely wont ever run again');
 })();
 
@@ -326,22 +325,22 @@ runOnce();
 
 // This is known as the IIFE - Imediantly Invoked Function Expression
 
-// An even faster way of doing it is with an Arrow Function 
+// An even faster way of doing it is with an Arrow Function
 
 (() => console.log('This will also never run again'))();
 
 // Now why do we have this in Javascript, its important to understand that Functions create scopes
-// One scope does not have access to variables from an inner scope 
-// Where as innerscopes have access to the global scope, but global scope does not have access to the inner scopes. Its purely a one way street. 
+// One scope does not have access to variables from an inner scope
+// Where as innerscopes have access to the global scope, but global scope does not have access to the inner scopes. Its purely a one way street.
 
-// this is known as Data Encapsulation 
+// this is known as Data Encapsulation
 
 // Just or reiterate, Block scoping was introduced with Let and Const. Variables declated with Var will work because Var will ignore the block its scoped in
-// For purposes of security, IIFE aren't really used to so much, but if you need a function called only once, they still have their purpose. 
+// For purposes of security, IIFE aren't really used to so much, but if you need a function called only once, they still have their purpose.
 
 // NOW FOR CLOSURES - ONE OF THE HARDEST JAVASCRIPT FUNCTIONS TO UNDERSTAND
-// Closures aren't commonly used so its not likely you'll delibretly create one like an Array or a new Function 
-// In certain situations, Closures kind of happen automatically. 
+// Closures aren't commonly used so its not likely you'll delibretly create one like an Array or a new Function
+// In certain situations, Closures kind of happen automatically.
 // So lets create the situation that enabled a closure
 // Below is a function that creates another function that increases the passenger count
 /*
@@ -359,16 +358,14 @@ So when the secureBooking function returns, its execution context pops off the c
 This all stuff we have gone over, just going over the callstack and scope chain 
 */
 
-
-const secureBooking = function() {
+const secureBooking = function () {
   let passengerCount = 0;
 
-  return function() {
+  return function () {
     passengerCount++;
     console.log(`${passengerCount} passengers`);
-
   };
-}
+};
 
 const booker = secureBooking();
 
@@ -381,7 +378,7 @@ booker();
 // What makes this possibale is a closure. Techncially calling the function 3 times should always return 1 passenger, but somehow it continues to have access to the passenegerCount varibale that should also be gone
 
 // So in a nutshell, a Closure makes a function remember all the variables that existed at the functions birthplace
-// So secureBooking is the birthplace of the function 
+// So secureBooking is the birthplace of the function
 
 /*
 So after booker() is called the first time and finishes executing, its execution context leaves the call stack
@@ -422,6 +419,47 @@ So while we can't acctually access these variables directly, we can look with co
 
 console.dir(booker);
 
+// Another look at Closures - these two examples will demonstrate that you don't need to return a function from another functon in order to create a closure
 
+// example 1
+let f;
 
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
 
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+// reassigning f function
+
+h();
+f();
+console.dir(f);
+
+// example 2
+
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000;
+boardPassengers(180, 3);
