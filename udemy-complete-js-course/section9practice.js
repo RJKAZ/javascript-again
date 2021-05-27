@@ -159,7 +159,7 @@ const bar = "Watering hole to be decided at a later point";
 
 console.log(`So so far it is ${bootCampGradsReadyToDrink[0]}, ${bootCampGradsReadyToDrink[1]}, and ${bootCampGradsReadyToDrink[3]} who are game for a reunion round of drinks at a ${bar}.`)
 
-const entireClass = ['lee', 'Evan', 'Jui', 'Rachel', 'Cassidy', 'Lili', 'Dayna', 'Jeff', 'Catherine', 'Sudar', 'Brett', 'Alex', ...bootCampGradsReadyToDrink];
+const entireClass = ['lee', 'Evan', 'Jui', 'Rachel', 'Cassidy', 'Lili', 'Dayna', 'Jeff', 'Catherine', 'Sudar', 'Brett', 'Josh', 'Alex', ...bootCampGradsReadyToDrink];
 const everyoneHopefullyComing = entireClass.join(' ');
 
 console.log(`So hopefully one day soon it will be ${everyoneHopefullyComing} having a round of drinks!`);

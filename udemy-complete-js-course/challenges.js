@@ -779,7 +779,7 @@ Test data for bonus:
 § Data 1: [5, 2, 3]
 § Data 2: [1, 5, 3, 9, 6, 1]
 Hints: Use many of the tools you learned about in this and the last section �
-*/
+
 
 const poll = {
   question: 'What is your favorite programming language?',
@@ -822,3 +822,113 @@ document
   bind(poll));
 
   poll.displayResults.call({answers: [5, 2, 3] }, 'string');
+*/
+
+// Redoing this Coding Challange since I don't understand it
+
+const poll = {
+  question: 'What is your favorite programming language?',
+  options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
+  // this generates [0, 0, 0, 0] More in the next section
+  answers: new Array(4).fill(0),
+  //create the new method
+  registerNewAnswer() {
+    // To get the Answer - 
+    // for the prompt we will pass in the questions and options in the pool object to make prompt
+    // the '\n' is to make a newline
+    const answer = Number (
+      prompt(
+        `${this.question}\n${this.options.join('\n')}
+        \n(Write option number)`
+        )
+    );
+    console.log(answer);
+    //Register Answer
+    // first we check if the answer is indeed a number and if the answer is below the length of the array 
+    // the last part is important since there are only 3 options, clearly an answer of 10 wouldn't work. 
+    // So it must stay below the length of the options array, this is also a great use of short cuircuting with the && operator
+    typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++; 
+    // for that, the first 2 condtions have to be true, otherwise it shortcuricutis and the final part won't run
+    console.log(this.answers);
+    this.displayResults()
+    this.displayResults('string');
+  },
+  // now we create another method to display the results
+  displayResults(type = 'array') {
+    if(type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      // Poll results are 13, 2, 4, 1
+      console.log(`Poll results are ${this.answers.join(', ')}`)
+    }
+
+  }
+};
+
+//poll.registerNewAnswer();
+
+// now we need to create the functiionality with the Answer Poll Button on the HTML - this is likely where I messed up on
+// the code before, clearly I wasn't paying attention 
+
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer
+  .bind(poll)); // because of bind, the 'this' keyword will refer to the poll object
+// this doesn't initially work since the 'this' keyword would point to this object, as in the poll button itself
+// as far as event handlers, the 'this' keyword will always refer to the element to which it is attached
+// to fix this, we need to bind the 'this' keyword and set it to the Poll object and not the poll button
+
+
+/*
+1. Create a method called 'registerNewAnswer' on the 'poll' object. The
+method does 2 things:
+1.1. Display a prompt window for the user to input the number of the
+selected option. The prompt should look like this:
+What is your favourite programming language?
+0: JavaScript
+1: Python
+2: Rust
+3: C++
+(Write option number)
+1.2. Based on the input number, update the 'answers' array property. For
+example, if the option is 3, increase the value at position 3 of the array by
+1. Make sure to check if the input is a number and if the number makes
+sense (e.g. answer 52 wouldn't make sense, right?)
+*/
+
+// bonus test data 
+// Data 1: [5, 2, 3]
+// Data 2: [1, 5, 3, 9, 6, 1]
+// for the bonus we need a new 'this' so we use the call method
+
+poll.displayResults.call({answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+// ____________________________________________________________________________________________
+
+// Closure Coding Challenge 
+
+// the challenge is to take this IIFE and attach an event listener that changes the color of the h1 element to blue each time the body element is clicked. DO NOT SELECT THE H1 element again 
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener
+  ('click', function() {
+    header.style.color = 'blue';
+  })
+})();
+
+/*
+SO why does that work? How does the callback function get access to the header variable? 
+
+So when that first part of the code runs, the const header is run and gone, meaning by the time the callback function to change the color is clicked, that variable is long gone. 
+
+However since its part of the same IIFE function and thus exisited where it was born, it can still access that varaible despite it no longer being there.
+it takes advantage of the closure. 
+The Header variable is in the backpack of the callback function 
+
+
+
+*/
