@@ -64,14 +64,15 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
+*/
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -104,3 +105,110 @@ console.log(arr.slice());
 // that works alot like the spread operator
 
 // left off on 7:44 mark, just finsished Slice Method
+
+// Next up with go to the Splice Method 
+// The Splice method works very simmilar to the Slice method except Splice does change the original array.
+//console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
+arr.splice(1, 2);
+console.log(arr);
+
+/// what splice does it takes part of the original array and returns what it took, but deletes what was extracted off the original array.
+
+
+// lets just return the original array
+arr = ['a', 'b', 'c', 'd', 'e'];
+
+// Now we have the Reverse Method
+
+const arr2 = ['j', 'i', 'h', 'g', 'j'];
+console.log(arr2);
+console.log(arr2.reverse());
+
+// quite simply, it will reverse an arrays order
+// However, to note, like the Splice method, the Reverse Method will change the original array.
+
+console.log(arr2);
+
+// The Next method is Concat which will concatanate (join) two arrays
+// In this example I'm making a new Letters variable that combines arr and arr2
+const letters = arr.concat(arr2);
+console.log(letters);
+
+// in a similar sesne this can kind of work like the spread ... operator in that it can create the same effect
+
+console.log([...arr, ...arr2]);
+
+// And we also have the Join method 
+console.log(letters.join('-'));
+// this bascily turns the array into a string with a sperator specified after join
+console.log(letters);
+// Join doesn't change the original array
+console.log(letters.join('#!'));
+
+//____________________________________________________________________________________________________________
+
+// Looping Arrays: forEACH
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// so the positve numbers are deposites and the negative numbers are withdrawls
+
+for (const movement of movements) {
+  if(movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+// the above code will log to the console what you withdrew and what you deposited
+// there is another way to achive this with the forEach method
+
+movements.forEach(function(movement) {
+  if(movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+})
+
+// another revision of the same code more or less
+
+for (const [i, movement] of movements.entries()) {
+  if(movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+movements.forEach(function(mov, i, arr) {
+  if(mov > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+  };
+});
+
+//_____________________________________________________________________________________
+
+// forEach with Maps and Sets
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`);
+});
+
+// in Javascript, an underscore _ can be used in place of a throwaway variable
