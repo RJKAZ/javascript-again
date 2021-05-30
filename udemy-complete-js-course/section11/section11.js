@@ -93,7 +93,7 @@ const currencies = new Map([
 ]);
 */
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -172,7 +172,7 @@ console.log(letters.join('#!'));
 
 // Looping Arrays: forEACH
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // so the positve numbers are deposites and the negative numbers are withdrawls
 
 for (const movement of movements) {
@@ -233,3 +233,38 @@ currenciesUnique.forEach(function (value, _, map) {
 });
 
 // in Javascript, an underscore _ can be used in place of a throwaway variable
+
+// Notes on the Map Method
+
+// this code is using the movements variable in the far above code
+
+const eurToUsd = 1/1;
+
+// const movementsUSD = movements.map(function(mov) {
+//  return mov * eurToUsd;
+// });
+
+// this is the same code below as above, just as an arrow function instead
+
+const movementsUSD = movements.map(mov => 
+  mov * eurToUsd
+);
+
+// some people dislike the Arrow function since it does away with both the Function and Return keywords, to some that makes it harder to read.
+// Arrow functions always return so the return keyword is not needed and essentially invisiable. 
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map(
+  (mov, i) => 
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 
+  'withdrew'} ${Math.abs(
+    mov
+  )}`
+);
+console.log(movementsDescriptions);
