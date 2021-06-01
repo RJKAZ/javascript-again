@@ -61,10 +61,10 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function(movements) {
+const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
-  movements.forEach(function(mov, i){
-    const type = mov > 0 ? 'deposit' : 'withdrawal'
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
       <div class="movements__row">
       <div class="movements__type
@@ -72,15 +72,26 @@ const displayMovements = function(movements) {
       <div class="movements__value">${mov}</div>
       </div>
     `;
-    containerMovements.insertAdjacentHTML
-    ('afterbegin', html);
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
-
 };
 
 displayMovements(account1.movements);
 
-console.log(containerMovements.innerHTML);
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUsernames(accounts);
+
+// so that above cove takes the user variable which is all one string, and breaks it splits it into 3 smaller strings with then makes them all lowercase
+
+// So if we want to take each of the first letters, we loop over them and join the letters. Turning it into STW. this is the map method.
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -104,30 +115,30 @@ So if we have Array Methods, that in turn means Arrays are also objects
 So Arrays are objects and think of the methods as built in tools 
 
 Lets do a test array we can work with
-*/ 
+*/
 
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // the first method we will talk about is the slice method
-// The Slice method we can extract any part of an Array without changing the original Array 
+// The Slice method we can extract any part of an Array without changing the original Array
 // Think of it like taking a slice of Array, hence why its called Slice
 // We pass in the index of the item in the array we want to slice it
 console.log(arr.slice(2));
 // we put this in the console log so we can see it, but this creates a new Array with the first three (0,1,2) indexs of the arr array
-console.log(arr.slice(2, 4)); // in this case, the 4 is the end parameter which we don't acctually see. 
-// so the length of this the end parameter minus the begining one. 
+console.log(arr.slice(2, 4)); // in this case, the 4 is the end parameter which we don't acctually see.
+// so the length of this the end parameter minus the begining one.
 // like in strings you can also use negative parameters
 console.log(arr.slice(-2));
 console.log(arr.slice(-1));
 console.log(arr.slice(1, -2));
 
 // you can also bascily copy an array by calling the slice method without any arguments or parameters
-console.log(arr.slice()); 
+console.log(arr.slice());
 // that works alot like the spread operator
 
 // left off on 7:44 mark, just finsished Slice Method
 
-// Next up with go to the Splice Method 
+// Next up with go to the Splice Method
 // The Splice method works very simmilar to the Slice method except Splice does change the original array.
 //console.log(arr.splice(2));
 arr.splice(-1);
@@ -136,7 +147,6 @@ arr.splice(1, 2);
 console.log(arr);
 
 /// what splice does it takes part of the original array and returns what it took, but deletes what was extracted off the original array.
-
 
 // lets just return the original array
 arr = ['a', 'b', 'c', 'd', 'e'];
@@ -161,7 +171,7 @@ console.log(letters);
 
 console.log([...arr, ...arr2]);
 
-// And we also have the Join method 
+// And we also have the Join method
 console.log(letters.join('-'));
 // this bascily turns the array into a string with a sperator specified after join
 console.log(letters);
@@ -176,7 +186,7 @@ console.log(letters.join('#!'));
 // so the positve numbers are deposites and the negative numbers are withdrawls
 
 for (const movement of movements) {
-  if(movement > 0) {
+  if (movement > 0) {
     console.log(`You deposited ${movement}`);
   } else {
     console.log(`You withdrew ${Math.abs(movement)}`);
@@ -186,30 +196,30 @@ for (const movement of movements) {
 // the above code will log to the console what you withdrew and what you deposited
 // there is another way to achive this with the forEach method
 
-movements.forEach(function(movement) {
-  if(movement > 0) {
+movements.forEach(function (movement) {
+  if (movement > 0) {
     console.log(`You deposited ${movement}`);
   } else {
     console.log(`You withdrew ${Math.abs(movement)}`);
   }
-})
+});
 
 // another revision of the same code more or less
 
 for (const [i, movement] of movements.entries()) {
-  if(movement > 0) {
+  if (movement > 0) {
     console.log(`Movement ${i + 1}: You deposited ${movement}`);
   } else {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
   }
 }
 
-movements.forEach(function(mov, i, arr) {
-  if(mov > 0) {
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
     console.log(`Movement ${i + 1}: You deposited ${mov}`);
   } else {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
-  };
+  }
 });
 
 //_____________________________________________________________________________________
@@ -222,7 +232,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-currencies.forEach(function(value, key, map) {
+currencies.forEach(function (value, key, map) {
   console.log(`${key}: ${value}`);
 });
 
@@ -238,7 +248,7 @@ currenciesUnique.forEach(function (value, _, map) {
 
 // this code is using the movements variable in the far above code
 
-const eurToUsd = 1/1;
+const eurToUsd = 1 / 1;
 
 // const movementsUSD = movements.map(function(mov) {
 //  return mov * eurToUsd;
@@ -246,12 +256,10 @@ const eurToUsd = 1/1;
 
 // this is the same code below as above, just as an arrow function instead
 
-const movementsUSD = movements.map(mov => 
-  mov * eurToUsd
-);
+const movementsUSD = movements.map(mov => mov * eurToUsd);
 
 // some people dislike the Arrow function since it does away with both the Function and Return keywords, to some that makes it harder to read.
-// Arrow functions always return so the return keyword is not needed and essentially invisiable. 
+// Arrow functions always return so the return keyword is not needed and essentially invisiable.
 
 console.log(movements);
 console.log(movementsUSD);
@@ -261,10 +269,32 @@ for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 console.log(movementsUSDfor);
 
 const movementsDescriptions = movements.map(
-  (mov, i) => 
-  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 
-  'withdrew'} ${Math.abs(
-    mov
-  )}`
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
 );
 console.log(movementsDescriptions);
+
+// filter method
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawls = movements.filter(function (mov) {
+  return mov < 0;
+});
+
+// and faster as an arrow function
+// const withdrawls = movements.filter(mov => mov < 0);
+
+// again to reiterate, arrow functions always return by default
+
+console.log(withdrawls);
