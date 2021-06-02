@@ -78,6 +78,12 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`
+};
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -88,6 +94,13 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
+
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+}
+
+
 
 // so that above cove takes the user variable which is all one string, and breaks it splits it into 3 smaller strings with then makes them all lowercase
 
@@ -298,3 +311,32 @@ const withdrawls = movements.filter(function (mov) {
 // again to reiterate, arrow functions always return by default
 
 console.log(withdrawls);
+
+console.log(movements);
+
+// accumulator -> SNOWBALL
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  // logging the accumulator to the console
+  console.log(`Iteration ${1}: ${acc}`);
+  return acc + cur;
+}, 0);
+console.log(balance);
+
+// another way of writing it
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// and another way of writing it
+const balance3 = movements.reduce((acc, cur) => acc + cur, 0);
+console.log(balance3);
+
+// Maximun value 
+
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov)
+    return acc;
+  else
+    return mov;
+}, movements[0]);
+console.log(max);
