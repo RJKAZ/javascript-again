@@ -833,51 +833,50 @@ const poll = {
   answers: new Array(4).fill(0),
   //create the new method
   registerNewAnswer() {
-    // To get the Answer - 
+    // To get the Answer -
     // for the prompt we will pass in the questions and options in the pool object to make prompt
     // the '\n' is to make a newline
-    const answer = Number (
+    const answer = Number(
       prompt(
         `${this.question}\n${this.options.join('\n')}
         \n(Write option number)`
-        )
+      )
     );
     console.log(answer);
     //Register Answer
-    // first we check if the answer is indeed a number and if the answer is below the length of the array 
-    // the last part is important since there are only 3 options, clearly an answer of 10 wouldn't work. 
+    // first we check if the answer is indeed a number and if the answer is below the length of the array
+    // the last part is important since there are only 3 options, clearly an answer of 10 wouldn't work.
     // So it must stay below the length of the options array, this is also a great use of short cuircuting with the && operator
-    typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++; 
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
     // for that, the first 2 condtions have to be true, otherwise it shortcuricutis and the final part won't run
     console.log(this.answers);
-    this.displayResults()
+    this.displayResults();
     this.displayResults('string');
   },
   // now we create another method to display the results
   displayResults(type = 'array') {
-    if(type === 'array') {
+    if (type === 'array') {
       console.log(this.answers);
     } else if (type === 'string') {
       // Poll results are 13, 2, 4, 1
-      console.log(`Poll results are ${this.answers.join(', ')}`)
+      console.log(`Poll results are ${this.answers.join(', ')}`);
     }
-
-  }
+  },
 };
 
 //poll.registerNewAnswer();
 
 // now we need to create the functiionality with the Answer Poll Button on the HTML - this is likely where I messed up on
-// the code before, clearly I wasn't paying attention 
+// the code before, clearly I wasn't paying attention
 
 document
   .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer
-  .bind(poll)); // because of bind, the 'this' keyword will refer to the poll object
+  .addEventListener('click', poll.registerNewAnswer.bind(poll)); // because of bind, the 'this' keyword will refer to the poll object
 // this doesn't initially work since the 'this' keyword would point to this object, as in the poll button itself
 // as far as event handlers, the 'this' keyword will always refer to the element to which it is attached
 // to fix this, we need to bind the 'this' keyword and set it to the Poll object and not the poll button
-
 
 /*
 1. Create a method called 'registerNewAnswer' on the 'poll' object. The
@@ -896,28 +895,27 @@ example, if the option is 3, increase the value at position 3 of the array by
 sense (e.g. answer 52 wouldn't make sense, right?)
 */
 
-// bonus test data 
+// bonus test data
 // Data 1: [5, 2, 3]
 // Data 2: [1, 5, 3, 9, 6, 1]
 // for the bonus we need a new 'this' so we use the call method
 
-poll.displayResults.call({answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({answers: [1, 5, 3, 9, 6, 1] }, 'string');
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 
 // ____________________________________________________________________________________________
 
-// Closure Coding Challenge 
+// Closure Coding Challenge
 
-// the challenge is to take this IIFE and attach an event listener that changes the color of the h1 element to blue each time the body element is clicked. DO NOT SELECT THE H1 element again 
+// the challenge is to take this IIFE and attach an event listener that changes the color of the h1 element to blue each time the body element is clicked. DO NOT SELECT THE H1 element again
 
 (function () {
   const header = document.querySelector('h1');
   header.style.color = 'red';
 
-  document.querySelector('body').addEventListener
-  ('click', function() {
+  document.querySelector('body').addEventListener('click', function () {
     header.style.color = 'blue';
-  })
+  });
 })();
 
 /*
@@ -964,7 +962,7 @@ GOOD LUCK 😀
 
 */
 
-const checkDogs = function(dogsJulia, dogsKate) {
+const checkDogs = function (dogsJulia, dogsKate) {
   const dogsJuliaCorrected = dogsJulia.slice();
   dogsJuliaCorrected.splice(0, 1);
   dogsJuliaCorrected.splice(-2);
@@ -972,18 +970,53 @@ const checkDogs = function(dogsJulia, dogsKate) {
   const dogs = dogsJuliaCorrected.concat(dogsKate);
   console.log(dogs);
 
-  dogs.forEach(function(dog, i) {
-    if(dog >= 3) {
+  dogs.forEach(function (dog, i) {
+    if (dog >= 3) {
       console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
     } else {
       console.log(`Dog number ${i + 1} is still a puppy`);
     }
-  })
-
+  });
 
   console.log(dogsJuliaCorrected);
+};
 
-}
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3])
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4])
+//-----------------------------------
+/*
+Coding Challenge #2
+Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages to human ages and calculate the average age of the dogs in their study.
+Your tasks:
+Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and does the following things in order:
+1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years old, humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4
+2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that are at least 18 years old)
+3. Calculate the average human age of all adult dogs(you should already know from other challenges how we calculate averages 😉)
+4. Run the function for both test data sets
+Test data:
+§ Data1:[5,2,4,1,15,8,3] § Data2:[16,6,10,5,6,1,4]
+GOOD LUCK 😀
+
+*/
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
+  //console.log(humanAges);
+  const adults = humanAges.filter((age) => age >= 18);
+  console.log(humanAges);
+  console.log(adults);
+
+  const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+
+  // 2 3. (2+3)/2 = 2.5.
+  // or
+  // 2/2+2/3 = 2.5
+
+  return average;
+};
+
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+console.log(avg1, avg2);
