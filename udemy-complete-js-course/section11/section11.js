@@ -119,6 +119,31 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
+//Event Handlers
+let currentAccount; 
+
+btnLogin.addEventListener('click', function (e) {
+  // Prevent form from submitting
+  e.preventDefault();
+ currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value );
+
+ console.log(currentAccount);
+
+ if(currentAccount?.pin === Number(inputLoginPin.value)) {
+   // Display UI and Message
+   labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split('')[0]
+  }`;
+   
+   // Display Movements
+
+   // Display Balance 
+
+   // Display Summary 
+
+   
+ }
+});
+
 const calcPrintBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance} EUR`;
@@ -388,3 +413,16 @@ console.log(totalDepositsUSD);
 // be careful when chaining methods, too many can cause problems. When using alot of chained methods, try and find ways to use less. (instead of using the map method like 3-4 times, try and figure out how to map once.)
 
 // Best practice, do not chain the Splice or Reverse methods since they change/mutate the original array.
+
+// Next Method up is the Find method, the find method enables us to retrieve one element from an Array based on a condition 
+// so find() is just really another method that loops over the array and retrieves and element from the array 
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
