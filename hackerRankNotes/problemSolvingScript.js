@@ -18,5 +18,7 @@ solveMeFirst(7, 3);
 // Given an Array of integers, find the sum of its elements
 
 function simpleArraySum(ar) {
+
+    // sum += (ar); to sum += (ar[i];)
   
 }
