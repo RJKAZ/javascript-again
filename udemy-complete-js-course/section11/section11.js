@@ -78,9 +78,10 @@ const displayMovements = function (movements) {
 
 //displayMovements(account1.movements);
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR$`
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  acc.balance = balance;
+  labelBalance.textContent = `${acc.balance} EUR$`
 };
 //calcDisplayBalance(account1.movements);
 
@@ -143,7 +144,7 @@ btnLogin.addEventListener('click', function (e) {
    displayMovements(currentAccount.movements)
 
    // Display Balance 
-   calcDisplayBalance(currentAccount.movements)
+   calcDisplayBalance(currentAccount)
 
    // Display Summary 
    calcDisplaySummary(currentAccount);
@@ -152,10 +153,22 @@ btnLogin.addEventListener('click', function (e) {
  }
 });
 
-const calcPrintBalance = function (movements) {
+btnTransfer.addEventListener('click', function(e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  console.log(amount, receiverAcc);
+
+  if(amount > 0 && currentAccount.balance >= amount && receiverAcc.username !== currentAccount.username) {
+
+  }
+});
+
+/* const calcPrintBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance} EUR`;
 }
+*/
 
 
 
@@ -425,12 +438,13 @@ console.log(totalDepositsUSD);
 // Next Method up is the Find method, the find method enables us to retrieve one element from an Array based on a condition 
 // so find() is just really another method that loops over the array and retrieves and element from the array 
 
-const firstWithdrawal = movements.find(mov => mov < 0);
+//const firstWithdrawal = movements.find(mov => mov < 0);
 
-console.log(movements);
-console.log(firstWithdrawal);
+// console.log(movements);
+// console.log(firstWithdrawal);
 
-console.log(accounts);
+// console.log(accounts);
 
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(account);
+//const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+//console.log(account);
+
