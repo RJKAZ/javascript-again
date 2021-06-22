@@ -153,11 +153,10 @@ btnLogin.addEventListener('click', function (e) {
 
   // update UI
   updateUI(currentAccount)
-
-
-   
  }
 });
+
+
 
 btnTransfer.addEventListener('click', function(e) {
   e.preventDefault();
@@ -176,7 +175,27 @@ btnTransfer.addEventListener('click', function(e) {
       // Doing the transer
       currentAccount.movements.push(-amount);
       recieverAcc.movements.push(amount);
+
+      // update UI
+      updateUI(currentAccount);
   }
+});
+
+tbnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.
+    username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    accounts.splice(index, 1);
+
+  }
+  
 });
 
 /* const calcPrintBalance = function (movements) {
