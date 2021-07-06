@@ -81,15 +81,15 @@ const displayMovements = function (movements) {
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
   acc.balance = balance;
-  labelBalance.textContent = `${acc.balance} EUR$`
+  labelBalance.textContent = `${acc.balance} EUR$`;
 };
 //calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function(acc) {
+const calcDisplaySummary = acc => {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}$`
+  labelSumIn.textContent = `${incomes}$`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
@@ -104,10 +104,10 @@ const calcDisplaySummary = function(acc) {
       return int >= 1;
     })
     .reduce((acc, mov) => acc + mov, 0);
-    labelSumInterest.textContent = `${interest}$`;
+  labelSumInterest.textContent = `${interest}$`;
 };
 
-calcDisplaySummary(account1.movements);
+//calcDisplaySummary(currentAccount);
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -120,82 +120,103 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-const updateUI = function(acc) {
-     // Display Movements
-     displayMovements(acc.movements)
+const updateUI = function (acc) {
+  // Display Movements
+  displayMovements(acc.movements);
 
-     // Display Balance 
-     calcDisplayBalance(acc)
-  
-     // Display Summary 
-     calcDisplaySummary(acc);
-}
+  // Display Balance
+  calcDisplayBalance(acc);
+
+  // Display Summary
+  calcDisplaySummary(acc);
+};
 
 //Event Handlers
-let currentAccount; 
+let currentAccount;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
- currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value );
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
 
- console.log(currentAccount);
+  console.log(currentAccount);
 
- if(currentAccount?.pin === Number(inputLoginPin.value)) {
-   // Display UI and Message
-   labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]
-  }`;
-  containerApp.getElementsByClassName.opacity = 100;
-   
-  // clear input fields 
-  inputLoginUsername.value = inputLoginPin.value = '';
-  inputLoginPin.blur();
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and Message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.getElementsByClassName.opacity = 100;
 
-  // update UI
-  updateUI(currentAccount)
- }
-});
+    // clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
 
-
-
-btnTransfer.addEventListener('click', function(e) {
-  e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
-  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
-  
-  inputTransferAmount.value = inputTransferTo.value = '';
-
-
-  if(
-    amount > 0 && 
-    recieverAcc &&
-    currentAccount.balance >= amount && 
-    receiverAcc?.username !== currentAccount.username
-    ) {
-      // Doing the transer
-      currentAccount.movements.push(-amount);
-      recieverAcc.movements.push(amount);
-
-      // update UI
-      updateUI(currentAccount);
+    // update UI
+    updateUI(currentAccount);
   }
 });
 
-tbnClose.addEventListener('click', function (e) {
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (
+    amount > 0 &&
+    recieverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // Doing the transer
+    currentAccount.movements.push(-amount);
+    recieverAcc.movements.push(amount);
+
+    // update UI
+    updateUI(currentAccount);
+  }
+});
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) {
+    // add movement
+    currentAccount.movements.push(amount);
+
+    //update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
   if (
-    inputCloseUsername.value === currentAccount.
-    username &&
+    inputCloseUsername.value === currentAccount.username &&
     Number(inputClosePin.value) === currentAccount.pin
   ) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
     );
+    console.log(index);
+
+    // Delete Account
     accounts.splice(index, 1);
 
+    // Hide UI
+    containerApp.style.opacity = 0;
   }
-  
+  inputCloseUsername.value = inputClosePin.value = '';
 });
 
 /* const calcPrintBalance = function (movements) {
@@ -203,8 +224,6 @@ tbnClose.addEventListener('click', function (e) {
   labelBalance.textContent = `${balance} EUR`;
 }
 */
-
-
 
 // so that above cove takes the user variable which is all one string, and breaks it splits it into 3 smaller strings with then makes them all lowercase
 
@@ -435,19 +454,15 @@ console.log(balance2);
 const balance3 = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance3);
 
-// Maximun value 
+// Maximun value
 
 const max = movements.reduce((acc, mov) => {
-  if (acc > mov)
-    return acc;
-  else
-    return mov;
+  if (acc > mov) return acc;
+  else return mov;
 }, movements[0]);
 console.log(max);
 
-
-
-// The Magic of Chaining Methods 
+// The Magic of Chaining Methods
 
 //lets get all the deposits
 
@@ -469,8 +484,8 @@ console.log(totalDepositsUSD);
 
 // Best practice, do not chain the Splice or Reverse methods since they change/mutate the original array.
 
-// Next Method up is the Find method, the find method enables us to retrieve one element from an Array based on a condition 
-// so find() is just really another method that loops over the array and retrieves and element from the array 
+// Next Method up is the Find method, the find method enables us to retrieve one element from an Array based on a condition
+// so find() is just really another method that loops over the array and retrieves and element from the array
 
 //const firstWithdrawal = movements.find(mov => mov < 0);
 
@@ -482,3 +497,24 @@ console.log(totalDepositsUSD);
 //const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 //console.log(account);
 
+console.log(movements);
+
+//Equality
+console.log(movements.includes(-130));
+
+// SOME : Condition
+console.log(movements.some(mov => mov === -130));
+
+const anyDeposits = movements.some(mov => mov > 5000);
+console.log(anyDeposits);
+
+// EVERY - if Every element passes the test in the callback function, only then will the every method return true. Hence why its called Every
+
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Seperate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
