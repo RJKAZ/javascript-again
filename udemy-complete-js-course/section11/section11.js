@@ -518,3 +518,50 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+// Flat and FlatMap
+// what this will do is flat out a nested array into a single array
+//here is an array that has 2 nested arrays in it
+const arrFlat = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arrFlat.flat());
+
+//However with Arrays nested inside arrays, the flat method only works one level deep, if you have an Array nested inside a nested array thats nested inside a nested array, the flat method just flats the first level
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat());
+
+// but that is just the default action of the method. it can be set to how many levels you want
+// like if you want it to flatten up to two levels
+console.log(arrDeep.flat(2));
+
+// now to use this in context of our main application
+
+/* const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+*/
+// and here is a quicker way of writing all that above
+
+// Flat
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+// to make things overall better for performance, there is another method that basicly combines the map and flat methods
+
+// FlatMap
+
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
+// There is one weakness with FlatMap, it only flattens one level deep and unlike the regular flat method, flatMap cannot be changed
+// so if you need to go deeper then one level, use the regular flat method.
