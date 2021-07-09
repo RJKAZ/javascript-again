@@ -85,8 +85,40 @@ console.log(greaterFive);
 
 // all elemenets are less then 9
 const lessNine = arr6.every(num => num < 9);
-consol0e.log(lessNine);
+console.log(lessNine);
 //true
+
+//____________________________________________________________________
+
+// The 7th method is the some() method
+// This method checks if at least one element in the array passes the condition, returning true or false as appropriate
+
+const arr7 = [1, 2, 3, 4, 5, 6, 7];
+
+    // at least on one element is greater then 5?
+    const greaterNum = arr7.some(num => num > 5);
+    console.log(greaterNum); // true
+
+    // at least one element is less than or eqaul to 0?
+    const lessNum = arr7.some(num => num <= 0);
+    console.log(lessNum); // false
+
+//________________________________________________________________________________
+
+// The 8th method is the includes() method
+// this method check if an array includes the element that passes the condition, returning true or false as appropraite 
+
+const arr8 = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr8.includes(2)); // true
+console.log(arr8.includes(8)); // false 
+
+//________________________________________________________________________________________
+
+// the 9th method is the join() method 
+// this method returns a new string by concatenating all of the array's elements seperated by the specified separator
+
+const arr9 = ["m", "a", "n", "d", "e", "e", "p"];
+console.log(arr9.join('')); // 'mandeep'
 
 
 
