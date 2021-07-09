@@ -28,7 +28,7 @@ const arr2 = [1, 2, 3, 4, 5, 6];
 //_____________________________________________________________
 
 /*
-The thurd method is the Sort Method 
+The third method is the Sort Method 
 The Sort method is used to arrange/sory the array's elements either in ascending or decending order
 */
 
@@ -47,5 +47,48 @@ const arr3 = [1, 2, 3, 4, 5, 6];
 
 
 //_____________________________________________________________
+
+// The 4th method is the forEach() method
+// this method helsp to loop over Arrays by executing a provided callback function for each element in an array.
+
+const arr4 = [1, 2, 3];
+    arr1.forEach(element => {
+        console.log(element);
+    });
+
+// this returns 1-6... I'm not sure why, it should only return 1-3
+
+//______________________________________________________________
+
+// The 5th method is the concat() method
+// this method is used to merge two or more arrays and returns a new arry, without changing the existing arrays.
+
+const arr5a = ["a", "b", "c"];
+const arr5b = ["d", "e", "f"];
+
+console.log(arr5a.concat(arr5b)); // this returns both arrays combined into one array
+
+// but the variables still hold the original value of arr5a and arr5b.
+
+
+//________________________________________________________________
+
+// The 6th method is the every() method
+// this method checks every element in the array that passes the condition, returning true or false as appropriate
+
+const arr6 = [1, 2, 3, 4, 5, 6, 7];
+
+// all elemenets are greater then 5
+const greaterFive = arr6.every(num => num > 5);
+console.log(greaterFive);
+// false
+
+// all elemenets are less then 9
+const lessNine = arr6.every(num => num < 9);
+consol0e.log(lessNine);
+//true
+
+
+
 
 // https://medium.com/@mandeepkaur1/a-list-of-javascript-array-methods-145d09dd19a0
