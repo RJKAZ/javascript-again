@@ -6,11 +6,11 @@ The Map method creates a new array with the results of calling a provided functi
 */
 
 const arr1 = [1, 2, 3, 4, 5, 6];
-    const mapped = arr1.map(element => element + 30);
-    console.log(mapped);
+const mapped = arr1.map((element) => element + 30);
+console.log(mapped);
 
-    // this returns the array with each number added to 30.
-    // (6) [31, 32, 33, 34, 35, 36] 
+// this returns the array with each number added to 30.
+// (6) [31, 32, 33, 34, 35, 36]
 //_____________________________________________________________
 
 /*
@@ -19,11 +19,11 @@ The Filter method creates a new array with only elements that pass the condition
 */
 
 const arr2 = [1, 2, 3, 4, 5, 6];
-    const filtered = arr2.filter(element => element === 2 || element === 4);
-    console.log(filtered);
+const filtered = arr2.filter((element) => element === 2 || element === 4);
+console.log(filtered);
 
-    // So the condition in the arrow function is any element equal to 2 or 4
-    // So this returns the (2) [2 , 4]
+// So the condition in the arrow function is any element equal to 2 or 4
+// So this returns the (2) [2 , 4]
 
 //_____________________________________________________________
 
@@ -33,18 +33,16 @@ The Sort method is used to arrange/sory the array's elements either in ascending
 */
 
 const arr3 = [1, 2, 3, 4, 5, 6];
-    const alphabet = ["f", "a", "c", "v", "z"];
-    // how to sort in descending order
-    descend = arr3.sort((a, b) => a > b ? -1 : 1);
-    console.log(descend);
-    // This returns the numbers array in decending order
+const alphabet = ['f', 'a', 'c', 'v', 'z'];
+// how to sort in descending order
+descend = arr3.sort((a, b) => (a > b ? -1 : 1));
+console.log(descend);
+// This returns the numbers array in decending order
 
-    // sort in ascending order
-    ascend = alphabet.sort((a, b) => a > b ? 1 : -1);
-    console.log(ascend); 
-    // this returns the alphabet array in order from A to Z
-
-
+// sort in ascending order
+ascend = alphabet.sort((a, b) => (a > b ? 1 : -1));
+console.log(ascend);
+// this returns the alphabet array in order from A to Z
 
 //_____________________________________________________________
 
@@ -52,9 +50,9 @@ const arr3 = [1, 2, 3, 4, 5, 6];
 // this method helsp to loop over Arrays by executing a provided callback function for each element in an array.
 
 const arr4 = [1, 2, 3];
-    arr1.forEach(element => {
-        console.log(element);
-    });
+arr1.forEach((element) => {
+  console.log(element);
+});
 
 // this returns 1-6... I'm not sure why, it should only return 1-3
 
@@ -63,13 +61,12 @@ const arr4 = [1, 2, 3];
 // The 5th method is the concat() method
 // this method is used to merge two or more arrays and returns a new arry, without changing the existing arrays.
 
-const arr5a = ["a", "b", "c"];
-const arr5b = ["d", "e", "f"];
+const arr5a = ['a', 'b', 'c'];
+const arr5b = ['d', 'e', 'f'];
 
 console.log(arr5a.concat(arr5b)); // this returns both arrays combined into one array
 
 // but the variables still hold the original value of arr5a and arr5b.
-
 
 //________________________________________________________________
 
@@ -79,12 +76,12 @@ console.log(arr5a.concat(arr5b)); // this returns both arrays combined into one 
 const arr6 = [1, 2, 3, 4, 5, 6, 7];
 
 // all elemenets are greater then 5
-const greaterFive = arr6.every(num => num > 5);
+const greaterFive = arr6.every((num) => num > 5);
 console.log(greaterFive);
 // false
 
 // all elemenets are less then 9
-const lessNine = arr6.every(num => num < 9);
+const lessNine = arr6.every((num) => num < 9);
 console.log(lessNine);
 //true
 
@@ -95,32 +92,65 @@ console.log(lessNine);
 
 const arr7 = [1, 2, 3, 4, 5, 6, 7];
 
-    // at least on one element is greater then 5?
-    const greaterNum = arr7.some(num => num > 5);
-    console.log(greaterNum); // true
+// at least on one element is greater then 5?
+const greaterNum = arr7.some((num) => num > 5);
+console.log(greaterNum); // true
 
-    // at least one element is less than or eqaul to 0?
-    const lessNum = arr7.some(num => num <= 0);
-    console.log(lessNum); // false
+// at least one element is less than or eqaul to 0?
+const lessNum = arr7.some((num) => num <= 0);
+console.log(lessNum); // false
 
 //________________________________________________________________________________
 
 // The 8th method is the includes() method
-// this method check if an array includes the element that passes the condition, returning true or false as appropraite 
+// this method check if an array includes the element that passes the condition, returning true or false as appropraite
 
 const arr8 = [1, 2, 3, 4, 5, 6, 7];
 console.log(arr8.includes(2)); // true
-console.log(arr8.includes(8)); // false 
+console.log(arr8.includes(8)); // false
 
 //________________________________________________________________________________________
 
-// the 9th method is the join() method 
+// the 9th method is the join() method
 // this method returns a new string by concatenating all of the array's elements seperated by the specified separator
 
-const arr9 = ["m", "a", "n", "d", "e", "e", "p"];
+const arr9 = ['m', 'a', 'n', 'd', 'e', 'e', 'p'];
 console.log(arr9.join('')); // 'mandeep'
 
+//_______________________________________________________________
 
+// the 10th method is the reduce() method
+// This method applies a function against an accumulator and each element in the array to reduce it to a single value
 
+const arr10 = [1, 2, 3, 4, 5, 6];
+const reduced = arr10.reduce((total, current) => total + current);
+console.log(reduced); // 21
+
+//________________________________________________________________
+
+// the 11th method is the find() method
+// This method returns the value of the first element in an array that pass the test in a testing function
+
+const arr11 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const found = arr11.find((element) => element > 5);
+console.log(found); // 6
+
+//_________________________________________________________________
+
+// the 12th method is the findIndex() method
+// this method returns the index of the first element in an array that pass the test in a testing function
+
+const arr12 = ['Danny', 'Mandeep', 'John', 'Ruby'];
+const indexFinder = arr12.findIndex((element) => element === 'Mandeep');
+console.log(indexFinder);
+
+// __________________________________________________________________
+
+// The 13th method is the indexOf()
+// This method returns the index of the first occurance of the specifiec element in the array, or -1 if it is not found.
+
+const arr13 = ['Danny', 'Mandeep', 'John', 'Ruby'];
+const indexFinder1 = arr13.indexOf('Mandeep');
+console.log(indexFinder1); // 1
 
 // https://medium.com/@mandeepkaur1/a-list-of-javascript-array-methods-145d09dd19a0
