@@ -153,4 +153,45 @@ const arr13 = ['Danny', 'Mandeep', 'John', 'Ruby'];
 const indexFinder1 = arr13.indexOf('Mandeep');
 console.log(indexFinder1); // 1
 
+//____________________________________________________________________
+
+// The 14th method is the fill() method
+// This method fills the element in an array with a static value and returns the modified array
+
+const arr14 = new Array(3);
+console.log(arr14); // [empty, empty, empty]
+console.log(arr14.fill(10)); // [10,10,10]
+
+//____________________________________________________________________
+
+// The 15th method is the slice() method 
+// This method returns a new array with a specified start to end elements
+
+const arr15 = ["a", "b", "c", "d", "e"];
+const sliced = arr15.slice(2, 4);
+console.log(sliced);
+console.log(arr15);
+
+// to note you set the first and last index, so the index of 2 is C, and while the index of 4 is technically the e, the slice method does not return the end index, so it only returns C & D
+
+//__________________________________________________________________________
+
+// The 16th method is the reverse() method
+// This method revers and array in place. Elements at the last index will be first and elements at the 0 index will be last, basicly reversing whatever number or string you use it on.
+const arr16 = [1, 2, 3];
+  arr16.reverse();
+  console.log(arr16);
+
+//________________________________________________________________________
+
+// The 17th method is the push() method 
+// This method adds one or more elements to the end of the array and returns the new length of the array.
+
+const fruits = ["Apple", "Peach"];
+console.log(fruits.push("Banana")); 
+console.log(fruits);
+
+
+
+
 // https://medium.com/@mandeepkaur1/a-list-of-javascript-array-methods-145d09dd19a0
