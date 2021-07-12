@@ -191,7 +191,27 @@ const fruits = ["Apple", "Peach"];
 console.log(fruits.push("Banana")); 
 console.log(fruits);
 
+//___________________________________________________________________________
 
+// The 18th method is the pop() method
+// This method removes the last element from the end of array and returns that element
+const veggies = ["Broccoli", "Corn"];
+veggies.pop();
+console.log(veggies);
+
+//____________________________________________________________________________
+
+// The 19th method is the shift() method
+// The method removes the first element from an array an returns the remaining elements
+const snacks = ["chips", "candy corn", "popcorn"];
+snacks.shift();
+console.log(snacks);
+
+// The 20th method is the unshift() method
+// This method adds one or more elements to the beginning of an array and returns the new length of the array
+const iceCream = ["Vanilla", "Chocolate", "Peanut Butter"];
+console.log(iceCream.unshift("Mint"));
+console.log(iceCream);
 
 
 // https://medium.com/@mandeepkaur1/a-list-of-javascript-array-methods-145d09dd19a0
