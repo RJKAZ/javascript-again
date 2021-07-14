@@ -11,6 +11,62 @@ console.log(mapped);
 
 // this returns the array with each number added to 30.
 // (6) [31, 32, 33, 34, 35, 36]
+
+// another way to define it, the map method returns a new array with the sqaure root of all the original values
+
+// another way to define it, The Array.map() method allows you to iterate over an array and modify its elements using a callback function. The callback function will then be executed on each of the array's elements
+
+// for example, let say we start with the following Array
+
+let newArray = [3, 4, 5, 6];
+
+// now lets say we are required to multipy each of the arrays elements by 3. One way you can do this is with a for-loop such as...
+
+for (let i = 0; i < newArray.length; i++) {
+  newArray[i] = newArray[i] * 3;
+}
+
+console.log(newArray); // this returns the original array with each number in it multiplied by 3
+
+// however you can use the Map method to achieve the same result 
+
+let newArray1 = [3, 4, 5, 6];
+
+let modifiedNewArray = newArray1.map(function(element){
+  return element * 3;
+});
+
+console.log(modifiedNewArray); // this returns the original array with each number in it multiplied by 3, although this is more of a copy since the old array still remains
+
+// you can also use the map method with an array of objects
+
+let superHeros = [
+  {firstName: "Steve", lastName: "Rogers"},
+  {firstName: "Bucky", lastName: "Barnes"},
+  {firstName: "Sam", lastName: "Wilson"},
+]
+
+let heroFullNames = superHeros.map(function(element){
+  return `${element.firstName} ${element.lastName}`;
+})
+
+console.log(heroFullNames);// this essentially turns the Array of Objects into just an Array, combining the first and last name objects and a single full name in the array
+
+// The callback function() is the map method is called on each array element, and the map() method always passes the current element, the index of the current element, and the whole array object to it. 
+
+// The this argument will be used inside the callback function. By default, its value is undefined. 
+// another example to test arguments. 
+
+let mapArr = [2, 3, 4, 5];
+
+mapArr.map(function(element, index, array) {
+  console.log(element);
+  console.log(index);
+  console.log(array);
+  return element;
+}, 80);
+
+
 //_____________________________________________________________
 
 /*
